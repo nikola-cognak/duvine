@@ -1,0 +1,22 @@
+/* ==============================================================
+ *
+ * Featured tours block
+ *
+ * ============================================================== */
+
+
+.block--featured_tours{
+    @include blockpad;
+}
+.featuredtour__image{
+    margin-bottom: 20px;
+    margin-top: 40px;
+    display: block;
+}
+.featuredtour__footer{
+    margin-top: 20px;
+}
+
+.featuredtour{
+    margin-bottom: 20px;
+}

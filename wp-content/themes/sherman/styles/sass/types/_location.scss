@@ -1,0 +1,151 @@
+/* ==============================================================
+ *
+ * Location page
+ *
+ * ============================================================== */
+
+
+.location__hero{
+    @include hero;
+
+    &.interactive-location{
+        max-height: none;
+        background-color: $offblack;
+        
+        @include gt-tablet{
+            display: flex;
+        }
+
+        .location__herosvg{
+            flex: 1 1 auto;
+        }
+
+        .sublocations{
+            padding: 20px;
+            position: static;
+            background-color: transparent;
+
+            @include gt-tablet{
+                flex: 0 0 280px;
+                padding: 40px;
+            }
+        }
+
+        svg image {
+            width: 100%!important;
+        }
+
+        @include lt-mobile{
+            svg{
+                height: 210px;
+                width: auto;
+            }
+        }
+    }
+
+    @include lt-mobile{
+        height: auto;
+        display: block;
+    }
+}
+
+
+.location__heroimage{
+    display: block;
+    height: 0;
+    padding-bottom: 40.88888%;
+    background-position: center center;
+    background-size: cover;
+
+    @include lt-mobile{
+        padding-bottom: 0;
+        height: 240px;
+    }
+}
+
+.sublocations{
+    background-color: $black;
+    padding: 20px;
+
+    @include gt-tablet{
+        position: absolute;
+        top: 40px;
+        right: 40px;
+    }
+}
+
+
+.sublocations__title{
+    @include type-bold;
+    @include uppercase;
+    font-size: $fz_small;
+    line-height: $line_height_header;
+    color: $white;
+
+    @include lt-tablet{
+        @include icon-right( $icon_chevron_down__white, 20px, 20px );
+        @include active-flip;
+        cursor: pointer;
+    }
+}
+
+.location__main{
+    padding-bottom: 60px;
+}
+
+.locationkids{
+    padding-top: 14px;
+    + .locationkids {
+        @include lt-tablet{
+            padding-top: 0px;
+            padding-left:0px;
+        }
+        padding-left:40px;
+    }
+}
+.locationkids__kid{
+    margin-top: 2px;
+}
+.locationkids__kidanchor{
+    @include ux-underline( $brand_secondary );
+    white-space: nowrap;
+    color: $white;
+}
+
+.location__header + .content__lead{
+    padding-top: 40px;
+}
+.locationkids-wrapper {
+    display: flex;
+    @include lt-tablet{
+        display: none;
+    }
+}
+.location__entry {
+    margin-top: 40px;
+
+    @include gt-mobile {
+        max-width: 50%;
+    }
+
+}
+
+
+
+/* ------------------------------------------
+ * --svg
+ * ------------------------------------------ */
+
+
+.region__outline{
+    cursor: pointer;
+
+    .region__border{
+        opacity: 0;
+        transition: opacity .2s;
+    }
+
+    &.active .region__border{
+        opacity: 1;
+    }
+}

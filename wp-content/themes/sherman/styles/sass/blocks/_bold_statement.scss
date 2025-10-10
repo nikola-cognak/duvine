@@ -1,0 +1,54 @@
+/* ==============================================================
+ *
+ * Bold Statement block
+ *
+ * ============================================================== */
+
+.boldstatement{
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 75px;
+}
+.boldstatement__statement{
+    font-size: $fz_blockheader;
+    line-height: 1.4;
+    margin-bottom: 40px;
+
+    @include lt-tablet{
+        font-size: 1.4em;
+    }
+
+    + .boldstatement__award{
+        margin-top: -20px;
+    }
+}
+
+/* change size only for home page */
+body.home {
+    .boldstatement__statement{
+        font-size: $fz_blockheader_home;
+    }
+}
+
+.boldstatement__award{
+    margin-bottom: 40px;
+
+    > *{
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+.boldstatement__awardtext{
+    max-width: max-content;
+    color: black;
+    font-size: 2.3em;
+    font-weight: 600;
+
+    p + p{
+        margin-top: .5em;
+    }
+}
+.boldstatement__awardimage{
+    //max-width: 220px;
+    margin: 20px;
+}

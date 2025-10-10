@@ -1,0 +1,139 @@
+/* ==============================================================
+ *
+ * STYLES
+ *
+ * ============================================================== */
+
+
+//
+// Global vars
+//
+
+$black: #000;
+$offblack: #1e1e1e;
+$darkgray: #4f4f4f;
+
+$white: #fff;
+$offwhite: #f1f1f1;
+
+
+
+$text_color: $black;
+$brand_primary: #007290;   // primary buttons, accent color
+$brand_secondary: #dbe035; // secondary links, newsletter band
+$brand_error: #f00;
+$brand_gray: #bbb;         // lighter than black
+$type_gray: #666;
+
+$rule_gray: #ddd;
+$rule_gray_alt: #d8d8d8;
+
+$light_green: #dae444;
+
+
+
+//
+// interaction
+//
+
+
+$ux_timing: .6s;
+
+
+
+
+//
+// general
+//
+
+$navheight: 104px;
+
+$ruleheight: 6px;
+
+
+
+
+
+/* ------------------------------------------
+ * --imports
+ * ------------------------------------------ */
+
+
+
+// base
+@import 'base/media-queries';
+@import 'base/icons';
+@import 'base/interactions';
+@import 'base/base';
+@import 'base/layout';
+@import 'base/type';
+@import 'base/forms';
+
+
+
+// components ( site parts )
+@import 'components/global_header';
+@import 'components/mobilenav';
+@import 'components/breadcrumbs';
+@import 'components/homepage_hero';
+@import 'components/page';
+@import 'components/blog';
+@import 'components/promos';
+@import 'components/datepicker';
+@import 'components/accordion';
+@import 'components/tourloop';
+@import 'components/footer';
+@import 'components/footer-hubspot';
+@import 'components/slider';
+@import 'components/filters';
+@import 'components/wysiwyg';
+@import 'components/search';
+@import 'components/404';
+
+
+// blog
+@import 'blog/posts';
+@import 'blog/home';
+@import 'blog/feature';
+@import 'blog/gallery';
+
+//press
+@import 'press/press';
+
+// content types
+@import 'types/tour';
+@import 'types/bike';
+@import 'types/person';
+@import 'types/location';
+@import 'types/tourcollection';
+
+
+
+// blocks ( styles directly related to the secondary blocks )
+@import 'blocks/simple_copy';
+@import 'blocks/simple_video';
+@import 'blocks/tourguides';
+@import 'blocks/bold_statement';
+@import 'blocks/callout_banner';
+@import 'blocks/tourfinder_banner';
+@import 'blocks/featured_tours';
+@import 'blocks/featured_content_carousel';
+@import 'blocks/featured_blog_posts';
+@import 'blocks/instagram_slider';
+@import 'blocks/accordion';
+@import 'blocks/tour_levels';
+@import 'blocks/year_glance';
+@import 'blocks/peloton_loyalty_club';
+@import 'blocks/weather_widget';
+@import 'blocks/image_slider';
+@import 'blocks/image_copy_side_by_side';
+@import 'blocks/private_planning_form';
+
+// styles directly related to shortcodes
+@import 'shortcodes/featuredstats';
+
+
+// plugins
+@import 'plugins/chosen';
+@import 'plugins/tooltipster';
+@import 'plugins/daterangepicker.min';

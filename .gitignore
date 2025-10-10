@@ -1,0 +1,67 @@
+# ignore everything in the root except the "wp-content" directory.
+!wp-content/
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins", "plugins", "themes" directory
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+!wp-content/advanced-cache.php
+!wp-content/autoptimize_404_handler.php
+!wp-content/index.php
+
+# ignore sample plugins
+wp-content/plugins/hello.php
+
+# ignore sample themes
+wp-content/themes/twenty*/
+
+# ignore config file
+wp-config.php
+
+# ignore node dependency directories
+node_modules/
+package-lock.json
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore imagify files
+/conf/imagify.conf
+/imagify-backup
+/imagify-backup/*
+/wp-content/themes/sherman/*.webp
+/wp-content/themes/sherman/*.png
+/wp-content/themes/sherman/*.jpg
+/wp-content/themes/sherman/*.jpeg
+/wp-content/themes/sherman/svg-regions/src/*.webp
+/wp-content/themes/sherman/svg-regions/src/*.png
+/wp-content/themes/sherman/svg-regions/src/*.jpg
+/wp-content/themes/sherman/svg-regions/src/*.jpeg
+/wp-content/themes/sherman/img/*.webp
+/wp-content/themes/sherman/img/*.png
+/wp-content/themes/sherman/img/*.jpg
+/wp-content/themes/sherman/img/*.jpeg
+/wp-content/themes/sherman/img/print-to-pdf/*.webp
+/wp-content/themes/sherman/img/print-to-pdf/*.png
+/wp-content/themes/sherman/img/print-to-pdf/*.jpg
+/wp-content/themes/sherman/img/print-to-pdf/*.jpeg
+/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.webp
+/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.png
+/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.jpg
+/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.jpeg
+/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.webp
+/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.png
+/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.jpg
+/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.jpeg
+
+# ignore system files
+.idea
+docker/logs
+robots.txt
+/wp-content/themes/sherman/acf-json/*
+wp-content/themes/.DS_Store
+.DS_Store

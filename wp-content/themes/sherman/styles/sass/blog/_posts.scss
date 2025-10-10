@@ -1,0 +1,243 @@
+/* ==============================================================
+ *
+ * Blog - General post styles
+ *
+ * ============================================================== */
+
+
+.blog-posts__container{
+    padding-top: 30px;
+}
+
+
+/* ------------------------------------------
+ * --hero
+ * ------------------------------------------ */
+
+.featured-post__banner-image {
+    @include bighero;
+    display: block;
+}
+.featured-post__banner-image.featured-post__banner-image--nobg{
+    background-color: transparent;
+}
+
+
+.entry-header--blog{
+    padding-bottom: 60px;
+}
+
+
+/* ------------------------------------------
+ * --posted on
+ * ------------------------------------------ */
+
+.blogpost__postedon{
+    display: block;
+    margin-bottom: 10px;
+
+    .type-post &{
+        margin: 30px 0px;
+    }
+}
+.blogpost__postedon--tracked{
+    padding-left: 20px;
+    margin-top: 10px;
+    letter-spacing: .4em;
+}
+
+
+
+/* ------------------------------------------
+ * --author
+ * ------------------------------------------ */
+
+
+.blog-post__about-the-author {
+    background-color: $offwhite;
+    padding: 60px 0px;
+    margin-top: 20px;
+
+    .format-standard + &{
+        margin-top: 80px;
+    }
+}
+.about-author__header {
+    margin-bottom: 20px;
+}
+
+
+/* ------------------------------------------
+ * --footer
+ * ------------------------------------------ */
+
+
+.blog-post__blog-footer {  
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    li{
+        margin-top: 1em;
+    }
+
+    .blockmenu {
+        margin-bottom: 50px;
+    }
+}
+
+.blogpost__nextpost {
+    margin-top: 80px;
+
+    a{
+        @extend .basiclink;
+    }
+}
+ 
+
+/* ------------------------------------------
+ * --leade
+ * ------------------------------------------ */
+
+.blogpost__leade{
+    margin: 40px 0;
+
+    @include gt-mobile{
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    a{
+        display: inline-block;
+        color: $brand_primary;
+        position: relative;
+        line-height: 1.6;
+        font-weight: 700;
+
+        &:after{
+            content:"";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background-color: $brand_primary;
+            opacity: 0;
+            transition: opacity .2s;
+        }
+
+        &:hover:after{
+            opacity: 1;
+        }
+    }
+}
+
+
+
+/* ------------------------------------------
+ * --signup
+ * ------------------------------------------ */
+
+.signup-cta {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: block;
+    text-align: right;
+}
+.signup-cta--left{
+    text-align: left;
+}
+
+
+
+/* ------------------------------------------
+ * --social
+ * ------------------------------------------ */
+
+.social-icons__wrapper {
+    margin-bottom: 30px;
+
+    li{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    a{
+        display: block;
+        padding: 12px;
+        min-height: 44px;
+
+        &.social--print svg{
+            height: 28px;
+        }
+        &:hover {
+            svg{
+                path{
+                    fill: $brand_primary;
+                }
+            }
+        }
+    }
+
+    svg{
+        display: block;
+        height: 20px;
+
+        path{
+            transition: fill 0.5s ease-in-out;
+            fill: $black;
+        }
+    }
+}
+
+.social-icons__wrapper--centered{
+    text-align: center;
+}
+.social-icons__wrapper--offset{
+    margin-left: -8px;
+    margin-bottom: 0;
+}
+
+.social-icons__wrapper--fixedright{
+    @include gt-desktop{
+        position: fixed;
+        right: 0;
+        top: 200px;
+        z-index: 3;
+
+        a{
+            background-color: $white;
+            background-color: rgba( $white, .75 );
+        }
+
+        li{
+            display: block;
+        }
+
+        svg{
+            margin: 0 auto;
+        }
+    }
+}
+
+.social-icons__wrapper--fixedright-gallery{
+    @include gt-large-desktop{
+        position: fixed;
+        right: 0;
+        top: 200px;
+        z-index: 3;
+
+        li{
+            display: block;
+        }
+
+        svg{
+            margin: 0 auto;
+        }
+    }
+}
+
+
+@media print {
+  #masthead {
+    display: none;
+  }
+}

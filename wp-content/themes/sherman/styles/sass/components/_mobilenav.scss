@@ -1,0 +1,321 @@
+/* ==============================================================
+ *
+ * Mobile navigation
+ *
+ * ============================================================== */
+
+$drawerpad: 114px; /* 94 */
+$scrollingOffset: 40px;
+
+$navtiming: .6s;
+
+.mobilenav{
+    position: fixed;
+    top: 0;
+    left: 100%;
+    bottom: 0;
+    width: 100%;
+    height: 100;
+    background-color: $offblack;
+    z-index: 20;
+    overflow: hidden;
+    transform: translate3d(0%, 0, 0);
+    transition: all $navtiming;
+
+    &.mobilenav--active{
+        transform: translate3d(-100%,0,0);
+    }
+
+    a{
+        color: $white;
+        text-decoration: none;
+    }
+}
+
+.mobilenav__section {
+  &:first-child a {
+      border-top: 0!important;
+      border-bottom: 1px solid #383838;
+  }
+  &:nth-of-type(4) {
+    ul {
+      &.blockmenu {
+        li {
+          &:first-of-type {
+            a[title="browse-tours"] {
+              display: none;
+            }
+            ul {
+              &.sub-menu {
+                display: inline-block;
+                position: relative;
+                left: 0;
+                padding:0;
+                width: 100%;
+                overflow: hidden;
+                li {
+                    display: none;
+                }
+                .cta {
+                  display: block;
+                  text-align: left;
+                  padding: 0;
+                  margin-bottom: 0;
+                  border: 0;
+                  background-color: transparent;
+                  a {
+                      border: 0;
+                      background-color: transparent;
+                      padding-top: 20px;
+                      padding-bottom: 12px;
+                      @include lt-desktop {
+                        padding-top: 18px;
+                        padding-bottom: 56px;
+                      }
+                  }
+                }
+              }
+            }
+          }
+          &:nth-of-type(2) {
+            margin-top: 50px;
+            @include lt-desktop {
+              margin-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.mobilenav__section + .mobilenav__section{
+    margin-top: 40px;
+
+    &:last-child {
+        margin-top: 0;
+        border-top: 1px solid #383838;
+    }
+}
+
+.mobilenav__close{
+    @include icon($icon_close_white, 44px, 44px);
+    position: absolute;
+    top: 0;
+    right: 50%;
+    background-size: 50%;
+
+    .logged-in.admin-bar &{
+        top: 48px;
+    }
+}
+
+.mobilenav__container{
+    height: 100%;
+    width: 200%;
+    overflow: hidden;
+    position: relative;
+    transition: all $navtiming;
+}
+
+.mobilenav__mainpane{
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    padding: #{$drawerpad - 6} $drawerpad $drawerpad $drawerpad;
+    @include lt-mobile {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .logged-in.admin-bar &{
+        padding-top: #{$drawerpad + $scrollingOffset};
+    }
+    .logged-in.admin-bar.scrolling &{
+        padding-top: #{$drawerpad + $scrollingOffset/2 - 20px};
+    }
+    /* gets inserted by jquery on mobile */
+    .utilitynav {
+      position: relative;
+      top: 0;
+      right: 0;
+      margin: 15px 0;
+      span {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .utilitynav__container {
+        display: block;
+        vertical-align: middle;
+        margin-left: 0;
+        .menu {
+          li {
+            display: block;
+            margin-right: 0;
+            a {
+              border-top: none;
+            }
+          }
+        }
+      }
+    }
+}
+
+body {
+  &:not(.logged-in) {
+    &:not(.admin-bar) {
+      &.scrolling {
+        .mobilenav__mainpane {
+          padding-top: #{$drawerpad - $scrollingOffset};
+        }
+      }
+    }
+  }
+}
+
+.mobilenav__header{
+    @include uppercase;
+    @include type_bold;
+    color: $white;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+/* ------------------------------------------
+ * --subdrawer
+ * ------------------------------------------ */
+
+.mobilenav .sub-menu{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 50%;
+    padding: #{$drawerpad + $scrollingOffset - 20px } $drawerpad $drawerpad $drawerpad;
+    margin: 0;
+    display: none;
+    bottom: 0;
+    overflow: scroll;
+    @include lt-mobile {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+}
+body {
+  &:not(.logged-in) {
+    &:not(.admin-bar) {
+      &.scrolling {
+        .mobilenav .sub-menu {
+          padding: #{$drawerpad - 20px} $drawerpad $drawerpad $drawerpad;
+          @include lt-mobile {
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+body {
+  &.logged-in {
+    &.admin-bar {
+      &:not(.scrolling) {
+        .mobilenav .sub-menu {
+          padding: #{$drawerpad + $scrollingOffset*2} $drawerpad $drawerpad $drawerpad;
+          @include lt-mobile {
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+body {
+  &.logged-in {
+    &.admin-bar {
+      &.scrolling {
+        .mobilenav .sub-menu {
+          padding: #{$drawerpad + $scrollingOffset} $drawerpad $drawerpad $drawerpad;
+          @include lt-mobile {
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+.subdrawer__trigger{
+    color: $white;
+    cursor: pointer;
+}
+
+.mobilenav{
+    .subdrawer__trigger,
+    .menu-item a{
+        display: block;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-top: 1px solid lighten( $offblack, 10% );
+    }
+
+    .subdrawer__trigger,
+    .menu-item-has-children > a{
+        @include icon-right( $icon_chevron_right, 18px, 18px );
+    }
+}
+
+.subdrawer__back{
+    @include icon-left( $icon_chevron_left, 18px, 18px );
+    position: absolute;
+    left: 50%;
+    left: calc( 50% + #{$drawerpad} );
+    top: $drawerpad;
+    text-indent: -9999px;
+    @include lt-mobile {
+      left: calc( 50% + 20px );
+    }
+
+    /*.logged-in.admin-bar &{
+        top: #{$drawerpad + $scrollingOffset*2};
+    }*/
+}
+body {
+  &:not(.logged-in) {
+    &:not(.admin-bar) {
+      &.scrolling {
+        .subdrawer__back {
+          top: #{$drawerpad - $scrollingOffset};
+        }
+      }
+    }
+  }
+}
+body {
+  &.logged-in {
+    &.admin-bar {
+      &:not(.scrolling) {
+        .subdrawer__back {
+          top: #{$drawerpad + $scrollingOffset*2 - 20};
+        }
+      }
+    }
+  }
+}
+body {
+  &.logged-in {
+    &.admin-bar {
+      &.scrolling {
+        .subdrawer__back {
+          top: #{$drawerpad + $scrollingOffset - 30};
+        }
+      }
+    }
+  }
+}
+

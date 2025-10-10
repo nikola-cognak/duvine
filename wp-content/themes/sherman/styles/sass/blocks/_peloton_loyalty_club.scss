@@ -1,0 +1,186 @@
+.block--peleton_loyalty_club {
+  margin: 40px 0;
+}
+.loyalty-club {
+  &__grid {
+    margin-top: 40px;
+    border-right: none;
+    margin-left: 0;
+    margin-right: 0;
+    @include lt-tablet {
+      margin-top: -40px;
+    }
+    @include lt-mobile {
+      margin-top: 0;
+    }
+    > div.d-col--1-3 {
+      display: none;
+      @include gt-tablet {
+        display: block;
+      }
+      .accordion__content {
+        .temp-header {
+          background-color: $white;
+          border-right: none;
+        }
+        .bottom-text {
+          li {
+            border-left: 1px solid $rule_gray_alt;
+            @include lt-tablet {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__column {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    border-right: none;
+    &.active {
+      .accordion-title {
+        color: $black;
+      }
+      .accordion__content {
+        padding: 0 10px;
+      }
+    }
+    @include lt-tablet {
+      margin-bottom: 40px;
+      width: 100%;
+    }
+    &:not(:last-of-type) {
+      .temp-header {
+        border-right: 1px solid $white;
+      }
+    }
+    &.d-col--2-3 {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      @include lt-tablet {
+        width: 100%;
+        display: block;
+        text-align: left;
+      }
+    }
+    .accordion__header {
+      background-color: $black;
+      color: $white;
+      @include icon-right( $icon_chevron_down__white, 24px, 20px, 10px, 20px );
+      &.active { 
+        background-color: $light_green;
+        color: $black;
+        @include icon-right( $icon_chevron_down__black, 24px, 20px, 10px, 20px );
+      }
+      @include lt-tablet {
+        padding-top: 15px;
+      }
+      .column-accordion-header {
+        padding-left: 20px;
+        font-weight: bold;
+        color: $white;
+      }
+      @include gt-tablet {
+        display: none;
+      }
+    }
+    .bottom-text {
+      
+    }
+    .accordion__content {
+      border-bottom: none;
+      padding-bottom: 0;
+      @include gt-tablet {
+        display: block !important;
+      }
+      .temp-header {
+          height: 90px;
+          background-color: $black;
+          color: $white;
+          font-size: 26px;
+          line-height: 26px;
+          padding: 18px 10px 15px;
+          span {
+            display: block;
+            text-transform: uppercase;
+            font-size: 14px;
+            @include type-main;
+          }
+          @include lt-tablet {
+            display: none;
+          }
+      }
+      .bottom-text {
+        &__copy {
+          font-size: 0.875em;
+          /*line-height: 25px;*/
+          padding: 20px;
+          @include lt-tablet {
+            padding: 10px 20px 10px 10px;
+          }
+          &.checkmark {
+            line-height: inherit;
+            padding: 0 20px 0 20px;
+            @include lt-tablet {
+              padding: 10px 20px 10px 10px;
+            }
+          }
+          .desktop-copy {
+            display: block;
+            @include lt-tablet {
+              display: none;
+            }
+          }
+          .mobile-copy {
+            display: none;
+            @include lt-tablet {
+              display: block;
+              font-size: 16px;
+              p {
+                line-height: 20px;
+              }
+            }
+          }
+          img {
+            @include lt-tablet {
+              display: none;
+            }
+          }
+        }
+        ul {
+          margin-left: 0;
+          padding-left: 0;
+          border-top: 1px solid $rule_gray_alt;
+          @include lt-tablet {
+            border: none;
+          }
+          li {
+            border-bottom: 1px solid $rule_gray_alt;
+            border-right: 1px solid $rule_gray_alt;
+            margin-bottom: 0 !important;
+            @include lt-tablet {
+              border: none;
+              height: auto !important;
+              &.empty-cell {
+                display: none;
+              }
+            }
+            &:first-of-type() {
+              @include lt-tablet {
+                padding-top: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .footnotes {
+    font-size: 12px;
+    padding-left: 30px;
+    font-style: italic;
+  }
+}

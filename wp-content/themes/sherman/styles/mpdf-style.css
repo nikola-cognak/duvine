@@ -1,0 +1,238 @@
+* {
+    font-family: gotham, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+h1 {
+    font-family: chronicle, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 41px;
+    line-height: 41px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+}
+h2 {
+
+}
+h3 {
+    font-family: chronicle, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+}
+h3.subtitle {
+    font-family: gotham, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 0px;
+    padding-top: 0px;
+    line-height: 22px;
+}
+h4 {
+    font-family: chronicle, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}
+.breadcrumbs {
+	margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.breadcrumb__item {
+	display: inline-block;
+    margin-right: 8px;
+}
+
+a {
+    color: #007290;
+    text-decoration: none;
+    font-weight: bold;
+}
+.side-margin {
+	margin: 0 50px;
+}
+
+.print-highlights {
+	margin: 30px 50px 0px; 
+}
+.print-highlights ul {
+	margin: 0 0 0 12px;
+	padding: 0; 
+}
+
+.print-gallery {
+	margin: 50px 50px 0; 
+}
+
+.footer-logo {
+	height: 16px;
+	min-height: 16px;
+	text-align: right:
+	padding-right: 50px;
+}
+/****************
+ * 
+ * first page
+ *
+ ****************/
+.top-header {
+    width:100%;
+    background-color:#000000;
+    padding:35px 50px;
+}
+.top-header a {
+    color:#ffffff;
+    text-decoration:none;
+    font-weight:normal;
+    text-transform:uppercase;
+}
+
+/****************
+ *
+ * days of tour
+ *
+ ****************/
+.itinerary__daywrapper {
+    padding: 0 0 0;
+    border-bottom: 1px solid #666;
+    margin-bottom: 15px;
+}
+.itinerary__daymarker {
+ 	text-transform: uppercase;
+    letter-spacing: 0.04em;
+    float: left;
+    background-color: #000;
+    text-align: center;
+    color: #fff;
+    width: 58px;
+    height: 58px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    line-height: 17px;
+    font-size: 14px;
+    margin-right: 18px;
+}
+.itinerary__daymarker--gray {
+    background-color: #bbb;
+}
+.itinerary__daymarker__inner {
+    padding-top: 12px;
+}
+.accordion__title {
+    margin-left: 52px;
+    margin-top: 15px;
+    display: table-cell;
+    /*height: 58px;*/
+    vertical-align: middle;
+    padding-left: 20px;
+    font-size: 24px;
+    line-height: 24px;
+}
+.accordion__title:before {
+    content: " ";
+    display: table;
+}
+.itinerary-header {
+    padding-top: 0;
+}
+/********************
+ *
+ * arrival/departure
+ *
+ ********************/
+.straight-talk h4 {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.straight-talk:nth-of-type(2) {
+    border-top: 1px solid #666666;
+}
+.straight-talk-body {
+    margin-bottom: 10px;
+}
+.straight-talk-body p {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+.straight-talk-footnote {
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+hr {
+    padding: 0;
+    margin: 0;
+}
+/************************
+ *
+ * Tour details
+ *
+ ************************/
+.footnote {
+    font-size: 11px;
+    margin: 15px 0;
+}
+.details-gallery {
+
+}
+.social {
+    background-color: #007290;
+    background-image: url('wp-content/themes/sherman/img/print-to-pdf/your-tour-details-bubble-bg.png');
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 310px auto;
+    width: 100%;
+    padding: 10px 10px 7px 10px;
+    color: #ffffff;
+}
+.social h3 {
+    margin-top:0px;
+    line-height:20px;
+}
+.social li {
+    font-size: 13px;
+    font-weight: 300;
+}
+.social a {
+    font-weight: 300;
+    color: #ffffff;
+}
+/************************
+ *
+ * Packing list page
+ *
+ ************************/
+.packing-list-header {
+    padding-top: 0;
+}
+.checkbox-list {
+    list-style-type: none;
+    list-style: none;
+    margin: 0 0 5px 0;
+    padding: 0;
+    font-size: 14px;
+}
+.regular-list {
+    margin: 0;
+    padding: 0 0 0 15px;
+    font-size: 14px;
+}
+.highlight {
+    color: #e2ec55;
+}
+ul.nested {
+    margin: 0;
+    padding: 0 0 0 15px;
+}

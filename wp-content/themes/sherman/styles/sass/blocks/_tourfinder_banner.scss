@@ -1,0 +1,324 @@
+/* ==============================================================
+ *
+ * Tour finder banner (homepage block)
+ *
+ * ============================================================== */
+
+.tourfinderbanner{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: $black;
+    border-top: $ruleheight solid $brand_secondary;
+    padding: 22px 20px 23px;
+    position: relative;
+    margin-bottom: 40px;
+    z-index: 10;
+
+    @include gt-tablet{
+        transform: translateY(-50%);
+        margin-bottom: 0;
+    }
+}
+
+.tourfinderbanner__col{
+    flex: 1 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    @include lt-desktop{
+        padding-top: 20px;
+    }
+}
+.tourfinderbanner__col--header{
+    flex-grow: 0;
+    @include lt-desktop{
+        flex: 1 0 100%;
+        padding-top: 0;
+    }
+    h3 {
+        &.blockheader {
+            font-size: 2.313em; // 37px
+        }
+    }
+}
+.tourfinderbanner__col--action{
+    flex-grow: 0;
+}
+
+.tourfinderbanner__select{
+    font-size: $fz_emphasis;
+    /*line-height: $fz_emphasis;*/
+    color: $white;
+    display: block;
+    padding: 0px 8px 4px 8px;
+    border-bottom: 2px solid $white;
+    cursor: pointer;
+    @include icon-right( $icon_chevron_down__white, 20px, 12px, 10px, 8px );
+}
+.tourfinderbanner__select--active{
+    border-bottom-color: $brand_secondary;
+}
+
+.tourfinderbanner__dropdown{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 99%;
+    background-color: $black;
+    padding: 20px 20px 40px 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .4s;
+
+    @include gt-tablet{
+        transform: translate3d(0, -20px, 0);
+    }
+
+    @include lt-tablet{
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        bottom: 0;
+        padding: 40px;
+        overflow: auto;
+        margin-top: 100px;
+    }
+
+    @include lt-mobile{
+        margin-top: 85px;
+        padding: 40px 20px;
+    }
+}
+.tourfinderbanner__dropdown--active{
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0px, 0);
+}
+.tourfinderbanner__container{
+    width: 100%;
+    max-width: $width_limiter;
+    margin: 0 auto;
+}
+.tourfinderbanner__container--datepicker{
+    max-width: 602px;
+}
+
+.tourfinderbanner__disclaimer{
+    font-size: $fz_small;
+    color: $type_gray;
+    margin-bottom: 30px;
+}
+.tourfinderbanner__disclaimer--nomargin{
+    margin-bottom: 0;
+}
+.tourfinderbanner__colheader{
+    color: $white;
+    @include uppercase;
+}
+.tourfinderbanner__option{
+    font-size: $fz_small;
+    margin-top: 1em;
+}
+.tourfinderbanner__label{
+    color: $white;
+}
+
+.tourfinderbanner__dropdownclose{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    @include icon( $icon_close_white, 44px, 44px );
+    background-size: 50%;
+
+    @include gt-tablet{
+        right: 29px;
+    }
+}
+
+
+.tourfinderbanner__dropdownsubmit{
+    margin-top: 40px;
+
+    @include gt-tablet{
+        display: none;
+    }
+}
+
+
+/* ------------------------------------------
+ * --location selector
+ * ------------------------------------------ */
+
+.locationselector{
+    @include gt-mobile{
+        display:flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+.locationselector__continent{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-left: 1px solid $darkgray;
+    margin-bottom: 40px;
+    
+    @include gt-mobile{
+        flex: 0 0 50%;
+    }
+    @include gt-tablet{
+        flex: 0 0 25%;
+        margin-bottom: 0;
+    }
+
+    @include lt-mobile{
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+/* ------------------------------------------
+ * --level selector
+ * ------------------------------------------ */
+
+.tourfinderbanner__disclaimer--levelselector{
+    @include gt-tablet{
+        max-width: 602px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.levelselector{
+    padding-left: 20px;
+    border-left: 1px solid $darkgray;
+
+    @include gt-tablet{
+        padding-right: 20px;
+        border-right: 1px solid $darkgray;
+        // width: 50%;
+        max-width: 602px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+/* ------------------------------------------
+ * --date selector
+ * ------------------------------------------ */
+
+.tourfinderbanner__datepicker{
+    margin-left: -40px;
+    margin-right: -40px;
+
+    @include lt-mobile{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.daterangepicker {
+    td.active, td.active:hover {
+        background-color: #DAE035!important;
+        color: #000!important;
+    }
+    td.in-range:not(.end-date) {
+        background-color: #E8EAA8!important;
+    }
+    td.in-range, td.available {
+        border: 1px solid #e6e3e4!important;
+    }
+    .calendar-table th {
+        border: none!important;
+    }
+    th.available:hover {
+        background-color: #999!important;
+    }
+}
+
+.homepage-datepicker {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
+
+    &.daterangepicker {
+        &:before, &:after {
+            border: none !important;
+        }
+        .calendar-table {
+            border-color: #000;
+            background-color: #000;
+            .next span, .prev span {
+                border: solid #fff!important;
+                border-width: 0 2px 2px 0!important;
+            }
+        }
+        td.off, td.off.in-range, td.off.start-date, td.off.end-date {
+            background-color: #4f4f4f!important;
+            color: #fff!important;
+        }
+        .td.active, td.active:hover, td.in-range:not(.end-date) {
+            color: #000!important;
+        }
+        td.available:hover {
+            background-color: #999!important;
+        }
+    }
+}
+
+@include gt-tablet {
+    .date-picker-conteiner .tourfinderbanner__dropdown{
+        height: 300px; }
+}
+
+.date-picker-conteiner .tourfinderbanner__disclaimer{
+    width: max-content;
+    padding-bottom: 25px;
+    padding-right: 180px;
+    padding-left: 10px; }
+
+@include lt-tablet {
+    .tourfinderbanner__dropdownsubmit.date-range-button{
+        margin-top: 220px;
+    }
+    .date-picker-conteiner .tourfinderbanner__disclaimer{
+        padding-bottom: 5px;
+    }
+}
+
+@include lt-mobile{
+    body.scrolling .tourfinderbanner__dropdown{
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 563px) {
+    .tourfinderbanner__dropdownsubmit.date-range-button{
+        margin-top: 435px;
+    }
+    .date-picker-conteiner .tourfinderbanner__disclaimer{
+        padding-bottom: 0 !important;
+    }
+}
+
+@media (max-width: 300px) {
+    .date-picker-conteiner .tourfinderbanner__disclaimer{
+        padding: 0;
+        width: 100%;
+        margin: 0;
+    }
+    .homepage-datepicker.daterangepicker{
+        width: 220px;
+        margin-top: 0;
+        height: 400px;
+    }
+    .tourfinderbanner__dropdown{
+        margin-top: 85px;
+    }
+    .tourfinderbanner__dropdownsubmit.date-range-button{
+        margin-top: 440px;
+    }
+}

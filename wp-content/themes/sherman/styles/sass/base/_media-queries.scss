@@ -1,0 +1,72 @@
+/* ==============================================================
+ *
+ * Media queries
+ *
+ * ============================================================== */
+
+$large_desktop: 1520px;
+
+$desktop: 1120px;
+
+$tablet: 860px;
+
+$mobile: 580px;
+
+$smallmobile: 460px;
+
+
+// large desktop
+@mixin gt-large-desktop{
+    @media (min-width: #{$large_desktop} ){
+        @content;
+    }
+}
+@mixin lt-large-desktop{
+    @media (max-width: #{$large_desktop - 1} ){
+        @content;
+    }
+}
+
+
+// desktop
+@mixin gt-desktop {
+    @media ( min-width: #{$desktop + 1} ){
+        @content;
+    }
+}
+@mixin lt-desktop{
+    @media ( max-width: #{$desktop} ){
+        @content;
+    }
+}
+
+// tablet
+@mixin gt-tablet {
+    @media ( min-width: #{$tablet + 1} ){
+        @content;
+    }
+}
+@mixin lt-tablet{
+    @media ( max-width: #{$tablet} ){
+        @content;
+    }
+}
+
+// mobile
+@mixin gt-mobile {
+    @media ( min-width: #{$mobile + 1} ){
+        @content;
+    }
+}
+@mixin lt-mobile{
+    @media ( max-width: #{$mobile} ){
+        @content;
+    }
+}
+
+// smallmobile
+@mixin lt-smallmobile{
+    @media ( max-width: #{$smallmobile} ){
+        @content;
+    }
+}

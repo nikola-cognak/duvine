@@ -1,0 +1,64 @@
+/* ==============================================================
+ *
+ * Featured blog posts block
+ *
+ * ============================================================== */
+
+.block--image_slider {
+  margin: 25px auto 0;
+  width: 100%;
+}
+.image-slider {
+  @extend .l-cf;
+  position: relative;
+
+  &__slider {
+    position: relative;
+
+    .slick-dots {
+      margin: 12px 0 35px;
+      li {
+        button {
+          width: 13px;
+          height: 13px;
+        }
+        &.slick-active {
+          button {
+            background: $black;
+          }
+        }
+      }
+    }
+  }
+  &__arrows {
+    padding: 0;
+    position: absolute;
+    top: 42%;
+    left: 0;
+    width: 100%;
+    .sk-slider-nav {
+      display: block;
+      position: absolute;
+      &.nav-previous {
+        left: 10px;
+      }
+      &.nav-next {
+        right: 10px;
+      }
+      polyline {
+          stroke: #fff;
+      }
+    }
+  }
+  &__slide {
+    position: relative;
+  }
+  &__caption {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 5px 30px;
+    background-color: rgba(0,0,0,.6);
+    color: $white;
+  }
+}

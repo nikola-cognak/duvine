@@ -1,0 +1,27 @@
+/* ==============================================================
+ *
+ * Featured blog posts block
+ *
+ * ============================================================== */
+
+.block--image_copy_side_by_side {
+  margin: 0 auto;
+  width: 100%;
+  .image-content-side-by-side {
+    img {
+      width: 100%;
+    }
+    &__row {
+      margin-bottom: 30px;
+      @include gt-mobile {
+          margin-bottom: 60px;
+      }
+      &-content {
+        margin-bottom: 25px;
+        @include gt-mobile {
+            margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

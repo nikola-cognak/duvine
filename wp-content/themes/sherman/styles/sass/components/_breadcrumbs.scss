@@ -1,0 +1,31 @@
+/* ==============================================================
+ *
+ * breadcrumbs
+ *
+ * ============================================================== */
+@include gt-tablet {
+    .l-container.breadcrumbs__pad.empty-title {
+        padding-bottom: 0;
+    }
+}
+.breadcrumbs__pad{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.breadcrumb__item{
+    display: inline-block;
+    color: $type_gray;
+    margin-right: 8px;
+    font-size: $fz_small;
+
+    + .breadcrumb__item:before{
+        content:"/";
+        display: inline-block;
+        margin-right: 8px;
+        color: $brand_gray;
+
+    }
+}
+.breadcrumb__item--white{
+    color: $white;
+}

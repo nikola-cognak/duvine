@@ -1,0 +1,4114 @@
+/*
+Theme Name: Duvine
+Theme URI: http://duvine.com
+Author: fresh tilled soil
+Author URI: http://www.freshtilledsoil.com/
+Description: Responsive Wordpress Theme for Duvine.com
+Version: 1.0
+*/
+
+/*---[Fonts] -----------------------------------------------------------------------*/
+@font-face{font-family:'Calibre-Light';src:url('assets/fonts/calibre/CalibreWeb-Light.eot');src:url('assets/fonts/calibre/CalibreWeb-Light.eot?#iefix') format('embedded-opentype'),url('assets/fonts/calibre/CalibreWeb-Light.woff') format('woff'),url('assets/fonts/calibre/CalibreWeb-Light.ttf') format('truetype'),url('assets/fonts/calibre/CalibreWeb-Light.svg#CalibreWeb-Light') format('svg')}
+@font-face{font-family:'Calibre-Medium';src:url('assets/fonts/calibre/CalibreWeb-Medium.eot');src:url('assets/fonts/calibre/CalibreWeb-Medium.eot?#iefix') format('embedded-opentype'),url('assets/fonts/calibre/CalibreWeb-Medium.woff') format('woff'),url('assets/fonts/calibre/CalibreWeb-Medium.ttf') format('truetype'),url('assets/fonts/calibre/CalibreWeb-Medium.svg#CalibreWeb-Medium') format('svg')}
+@font-face{font-family:'Calibre-Regular';src:url('assets/fonts/calibre/CalibreWeb-Regular.eot');src:url('assets/fonts/calibre/CalibreWeb-Regular.eot?#iefix') format('embedded-opentype'),url('assets/fonts/calibre/CalibreWeb-Regular.woff') format('woff'),url('assets/fonts/calibre/CalibreWeb-Regular.ttf') format('truetype'),url('assets/fonts/calibre/CalibreWeb-Regular.svg#CalibreWeb-Regular') format('svg')}
+@font-face{font-family:'Calibre-SemiBold';src:url('assets/fonts/calibre/CalibreWeb-Semibold.eot');src:url('assets/fonts/calibre/CalibreWeb-Semibold.eot?#iefix') format('embedded-opentype'),url('assets/fonts/calibre/CalibreWeb-Semibold.woff') format('woff'),url('assets/fonts/calibre/CalibreWeb-Semibold.ttf') format('truetype'),url('assets/fonts/calibre/CalibreWeb-Semibold.svg#CalibreWeb-SemiBold') format('svg')}
+@font-face{font-family:'Clarendon-Bold';src:url('assets/fonts/clarendon/243100_0_0.eot');src:url('assets/fonts/clarendon/243100_0_0.eot?#iefix') format('embedded-opentype'),url('assets/fonts/clarendon/243100_0_0.woff') format('woff'),url('assets/fonts/clarendon/243100_0_0.ttf') format('truetype')}
+@font-face{font-family:'Clarendon-BoldItalic';src:url('assets/fonts/clarendon/2430FA_0_0.eot');src:url('assets/fonts/clarendon/2430FA_0_0.eot?#iefix') format('embedded-opentype'),url('assets/fonts/clarendon/2430FA_0_0.woff') format('woff'),url('assets/fonts/clarendon/2430FA_0_0.ttf') format('truetype')}
+
+/*---[Initialization] -----------------------------------------------------------------------*/
+html { overflow-y:scroll; background:#000; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased; }
+html, body { margin: 0; padding:0; }
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, form { display: block; margin:0; padding:0; }
+[hidden] { display: none; }
+
+input[type="submit"], input[type="reset"], input[type="button"], button { cursor:pointer; -webkit-appearance: button; }
+input:focus, textarea:focus, select:focus { outline:0; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
+input[type="search"] { -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; -webkit-appearance: textfield; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+button, input, select, textarea { margin: 0; vertical-align: baseline; font-size: 100%; }
+button, input { line-height: normal; }
+button::-moz-focus-inner, input::-moz-focus-inner { padding: 0; border: 0; }
+textarea { overflow: auto; vertical-align: top; }
+table { border-spacing: 0; border-collapse: collapse; }
+td { vertical-align: top; }
+label { cursor:pointer; }
+img { border: 0; vertical-align: middle; }
+#habla_beta_container_do_not_rely_on_div_classes_or_names textarea { min-height: 0; }
+
+/*---[Typography] ------------------------------------------------------------------*/
+body, button, input, select, textarea { color:#000; font: 16px/1.32 'Calibre-Light', sans-serif; }
+h1, h2, h3, h4, h5, h6  { margin:0 0 10px 0; color:#000; line-height: 1.231; font-weight: 400; font-family: 'Calibre-SemiBold', sans-serif; }
+h1, h2 { text-rendering: optimizeLegibility; }
+h1 { font-size: 36px; }
+h2 { font-size: 28px; }
+h3 { font-size: 20px; }
+h4 { font-size: 18px; }
+h5 { font-size: 16px; }
+p { font-size: 16px; line-height: 1.4em }
+h5.em { font-family:'Calibre-Light', sans-serif; font-size: 15px; font-style: italic; font-weight: normal; }
+
+a { color:#000; text-decoration: none;}
+a:hover, a:active, a:focus { outline: 0; }
+a:hover { color:#dae035; }
+.Body a { color:#73256E;}
+.Body a:hover { text-decoration: underline; }
+b, strong { font-weight: normal; font-family: 'Calibre-SemiBold', sans-serif; }
+
+q { font-size: 50px; text-transform: lowercase; font-family: 'Calibre-Medium', sans-serif; line-height: 50px; }
+q:before, q:after { content:""; }
+
+input:-moz-placeholder{ color: #000; text-transform:uppercase; }
+input::-webkit-input-placeholder { color: #000; text-transform:uppercase;  }
+.Placeholder { color: #000; text-transform:uppercase;  }
+
+.Lowercase:-moz-placeholder{ text-transform:lowercase; }
+.Lowercase::-webkit-input-placeholder { text-transform:lowercase;  }
+.Lowercase.Placeholder { text-transform:lowercase;  }
+
+hr { margin: 0 0 20px; border:0; border-bottom: 2px solid #c9c8c8; }
+hr.Dark { border-color: #000; }
+hr.Large { border-bottom: 20px solid #000; }
+hr.Large-Page { margin: 0 15px; border-bottom: 20px solid #000; }
+hr.Slim { margin:0; }
+
+th { font-weight:normal; font-family: 'Calibre-SemiBold', sans-serif; text-transform: uppercase; }
+
+/*---[Layout] ------------------------------------------------------------------*/
+.Column { float:left; }
+.TwoColumn > .Column { width: 48%; }
+.TwoColumn > .Column.Two { float:right; }
+
+.TwoColumn.Body-Sub > .Column.One { width:557px; }
+.TwoColumn.Body-Sub > .Column.Two { width:387px; }
+
+.TwoColumn.Body-Related > .Column.One { width:786px; }
+.TwoColumn.Body-Related > .Column.Two { width:162px; }
+.TwoColumn.Body-Related.Large > .Column.One { width:733px; }
+.TwoColumn.Body-Related.Large > .Column.Two { width:215px; }
+
+.TwoColumn.Related-Body > .Column.One { width:391px; }
+.TwoColumn.Related-Body > .Column.Two { width:558px; }
+
+.TwoColumn.Body-Form > .Column.One { width:610px; }
+.TwoColumn.Body-Form > .Column.Two { width:318px; }
+
+.TwoColumn.Tour-Detail > .Column.One { width:562px; }
+.TwoColumn.Tour-Detail > .Column.Two { width:386px; }
+
+.TwoColumn.Detail > .Column.One { width:525px; }
+.TwoColumn.Detail > .Column.Two { width:365px; }
+
+.TwoColumn.Detail.Staff > .Column.Two { width: 460px; }
+
+.FourColumn > .Column { margin-left: 6.6666667%; width: 20%; }
+.FourColumn > .Column.One { margin:0; }
+
+.MultiColumn > .Column { padding:0 25px; }
+.MultiColumn > .Column:first-child { margin-left: 0; }
+
+.Overlay .HideInOverlay { display: none; }
+
+/*---[Standard Classes] ------------------------------------------------------------------*/
+.Clear:before,
+.Clear:after { display:table; content:""; }
+.Clear:after { clear:both; }
+
+.Hide { display: none; }
+.Show { display: block; }
+
+.Uppercase { text-transform: uppercase; }
+.Capitalize { text-transform: capitalize; }
+.Left { text-align: left; }
+.Right { text-align: right; }
+.Center { text-align: center; }
+.Float-Right { float:right; }
+.Float-Left { float:left; }
+.Bold { font-weight: bold; }
+
+.Title { display: inline-block; margin:5px 0; text-transform: uppercase;  font-weight: 400; font-family: 'Calibre-SemiBold', sans-serif;}
+.Inline-Title { text-transform: uppercase; font-weight: bold; }
+.Section-Title { text-transform: uppercase; letter-spacing: 2px; font: 20px 'Calibre-SemiBold', sans-serif; }
+.Section-Title.Headline { font-size: 102px; font-family: 'Calibre-Light', sans-serif; }
+.Section-Title.Staff { letter-spacing: 0; text-transform: none; margin:0 0 5px;display:block; }
+.Page-Title { margin:24px 0 0; text-transform: uppercase; letter-spacing: 3px; font-family: 'Clarendon-Bold', serif; }
+.Page-Title.Tour { padding-bottom: 6px; margin: 6px 54px 45px; border-bottom: 1px solid #000; }
+.Page-Title.Tour-Type { text-transform: capitalize;  font-family: 'Clarendon-BoldItalic', serif; }
+.Page-Title.Tour-Detail { margin:12px 0 12px; text-transform: capitalize; font-size: 30px;}
+.Page-Title.Highlight { padding:4px; background:#dae035; }
+.Page-Title.Highlight#privateTitle {background: #74266f; color: white;}
+.HightlightCustomPage {width: 978px; margin-left: auto; margin-right: auto;}
+.Form-Title { display:block; margin:0 0 10px; font-size: 20px; }
+.Calendar-Title {width: 460px; margin: 0 auto; }
+.Sub-Title { text-transform: uppercase; display: block; font-family: 'Calibre-Regular', sans-serif;}
+
+.Tip { color:#a6a8ab; text-transform: uppercase; }
+.Note { font-size: 14px; padding: 0; margin: 0 0 5px;}
+.Detail-Title {color: #dae035;}
+.Detail-SubTitle    {font-size: 20px; font-weight: normal; font-family: 'Calibre-Regular', sans-serif; text-transform: uppercase; margin-top: -20px;padding-bottom: 20px;}
+
+/*---[Navigation] ------------------------------------------------------------------*/
+.Inline-List, .Inline-List li, .Slim-List, .Slim-List li { margin:0; padding:0; list-style: none; }
+.Inline-List li { float: left; }
+.Inline-List a { display: block; }
+nav.Page .Inline-List li { float: none; }
+.Slim-List .Collapse    {display:none;}
+.Slim-List .Link        {font-weight: bold;}
+.Slim-List .Link .Info    {margin-top: -6px;margin-left: 3px;}
+
+.Utility { position:absolute; top:0; right: 15px; color:#fff; text-align: right; text-transform: uppercase; }
+.Utility-Nav { list-style: none; }
+.Utility p { margin-top: 0; margin-bottom: 10px; font-family: 'Calibre-Regular', sans-serif; line-height: 1.160em; }
+.Utility a.TelephoneLink { line-height: 19px; }
+
+.Utility-Nav .Item { padding: 2px 3px; }
+.Utility-Nav .Item.Last { padding-right: 0; }
+.Utility-Nav .Item.Separator { padding: 2px 3px; }
+
+.Separator { cursor: default; }
+
+.Action-Nav { margin-top: 5px; }
+.Action-Nav .Item { padding: 4px 7px; margin-left: 4px; color: #000; background-color: #DAE020; }
+
+.Nav { margin-top: 8px; border-top: 2px solid #3f3f3f; text-transform: uppercase; font-family: 'Calibre-Regular', sans-serif; }
+.Nav .Wrapper { width: 868px; margin: 0 auto; }
+.Nav .Item { float: left; padding:5px 24px; letter-spacing: 2px; }
+.Nav .Item.Active { background: url('assets/images/icons/nav-arrow.png') no-repeat center 20px; color:#DAE035; }
+.Nav .Item, .Utility-Nav a { color:#fff; }
+.Nav .Item:hover, .Utility-Nav a:hover { color:#DAE035; }
+.Utility-Nav a { font-family: 'Calibre-Regular'; font-size: 13px; }
+.Utility-Nav.Bold { margin-bottom: 15px; font-weight: bold; }
+
+.Sub-Nav { border-bottom: 2px solid #000; margin: 0 12px 15px; text-transform: uppercase; font: 16px 'Calibre-SemiBold', sans-serif;  letter-spacing: 2px; }
+.Sub-Nav.Dark { border-bottom: 2px solid #fff; }
+.Sub-Nav.NoBorder { border: none; }
+.Sub-Nav .Item { float: left; padding: 8px 15px; color:#000; }
+.Sub-Nav a {  }
+.Sub-Nav .Item:hover, .Sub-Nav .Item.Active { background:#DAE020; color:#000; }
+
+.Tour-Nav .Wrapper { width: 595px; margin: 0 auto; }
+.Tour-Nav .Item { margin: 0 9px; }
+
+.Experience-Nav .Wrapper { width: 976px; margin: 0 auto; }
+.Experience-Nav .Item { margin: 0 10px; }
+
+.MeetOurTeam-Nav .Wrapper { width: 548px; margin: 0 auto; }
+.MeetOurTeam-Nav .Item { margin: 0 13px; }
+
+.Service-Nav .Wrapper { width: 847px; margin: 0 auto;  }
+.Service-Nav .Item { padding: 8px 12px; margin: 0; font-size: 16px; }
+
+.WhyDuVine-Nav .Wrapper { width: 931px; margin: 0 auto; }
+.WhyDuVine-Nav .Item { margin: 0 11px; }
+
+nav.BlogAndMedia-Nav { padding-bottom: 10px; }
+.BlogAndMedia-Nav .Wrapper { width: 938px; margin: 0 auto; }
+.BlogAndMedia-Nav .Item { margin: 0 13px; }
+
+.Dark nav.Page {background: #fff;}
+.Dark nav.Page .Sub-Nav {border-bottom: none;}
+.Dark .child-menu .menu-item a {color: #000;}
+
+.Page-Nav { margin: 0 0 15px; border-bottom: 1px solid #808080; text-transform: uppercase; letter-spacing: 1px; font:16px 'Calibre-Regular', sans-serif; }
+.Page-Nav .Inline-List { display: table; margin:0 auto; }
+.Page-Nav li { position:relative; margin:0 0 0 50px; padding: 10px 0; }
+.Page-Nav li:first-child { margin:0; }
+.Page-Nav a {  padding: 10px; color:#231f20; }
+.Page-Nav a:hover,
+.Page-Nav .Active a { color:#dae035; }
+.Page-Nav .Active { background:url('assets/images/icons/nav-active.png') no-repeat bottom center;}
+
+.Page-Nav.Thin { border-bottom: 2px solid #c9c8c8; }
+.Page-Nav.Thin li { padding:0; }
+.Page-Nav.Thin a { font-family: 'Calibre-SemiBold'; padding: 5px 10px; }
+.Page-Nav.Small li { margin:0 0 0 5px; }
+
+.Block-List, .Block-List li { margin:0; padding:0; list-style: none; }
+.Block-List { display: table; margin: 0 0 20px; text-transform: uppercase;letter-spacing:1px;  font: normal 18px 'Calibre-SemiBold', sans-serif; }
+.Block-List li { display: table-cell; vertical-align: middle; }
+.Block-List li:first-child a { margin:0; }
+.Block-List a { display:table; margin: 0 0 0 15px; padding:25px 0; width: 150px; height:50px; background:#000; color:#fff; }
+.Block-List a:hover,
+.Block-List a.Active { background:#dae035; }
+.Block-List span { display: table-cell; vertical-align: middle; text-align: center; }
+.Block-List.Slim a { margin:0 0 0 2px; width:196px;  }
+.Block-List.Tour-Types a { font-size: 20px; letter-spacing:4px; }
+
+.Block-List.About a { height: 100px; padding: 0;}
+
+.Footer-Nav { height: 160px; }
+.Footer-Nav .Section { margin-bottom: 10px; }
+.Footer-Nav .Section.One { width: 693px; margin: 0 auto 15px; text-align: center; }
+.Footer-Nav .Section.Two { padding-top: 15px; border-top: 1px solid #000; }
+.Dark .Footer-Nav .Section.Two { border-top: 1px solid #fff; }
+.Footer-Nav .Section.Two .Center { width: 925px; margin: 0 auto; }
+.Footer-Nav .Section.Three { bottom: 1px; width: 880px; margin: 0 auto; }
+.Footer-Nav .Item { display: inline-block; float: left; padding: 4px 10px; color:#000; font-size: 14px; }
+.Footer-Nav .Item.Two { padding: 1px 5px; }
+.Footer-Nav .Item.Strong { font-family: "Calibre-SemiBold"; }
+.Footer-Nav .Item:hover, .Footer-Nav .Active { background: #000; color: #fff; }
+.Footer-Nav .Item.Separator { padding: 1px 3px; font-size: 22px; line-height: 19px; }
+.Footer-Nav .Item.NoHover:hover { background:#fff; color:#000; }
+.Footer-Nav .Social-Icon, .Footer-Nav .Social-Icon:hover { width: 28px; height: 24px; padding: 3px 4px; background: url("assets/images/icons/social-icon-sprite.png") 10px 3px no-repeat; }
+.Footer-Nav .Social-Icon.Facebook-Icon {  }
+.Footer-Nav .Social-Icon.Twitter-Icon { background-position: 10px -29px; }
+.Footer-Nav .Social-Icon.YouTube-Icon { background-position: 10px -61px; }
+.Footer-Nav .Social-Icon.LinkedIn-Icon { background-position: 10px -93px; }
+.Footer-Nav .Social-Icon.GooglePlus-Icon { background-position: 10px -125px; }
+.Footer-Nav .Social-Icon.Pinterest-Icon { background-position: 10px -157px; }
+.Footer-Nav .Social-Icon.Instagram-Icon { background-position: 10px -189px; }
+.Footer-Nav .Social-Icon.RSS-Icon { background-position: 10px -220px; }
+
+.Footer-Content.Dark { background-color: #000; color: #fff; }
+.Dark .Footer-Nav { color: #fff; }
+.Dark .Footer-Nav .menu-item a { color: #fff !important; }
+.Dark .Footer-Nav .Item { color: #fff; }
+.Dark .Footer-Nav .Item.Separator:hover { background-color: #000; color: #fff; }
+.Dark .Footer-Nav .Item.NoHover:hover { background-color: #000; color:#fff; }
+
+.Footer-Nav .Newsletter { float: right; width: 470px; margin-top: 2px; box-sizing: border-box; }
+
+.Footer-Nav .Section.Three .Separator { float: left; padding: 0 15px; line-height: 27px; font-size: 22px; }
+
+/* Footer Newsletter */
+footer#footer nav.Footer-Nav .hubspot div.hs_email {
+  float: left;
+  width: 170px;
+  box-sizing: border-box;
+  margin: -20px 0 0 0;
+}
+footer#footer nav.Footer-Nav .hubspot .hs-form .hs-input {
+  box-sizing: border-box !important;
+  background: #fff;
+  border: solid 1px #d4d4d4;
+  color: #000 !important;
+  font-size: 12px !important;
+  padding: 3px 5px !important;
+  font-style: italic;
+  text-transform: lowercase !important;
+  width: 100% !important;
+  font-family: "Calibre-Light" !important;
+  height: 24px;
+}
+footer#footer nav.Footer-Nav .hubspot div.actions {
+  float: right;
+  width: 70px;
+  box-sizing: border-box;
+  margin-top: -16px;
+}
+footer#footer nav.Footer-Nav .hubspot .hs-form .hs-button.primary {
+  float: none;
+  margin: 0 0 !important;
+  font-size: 12px !important;
+  font-family: "Calibre-Regular" !important;
+  font-weight: 300 !important;
+  background: #000 !important;
+  text-align: center !important;
+  color: #fff !important;
+  border-radius: 0px !important;
+  padding-right: 12px;
+  padding-left: 12px;
+  width: auto !important;
+  height: 19px !important;
+}
+footer#footer nav.Footer-Nav .Newsletter .hs_email .hs-form-required {
+  display: none;
+}
+footer#footer nav.Footer-Nav .Newsletter .hs_submit {
+  display: inline-block;
+}
+footer#footer nav.Footer-Nav .Newsletter .hs_email > label{
+  display: none;
+}
+footer#footer nav.Footer-Nav .Newsletter .newsletter-email-form div:nth-child(3) {
+  display: inline-block;
+  margin-left: 0;
+}
+footer#footer nav.Footer-Nav .Newsletter .hs_submit .newsletter-signup-submit,
+footer#footer nav.Footer-Nav .Newsletter .hs_submit .actions .hs-button.primary {
+  background-color: #DAE020;
+  display: inline-block;
+  margin-left: 10px;
+  border: 0;
+}
+footer#footer nav.Footer-Nav .Newsletter .hbspt-form .submitted-message { padding-top: 5px; }
+footer#footer nav.Footer-Nav .actions{
+  margin: 0;
+  padding: 0;
+}
+.Copyright .Item { display: inline-block; padding: 1px 10px; color:#868585; }
+.Copyright .Item:hover { background: #000; color: #fff; }
+.Copyright .Item.Separator { padding: 1px 3px; }
+.Copyright .Item.NoHover:hover { background:#fff; color:#868585; }
+.Dark .Copyright .Item.NoHover:hover { background:#000; color:#868585; }
+
+.Listing-Section .YouTube-Icon { display: inline-block; height: 24px; margin-left: 15px; float:left; }
+
+.Breadcrumb a { margin:0 3px 0 3px; }
+.Breadcrumb a:first-child { margin-left:0; }
+
+.TelephoneLink { color:#fff; font-size: 15px; }
+.TelephoneLink:hover { color:#fff; }
+
+/*---[Header/Footer] ------------------------------------------------------------------*/
+#header { padding-top: 19px; color:#fff; font-size: 12px; }
+#header .ui-helper-hidden-accessible { display: none; }
+
+.Logo { display: block; margin:0 auto; width: 292px; height: 103px; }
+.Search-Form { position:absolute; top: 36px; left:15px;  }
+.Search-Form:after { position:absolute; right: -12px; bottom: 0; width:0; height:0;
+    border-top: 13px solid transparent;
+    border-bottom: 13px solid transparent;
+    border-left: 13px solid #fff; content:"";   }
+.Search-Form .Search-Input { position:relative; border-color:#fff; border-radius: 0 2px 2px 0;}
+.Search-Form .Search-Input:focus { border-color:#fff; }
+
+
+.Footer-Content { margin: 0; padding: 15px 0; border-top: 20px solid #000; text-transform:uppercase; line-height: 1.2; }
+.Footer-Content .Social { float: left; line-height: 1.5; }
+.Footer-Content strong { float: left; margin-right: 17px; line-height: 26px; }
+
+.Footer-Content .Spacer { margin: 0 5px; }
+.Footer-Content input:-moz-placeholder{ font-style: italic; }
+.Footer-Content input::-webkit-input-placeholder { font-style: italic;  }
+.Footer-Content .Placeholder { font-style: italic;  }
+.Footer-Content .Tip { padding:0 8px; font-family: 'Calibre-SemiBold', sans-serif; }
+
+.Footer-Text-Input { float: left; }
+.SignUp { float: left; padding: 5px 12px; border: none; margin-left: 10px; background-color: #000; color: #fff; font-family: "Calibre-Regular"; font-size: 12px; text-transform: uppercase; }
+.Flipped-Color .SignUp { background-color: #fff; color: #000; }
+
+.Newsletter-Form { margin-top: 8px; }
+.Footer-Content .Newsletter-Form { margin-top: 0; }
+.Copyright { margin:0; padding: 15px 0 25px; font-family: "Calibre-Regular"; font-size: 14px; color: #868585; text-align: center; letter-spacing: 2px; }
+.Getfused { margin: 0 44px 0 0; float:right; }
+/*---[Buttons] ------------------------------------------------------------------*/
+.Button { background:#fff; padding:0 10px 0 0; border:0; text-transform:uppercase; letter-spacing: 1px; font-size: 12px; line-height: 1.3; }
+.Button span { display: inline-block; position:relative; padding: 2px 25px 3px 10px; background:#000; color:#fff;  cursor:pointer; }
+.Button span:after { position:absolute; right: -10px; bottom: 0; width:0; height:0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #000; content:""; z-index: 10;  }
+
+.Button:hover span { background:#dae035; color:#000; }
+.Button:hover span:after { border-left-color: #dae035; }
+
+.Button.Light span { background:#231f20;}
+.Button.Light span:after { border-left-color: #231f20; }
+.Button.Light:hover span { color:#dae035;}
+
+.Button.Action span { background:#dae035; color:#000; }
+.Button.Action span:after { border-left-color: #dae035; }
+
+.Button.Action span.GoPrivate { background-color: #74266f; color: #fff; }
+.Button.Action span.GoPrivate:after { border-left-color: #74266f; }
+
+.Button.Discover span { width: 132px; padding-right: 10px; }
+
+.Button-Bar .Button span { padding-left:17px; margin-left:-12px; padding: 2px 15px 3px 20px; }
+.Button-Bar .Button:first-child span { margin:0; padding-left:10px; }
+.Button-Bar .Button span:before { position:absolute; right: -12px; bottom: -2px; width:0; height:0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid #fff; content:"";  z-index: 10; }
+.Button-Bar .End { padding:0; }
+.Button-Bar .End span:after,
+.Button-Bar .End span:before { border:0; }
+
+.Bar-Schedule span { width: 120px; }
+.Bar-Email span { width: 63px; }
+.Bar-Flights span { width: 105px; }
+
+.Action-Bar { padding: 4px 10px; text-align: right; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; }
+.Action-Bar .Left { float:left; }
+.Action-Bar.Black { background:#000; color: #fff; }
+.Action-Bar.Black a { color:#fff; }
+.Action-Bar.Header { text-align: left; }
+.Action-Bar.Header .Left { float: none; }
+.Action-Bar.Post-Navigation { margin: 12px 0; }
+.Page.Double .Action-Bar { padding-bottom: 0px; }
+.Page.Double .Action-Bar.Post-Navigation { margin-bottom: 0px; }
+.single-post .Page.Double .Action-Bar.Post-Navigation { margin-bottom: 12px; }
+.Action-Bar.Post-Navigation .Right{float: right;}
+.Next,
+.Back,
+.next,
+.prev {position: relative; padding: 0 10px; font-size: 13px; }
+.next,.prev {font-size: 15px;}
+.Tour-Type-Listing .Next { font: 12px 'Clarendon-Bold', serif;}
+.Next:after,
+.Back:before,
+.next:after,
+.prev:before {
+    position:absolute; bottom: 3px; width:0; height:0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    content:""; }
+.Back:before,
+.prev:before { border-right: 5px solid #000; left: 0; }
+.Next:after,
+.next:after { border-left: 5px solid #000; right: 0; }
+
+/*---[Listings] ------------------------------------------------------------------*/
+.Listing-Section { position: relative; margin:0; padding:0; overflow:hidden; }
+.Listing-Loading { position: absolute; top:0; right:0; bottom:0; left:0; padding: 50px 0; background:#fff; opacity: .9; }
+.Listing-Loading img { display: block; margin:0 auto; width: 32px; height: 32px;  }
+.Listing .Title { display: block; }
+.Listing-Item { position: relative; margin:20px 0; }
+.Listing .Title { display: block; font-size:20px; text-transform:none; margin:0;  }
+.Listing .Abstract { margin:2px 0 10px; }
+.Listing-Image img { height: auto ;max-width: 162px;}
+
+
+.Listing-Title { font-size: 20px; display: block;}
+.Listing-Sub-Line {font-size: 13px; display: block; margin-bottom:3px; }
+.Listing-Quote {margin: 0; padding: 0;}
+.Listing-Total { text-align: right; padding-right: 15px; font-size:15px;  }
+.Listing-Search { float:left; font-size:12px; }
+.Listing-Search .Input { padding:0 4px; vertical-align: -2px; }
+body.blog .Listing-Search .Input { padding:0 4px; vertical-align: -1px; }
+.Listing.Grid { margin: 20px 0; }
+
+.Body-Related .Listing.Grid { margin:0; }
+.Body-Related .Grid.Related .Listing-Item { margin:0 0 15px; }
+
+.Grid .Listing-Item { float:left; margin:0 0 30px 30px; width: 214px; }
+.Grid .Listing-Item:first-child { margin-left:0; }
+.Grid.Related .Listing-Item { margin:0 15px 15px; width: 175px;}
+.Grid-Link { display: block; }
+.page-template-page-region-php .Grid-Link .Title {
+    margin-top: 10px;
+}
+
+.Related .Title,
+.Related .Listing-Title { font-size: 18px; }
+.Blog .Listing-Item { min-height: 156px; }
+.Search .Listing-Item { margin: 0; }
+
+.Article .Listing-Item { min-height: 130px; margin: 15px 90px 0; }
+.Article .Listing-Item.NoImage { min-height: auto; }
+.Article .Listing-Item.NoImage + hr { margin-top:15px; }
+.Article .Thumbnail { float: right;  margin: 0 0 15px 15px; }
+
+.Video .Listing-Date { display: block; }
+.Video .Listing-Item { width: 300px; }
+.Play-Image { left: 317px; position: absolute; top: 207px; }
+
+.Guide-Related-Video    {margin-top: 20px;}
+.Video-Link                {margin-top: 10px;}
+
+.Staff .Listing-Item { width: 250px; }
+
+.Gallery.Banner .Listing-Item { padding:0 15px; margin: 15px 0 20px 0;  background:#ddd; min-height:130px; box-sizing: border-box; }
+.Gallery.Banner .Listing-Item a { display:block; padding: 12px; text-decoration: none;  }
+.Gallery.Banner .Listing-Item:hover { background: #eee; }
+.Gallery.Banner .Listing-Item a:hover { color:#000; }
+.Gallery.Banner .Title { display: block; margin: 7px 0 15px 0; }
+
+.Gallery.Banner .Listing-Date { position:absolute; top:0; left: 15px; padding-top: 15px; width: 60px; height: 100px; background:#000; color:#fff; }
+.Gallery.Banner .Listing-Date span { display: block; text-align: center; }
+.Gallery.Banner .Listing-Date .Month { text-transform: uppercase; font-size: 18px; line-height: 24px; }
+.Gallery.Banner .Listing-Date .Day { font-size: 30px; line-height: 32px; }
+.Gallery.Banner .Listing-Date .Year { font-size: 15px; line-height: 18px; }
+
+.galleria-info {
+    display: none !important;
+}
+
+.Related .Listing-Date { display: block; }
+
+#tourDates { min-height: 65px; }
+.Date-Listing { position:relative; padding: 4px 0; }
+.Date-Listing .Button { position: absolute; top: 21px; right: 0; }
+.Date-Listing, .Date-Year, .Date-Month { height: 55px; }
+.Date-Year, .Date-Month { padding: 0 20px; text-align: center; line-height: 55px; }
+.Date-Year { float:left; border-right: 2px solid #c9c8c8; font: 18px/55px 'Clarendon-Bold', serif; }
+.Date-Month { float:left; text-transform: uppercase; }
+.Date-Days { float:left; margin:10px 0 0; color:#808184; text-align:center; }
+.Date-Days span { display: block; width: 17px; }
+.Date-Days .Date-Double { width: 21px; }
+.Date-Days .Active { color:#00aec5; }
+
+
+.Tours.Listing .Listing-Item { margin:0; padding: 15px;  border-top: 2px solid #c0c0c0;}
+.Tours.Listing .Listing-Item:first-child,
+.Tours.Listing .Listing-Item.First { border:none; }
+.Tours.Listing .Date { float: left; margin: 0 0 15px 0; padding:32px 30px 32px 15px; line-height: 20px; }
+.Tours.Listing .Month { display: block; }
+.Tours.Listing .Info { float:right; width: 665px; }
+.Tours.Listing .Main { float:left; width: 410px; }
+.Tours.Listing .Abstract { margin:3px 0; }
+.Tours.Listing .Extended { float: right; width: 235px; font-size: 11px; line-height: 17px;}
+.Tours.Listing .SubTitle { text-transform: uppercase; }
+.Tours.Listing .Next { float: right; }
+.Tours.Listing .Date { letter-spacing: 2px; text-transform: uppercase; font-weight: bold; text-align: center; width:75px; }
+
+.Tours.Listing .NoThumbnail { width: 850px;  }
+.Tours.Listing .NoThumbnail .Main { width: 595px; }
+
+.Tours.ByRegion.Listing .Info { width: 785px; }
+.Tours.ByRegion.Listing .Info.NoThumbnail { width: 100%; }
+
+/*---[slideshow] ------------------------------------------------------------------*/
+.Slideshow { position: relative; }
+.Slideshow.Home,
+.Slideshow.Home .Slideshow-Item { width: 1038px; height: auto; }
+.Slideshow.Home .slick-slider { margin-bottom: 20px; }
+.Slideshow.Tour-Detail { max-width: 560px; height: 336px; overflow: hidden; }
+.Slideshow.Hotel-Detail { max-width: 525px; height: 333px; overflow: hidden; }
+.Slideshow-Item { position: absolute; top:0; left:0; z-index:2; width: 560px; height: 336px; }
+.Slideshow.Hotel-Detail .Slideshow-Item { width: 525px; height: 333px; }
+.Slideshow-Item:first-child { z-index: 3; }
+.Slideshow-Quote { position: absolute; right: 0; bottom: 43px; z-index: 10; color: #fff; text-align: right; text-transform: uppercase; font-size: 102px; line-height: 90px; }
+.Slideshow-Quote p {margin: 0;}
+.Slideshow .Rotator-Prev,
+.Slideshow .Rotator-Next { position: absolute; bottom: 21px; left: 29px; z-index: 1000; width: 18px; height: 29px; background:url('/wp-content/themes/duvine/assets/images/icons/slideshow-arrows.png') no-repeat; color: #fff; font:0/0 a; cursor:pointer;}
+.Slideshow .Rotator-Next { right: 29px; left:auto; background-position: -18px 0; }
+
+/*---[Content] ------------------------------------------------------------------*/
+#viewport {margin: 0 auto; width: 1038px; }
+#content { background:#fff; }
+.Page { position: relative; padding: 0 15px; }
+body.home .Page { padding: 0 21px; }
+.Page.Double, body.page-template-page-the-guides .Page.Listing-Section { padding: 0 30px 30px 30px; }
+.single-post .Page.Double {padding-bottom: 0;}
+.Page.Double.Source-Andy { padding-bottom: 0px; }
+.Page.Listing-Section { padding-bottom: 0px; }
+.Listing-Total.Section { margin-bottom: 0px; }
+.Listing-Total.Listing-Last.Section { margin-bottom: 20px; }
+#tourLisiting.Listing-Section .Listing-Total { margin-bottom: 12px; }
+#tourLisiting.Listing-Section .Pagination { margin-bottom: 15px; }
+.Page.Double.Top.Breadcrumb {
+    padding: 6px 30px 10px 30px;
+}
+.Page.Content { padding-top: 1px; }
+.Section { margin: 0 0 20px; }
+
+.Section.Top {margin-top: 20px;}
+
+.Thumbnail { float: left; margin: 0 15px 10px 0; }
+
+.ErrorPage { padding: 50px 0; margin: 0; font-size: 30px; text-align: center; }
+
+.Detail { position: relative; }
+.Detail .Header { width: 458px; }
+.Detail .Header-Details { position: absolute; top: 15px; right:0; width: 200px; text-align: right; }
+.Detail .Page-Title { margin:10px 0 0; text-transform: none; }
+.Detail .Sub-Title { margin:0 0 20px; font-size: 16px; font-weight: normal;  }
+.Detail .Author { margin:0 0 20px; display: block; }
+
+.Blog.Detail,
+.Gallery.Detail,
+.News.Detail                    {margin-bottom: 10px;}
+.News.Detail .Header            { width: auto; }
+.News.Detail .Header-Details    {float: right;position: static;}
+.Blog.Detail .Sub-Title { margin:0; }
+.Blog.Detail .Image { margin:0 0 15px; }
+
+.Border-Lines { position:relative; padding:0 0 15px 15px; background: url('/wp-content/themes/duvine/assets/images/site/border-lines.png') no-repeat bottom left; }
+.Border-Lines:before,
+.Border-Lines:after { position: absolute; z-index: 2; width: 0; height: 0; content: ""; }
+.Border-Lines:before { top:0; left:0; border-top: 9px solid #fff; border-right: 9px solid transparent; }
+.Border-Lines:after { right:0; bottom:0; border-bottom: 9px solid #fff; border-left: 9px solid transparent; }
+.Border-Lines.Offset {margin-left: -15px;}
+.Border-Lines.Inline { display: inline-block; }
+
+.Regions .Row { padding-bottom: 43px; }
+.Region { width: 300px; min-height: 250px; position: relative; float: left; margin-left: 39px; }
+.Region.First { margin-left: 16px; }
+.Region .Image { width: 300px; height: 300px; display: block; float: none; margin-bottom: 10px; background-color: #E6E7E8; }
+.Region .Title { padding: 0; margin: 0 0 5px 0; font-weight: 400; font-family: 'Calibre-SemiBold', sans-serif; font-size: 24px; color: #000; }
+
+.LabelButton { display: block; padding-left: 1px; margin-bottom: 6px; }
+.LabelButton { color: #000; }
+.LabelButton .Icon { padding: 0px 4px 0px 0px; }
+.LabelButton .RightArrowIcon { padding: 0px 0px 2px 6px; }
+
+.Regions.Dark a:hover { color: #DAE020; }
+.Regions.Dark .Active a:hover { color: #fff; }
+.Regions.Dark .Active > a,
+.Regions.Dark a.Active { font-weight: bold; font-family: 'Calibre-SemiBold', sans-serif; }
+
+.Regions.Light { background:#fff url("assets/images/site/region-border-light.png") repeat-x left 50px; color:#000; }
+.Regions.Light .Column { padding:15px; }
+.Regions.Light li { margin: 0 0 10px;}
+.Regions.Light .Checkbox,
+.Regions.Light .Header { display: block; text-align: center; }
+
+/* Region Detail Page */
+.RegionDetail { }
+.RegionDetail .Header { width: 1008px; height: 375px; padding: 0px 0 0 30px; margin-left: -15px; margin-bottom: 10px; background-color: #fff; font-size: 100px; color: #fff; text-transform: uppercase; }
+.RegionDetail .Header .Text { width: 500px; padding-top: 29px; line-height: 73px; }
+.RegionDetail .Abstract { padding-top: 15px; padding-bottom: 15px; margin-bottom: 25px; border-bottom: 1px solid #000; font-family: "Calibre-Light"; font-size: 15px; color: #000; }
+.RegionDetail h1 { font-size: 24px; text-transform: uppercase; margin-bottom: 7px; }
+.RegionDetail .Destination { padding-bottom: 0; margin-bottom: 0; padding-top: 24px; border-top: 10px solid #000; }
+.RegionDetail .Destination .Column.Two { width: 660px; margin-left: 15px; }
+.RegionDetail .Destination h2 { max-width: 300px; padding: 0; margin: 0 0 12px 0; line-height: 39px; font-family: "Calibre-Light"; font-size: 45px; text-transform: uppercase; }
+.RegionDetail .Destination .Image { width: 300px; height: 300px; float: left; background-color: #ccc; }
+.RegionDetail .Destination .Abstract { width: auto; float: none; padding: 0 0 0 15px; margin: 0 0 27px 0; border: none; font-family: "Calibre-Light"; font-size: 15px; color: #000; background-color: #fff; }
+.RegionDetail .Destination .Tour { width: 180px; float: left; margin-right: 10px; margin-bottom: 10px; text-align: left; }
+.RegionDetail .Destination .Tour h2 { padding: 14px 0px; margin: 0; line-height: 15px; font-family: "Calibre-Semibold"; font-size: 14px; text-align: center; text-transform: none; height: 30px; }
+.RegionDetail .Destination .Tour .Image { width: 180px; height: 108px; float: none; }
+.RegionDetail .Destination .Tour .Button { display: block; float: left; width: 163px; margin: 5px 0; padding: 5px 10px; background-color: #ccc; text-align: center; }
+.RegionDetail .TourInfo { padding-top: 5px; border-top: 1px solid #000; font-family: "Calibre-Light"; font-size: 14px; }
+.RegionDetail .TourInfo strong { padding-right: 5px; font-family: "Calibre-SemiBold"; font-size: 13px; text-transform: uppercase; }
+.RegionDetail .TourInfo .Item { margin-bottom: 2px; }
+.RegionDetail .TourInfo .LabelButton { margin-bottom: 2px; text-transform: uppercase; }
+.TourInfo .LabelButton .Icon { padding: 0px 4px 2px 0px; }
+
+.RegionDetail .DestinationAnchors { width: 100%; margin: 0 auto; text-align: center; }
+.RegionDetail .DestinationAnchors .Item { display: inline-block; padding: 7px 12px; text-transform: uppercase; }
+
+.RegionDetail .Scrollable { width: 564px; height: 276px; float: left; margin: 0 34px; }
+.RegionDetail .Scrollable-Prev, .RegionDetail .Scrollable-Next { top: 94px; }
+
+.Date-Listing { border-bottom: 2px solid black; }
+
+.Pagination .Total { margin-right: 25px; }
+.Pagination { text-align: right; }
+.Pagination a, .current. .dots { margin: 0 0 0 5px; font-size:15px;  }
+.current {color: #dae035; font-weight: 700;}
+.Pagination .Selected { color:#DAE035; cursor: default; }
+.Pagination.Black .Total { margin-right: 25px; }
+.Pagination.Black { text-align: right; padding: 4px 15px; background:#000; color:#fff; }
+.Pagination.Black a { margin: 0 0 0 3px; color:#fff; }
+.Pagination.Black .Selected { color:#DAE035; font-weight: bold;  cursor: default; }
+.Pagination .Button.Light {
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-right: 6px;
+}
+.ContentImage { margin: 10px; }
+.Content-Header-Image { position: relative; }
+.Image-Caption { position: absolute; right: 0; bottom: 32px; z-index: 399; color: #fff; text-align: right; text-transform: uppercase; font-size: 102px; line-height: 90px;}
+
+.Tour-Information .Column.One {float: left; width: 560px;}
+.Tour-Information .Column.Two { float:right; width: 390px;}
+.Tour-Information .Abstract {font-size: 20px;}
+a.view-all-blog { float: right; color: #00aec5; }
+
+.Scrollable-Area { position: relative; padding-left: 0px; }
+.Scrollable {position: relative; overflow: hidden; margin: 0 8px 0 0; width: 940px; height: 250px;}
+.Scrollable .Listing-Row {position: absolute; width: 20000em;}
+.Scrollable .Listing-Item { margin:0 8px 0;}
+
+.Scrollable-Area .disabled {visibility: hidden;}
+table.Tour-Dates { width: 100%; }
+table.Tour-Dates td {display: table-cell;}
+.Tour-Dates-Button { width: 112px; text-align: right; }
+.Tour-Dates td { padding:3px; }
+.Tour-Dates-Date { width:144px; }
+.Tour-Dates-Price { width: 40px; }
+td.Tour-Dates-Note { width: 90px; padding: 10px 0 2px 3px; line-height: 0px; width: 183px; }
+
+.Related .Related-Item.Listing-Item { text-align: center; width: 162px; height: 210px; }
+.Grid .Listing-Item.Related-Item { float: left; margin: 0 0 12px 0; width: 48%; height: auto; }
+.Related .Related-Item.Listing-Item.Search-Tour-Item { text-align: center; width: 162px; height: 210px; margin: 0 15px 15px; }
+.Grid .Listing-Item.Related-Item.Search-Tour-Item:nth-child(2) {float:left;}
+.Grid .Listing-Item.Related-Item:nth-child(2) { float: right; }
+
+.Grid-Tour-Sidebar .Listing-Item.Related-Item img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+.Grid-Guides .Listing-Item.Related-Item:nth-child(2) { float: left; }
+.Related-Item .Title { font-size: 14px; margin: 6px 0 0; }
+.Related-Item.Large .Title { font-size: 18px; }
+.Related-Item .Sub-Title { padding: 0 0 6px; font-size: 11px; border-bottom: 1px solid #c0c0c0; }
+.Related-Item .Abstract { font-size: 13px; margin:6px 0; }
+
+.Related.Video-Detail .Related-Item.Listing-Item { height: 30px; margin: 0 10px 0; }
+.Related.RelatedTours .Listing-Item { height: auto; }
+.Video-Detail.Title { width: 100%; text-align: left; margin: 30px 0 10px 0; }
+
+.Scrollable-Prev,
+.Scrollable-Next { position: absolute; top: 83px; left: 0; z-index: 1000; width: 25px; height: 43px; background:url('/wp-content/themes/duvine/assets/images/icons/scrollable-arrows.png') no-repeat; color: #fff; font:0/0 a; cursor:pointer;}
+.Scrollable-Next { right: 0; left:auto; background-position: -25px 0; }
+
+.Keywords .Row {display: table;}
+.Keywords .Row:after {clear: left;}
+.Keywords h2 {text-transform: uppercase;}
+.Keywords .Button {margin-right: 10px;}
+.Keyword { font-family: 'Calibre-Regular', sans-serif; display: block; float: left; margin: 5px 15px; width: 222px; height: 33px; background-color: #eee; text-align: center; text-transform: uppercase; line-height: 32px;}
+.Keyword:hover { background:#DAE035; color:#000; font-family: 'Calibre-SemiBold', sans-serif;}
+
+.Tag-Cloud, .Tag-Cloud li { margin:0; padding:0; list-style: none; font-size: 16px;}
+
+.Tag.Styled { background:#fff; padding:0;margin-left:20px; border:0; text-transform:uppercase; letter-spacing: 1px; font-size: 12px; line-height: 1.3; }
+.Tag.Styled span { display: inline-block; position:relative; padding: 2px 15px 3px 10px; background:#1a95e3; color:#fff;  cursor:pointer; }
+.Tag.Styled span:before { position:absolute; left: -10px; bottom: 0; width:0; height:0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #1a95e3; content:""; z-index: 10;  }
+
+.Tag.Styled:hover span { background:#dae035; color:#000; }
+.Tag.Styled:hover span:before { border-right-color: #dae035; }
+
+/*Year at a glance *********************************************/
+.Calendar-Header {position: relative;}
+.Page.Double.Calendar-Header {padding-bottom: 0;}
+.Calendar-Link, .Calendar-Legend {position: absolute; bottom: 10px;}
+.Calendar-Link {left: 25px;}
+.Calendar-Legend {right: 35px; width:170px;}
+.Square {height: 16px; width: 16px; display: block; float: left; margin-right: 5px;}
+.Square.Sold-Out {background-color: #ef4135;}
+.Square.Limited-Space {background-color: #0093D0;}
+.Sold-Out {color: #EF4135;}
+.Limited-Space {color: #0093D0;}
+.Region-Title { font: 20px 'Calibre-SemiBold', sans-serif; margin-left: 5px;}
+.Current-Year { font-size: 36px; font-family: 'Clarendon-BoldItalic', sans-serif; line-height: 58px; }
+.Calendar-Nav {display: inline-block; vertical-align:3px; height: 17px; width: 10px; background: url('/wp-content/themes/duvine/assets/images/icons/calendar-arrows.png') no-repeat 0 bottom; margin: 0 10px;}
+.Calendar-Nav.Next {background-position: -11px 0;}
+.Calendar-Nav.Next:after { border:0; }
+.Calendar {border-collapse: separate; border-spacing: 4px; margin-bottom: 15px;}
+.Calendar thead {background: url('/wp-content/themes/duvine/assets/images/site/calendar-header.png') repeat-y;}
+.Calendar th { height: 20px; width: 59px; background-color: #000; color: #fff; border-spacing: 0; font-size: 12px; vertical-align: middle;}
+.Calendar th.Destination { width: 222px; background-color: #dae035; color: #000;}
+.Calendar td {background-color: #e6e7e8; width: 59px; height: 50px; text-align: center; vertical-align: middle; margin: 3px; font-size: 14px;}
+.Calendar td a {text-decoration: underline;}
+.Calendar td.Tour {background-color: #f6f7cc; text-align: left; padding-left: 25px; font-size: 15px;}
+.Calendar td.Tour a:hover { color:#000; }
+
+.Limited { color: #0093D0;font-size: 11px;}
+.Book-Button {display: block; width: 100px; height: 20px; background-color: #a6a4a8; text-align: center; padding: 1px 3px; }
+td.Tour-Dates-Button .Book-Button { width: 100%; }
+
+.Tour-Type-Listing .Column { margin: 0 10px;width: 178px;}
+.Tour-Type-Listing .Abstract { height: 250px; }
+.Tour-Name { font-family: 'Clarendon-BoldItalic', sans-serif; display: block; width: 178px;height: 55px; background: #000; color: #fff; text-align: center; font-size: 26px; line-height: 58px; letter-spacing: 1px; }
+.Tour-Detail .Column.Two {width: 388px;}
+
+.Dates, .Image {float: left;}
+
+.searchForm {float: left;}
+.siteTitle {float: left;}
+
+.Overlay { display: none; width: 410px; position:relative; }
+.Overlay.Video { width: 720px; }
+.Overlay .Close { font-size:13px; position: absolute; z-index:10; top: 20px; right: 25px; text-transform: uppercase; cursor: pointer; }
+.Overlay.Video .Close { color: #fff; }
+.Overlay-Content { padding-top: 20px; border: 6px solid #000; background-color: #fff; min-height: 200px;  }
+.Video .Overlay-Content { padding-top: 0; border: none; }
+.Overlay-Loading { z-index:5; position: absolute; background:#fff; padding: 50px 0; top:6px; bottom:21px; left:21px; right:6px; }
+.Overlay-Loading img { display: block; margin:0 auto; }
+.Overlay.Border-Lines:before,
+.Overlay.Border-Lines:after { border:0; }
+.Overlay-Title { font-size: 40px; }
+
+.Overlay-Content-Text { padding: 20px 10px;}
+
+.Overlay .Form .Input { width: 355px; }
+.Overlay .Form .SelectBox { width: 350px; border:1px solid #ecedee; }
+
+.Experience .Info { width: 660px; }
+.Experience { margin: 0; background: no-repeat right top; }
+
+.Share-This { border-top: 2px solid #c9c8c8; border-bottom: 2px solid #c9c8c8; padding: 10px 0 5px; min-height: 36px; }
+.Share-This-Button { cursor:pointer; }
+/*------------------Andy---------------------------------------------------------*/
+.Andy-Quote { position: absolute; left: 150px; top: 53px; width: 265px; z-index: 10; color: #fff; text-align: center; text-transform: uppercase; letter-spacing: 2px;  }
+
+.Andy-Quote .Large { display:block; font-size: 102px; line-height: 90px; letter-spacing: 12px; margin:0 0 10px;  }
+.Andy-Quote-Sub { padding:2px; background:#fff; color:#000; display:block; font-family:'Calibre-Regular', sans-serif; font-size:12px; }
+
+/*---[Forms] ------------------------------------------------------------------*/
+fieldset { margin: 0; padding: 0; border: 0; }
+legend, .Legend { display:block; padding:1px 15px; background:#000; color:#fff; text-transform: uppercase; font-family: 'Calibre-Medium', sans-serif; }
+.Legend small { text-transform: lowercase; font-size:12px; }
+input[type='text'], input[type='password'], input.Text, textarea, select { border: 1px solid #bbb; background-color: #fff; }
+input[type='text']:focus, input[type='password']:focus, input.Text:focus, textarea:focus, select:focus { border-color: #666; }
+input[type='text'], input[type='password'], input.Text, textarea, select { margin: 0 0 0 0; padding: 3px 5px; border: 1px solid #D4D4D4; }
+textarea { min-height: 175px;  }
+
+.Label { text-transform: uppercase; font-size: 13px; }
+
+.Slim-Form .Label { display: block; }
+.Slim-Form .Destination-Input { width: 100%; border:0; border-bottom: 2px dotted #d6d6d6; font-size: 38px; }
+
+.Field { padding: 5px 0; }
+
+
+input.SelectDate, .SelectBox { position:relative; padding: 3px 8px; width: 136px; border:0; background:#e7e8e9; font-weight:bold;  cursor:pointer; }
+input.SelectDate, .selectBox-arrow,
+.Form .SelectDate { background:#e7e8e9 url('/wp-content/themes/duvine/assets/images/icons/selectbox-arrow.png') no-repeat 130px 8px ; }
+.Form .SelectDate { width: 294px; background-position: 98% 8px; }
+.SelectBox:hover { text-decoration: none; }
+.selectBox-dropdown { position: relative; display: inline-block; min-width: 136px; outline: none; text-align: left;  text-decoration: none; }
+.selectBox-label { display: block; overflow: hidden; min-width: 110px; color:#000; white-space: nowrap; font-weight: bold; }
+.selectBox-arrow { position: absolute; top: 0; right: 0; margin:1px 0; width: 30px; height: 22px; background-position: 50% 8px; }
+.selectBox-dropdown-menu { font-size:14px; position: absolute; z-index: 99999; overflow: auto; min-height: 1em; max-height: 200px; background: #e7e8e9; box-shadow: 0 2px 6px rgba(0, 0, 0, .2); }
+.selectBox-options,
+.selectBox-options li,
+.selectBox-options li a { display: block; margin: 0; padding: 0; color:#000; list-style: none; cursor: pointer;}
+.selectBox-options li a { overflow: hidden;  padding: 3px 8px; white-space: nowrap; }
+.selectBox-options li { border-top:1px solid #f3f3f4; background: 0; }
+.selectBox-options li:first-child { border:0; }
+.selectBox-options li.selectBox-hover a,
+.selectBox-options li.selectBox-selected a { background:#000; color:#fff; }
+.selectBox-disabled .selectBox-label { color:#aaa; }
+.selectBox-disabled .selectBox-arrow { background:0; }
+
+.Story-Form .SelectBox,
+.Tours-Form input.SelectDate,
+.Tours-Form .SelectBox                { height:17px; background-position: 129px 8px; vertical-align: bottom; }
+.Story-Form .SelectBox,
+.Tours-Form .SelectBox,
+.Tours-Form .SelectDate             { font-size: 13px; }
+
+.Story-Form .selectBox-options,
+.Tours-Form .selectBox-options        { font-size: 13px; }
+.Story-Form,
+.Tours-Form                         { position: relative; }
+.Story-Form .Field,
+.Tours-Form .Field                    { padding: 5px 16px 15px 0; border:0; font-size: 13px;  }
+.Story-Form .Radio-Group,
+.Tours-Form .Radio-Group            { position:absolute; bottom:-36px; left:0; z-index:2;}
+.Story-Form .Inline-Group .Field,
+.Tours-Form .Inline-Group .Field    { float: left; }
+.Story-Form .Action-Buttons,
+.Tours-Form .Action-Buttons            { margin:0 0 15px; }
+.Story-Form .Form-Title,
+.Tours-Form .Form-Title                { margin:5px 0 0; text-transform: uppercase;  font: 24px/1.2 'Calibre-SemiBold', sans-serif; }
+.Story-Form .Label,
+.Tours-Form .Label                    { display: block; margin:0 0 2px; text-transform: uppercase; font:bold 10px/1.2 Arial, sans-serif;}
+.Story-Form .Help,
+.Tours-Form .Help                    { padding: 0px 2px; text-transform: none; font-family: "Calibre-Regular"; }
+.Story-Form .Help:hover,
+.Tours-Form .Help:hover                { color: #000; }
+.Story-Form .Help .Link,
+.Tours-Form .Help .Link                { text-decoration: underline; }
+.Story-Form .Help .InformationIcon,
+.Tours-Form .Help .InformationIcon    { margin-top: -6px; }
+
+.Tours-Form .SelectDate                { font-size: 13px; }
+
+.Form .Required { margin-left: 140px; color:#00aec5; text-transform: uppercase; }
+.Form label { display:inline-block; width: 138px; vertical-align:middle; margin: 0 0 5px; letter-spacing: 1px; font-size: 16px; }
+.Careers-Form label:not(.Checkbox-Group label) {  margin: 0; }
+.Form label .Note { text-transform: lowercase; letter-spacing: 0; color:#000; }
+.Form input,
+.Form textarea { width: 300px; border:1px solid #ecedee; background: #e6e7e8; }
+.Form .SelectBox { width: 294px; border:1px solid #ecedee; }
+.Form .AccordianHeader { background-position: 97% 5px; }
+.Form .AccordianHeader.ui-state-active {background-position: 97% -31px;}
+.Form .Checkbox { width:auto; font-size: 14px;  }
+.Form-Note { font-size: 20px; letter-spacing:3px; }
+.Form.Inline label { width: auto; display: block; text-transform: uppercase;  }
+.Form.Inline .Input,
+.Form.Inline .selectBox-dropdown { display: block !important; margin:5px 0 0; }
+
+.Checkbox { padding: 8px 10px; background: #e6e7e8; font-size: 16px; text-align: center;  }
+.Checkbox.Active { background:#dae035; font-weight: bold; }
+.Checkbox input { display: none; }
+
+.Checkbox-Group.Grid .Checkbox { margin: 0 15px 15px 0; width: 283px; }
+.Checkbox-Group.Grid .Checkbox.Last { margin: 0 0 15px; }
+
+.Checkbox-Group.Types .Checkbox { width: 154px; margin: 0 15px 0 0; }
+.Checkbox-Group.Types .Checkbox.Last { margin: 0; }
+
+/* --------------------- Tour Specific Colors -----------------------------------------*/
+/*Classic*/
+.Bg-Tour-Classic, .Button.Tour-Classic span { background-color: #00aec5 !important;}
+.Text-Tour-Classic { color: #00aec5 !important;}
+.Button.Tour-Classic span:after { border-left-color: #00aec5; }
+.Sub-Nav a.Tour-Classic:hover, .Sub-Nav a.Tour-Classic.Active { background-color: #00aec5; }
+.Block-List  a.Text-Tour-Classic:hover { background:#00aec5; color: #fff !important; }
+
+/*Family*/
+.Bg-Tour-Family, .Button.Tour-Family span { background-color: #85c340 !important;}
+.Text-Tour-Family { color: #85c340 !important;}
+.Button.Tour-Family span:after { border-left-color: #85c340; }
+.Sub-Nav a.Tour-Family:hover, .Sub-Nav a.Tour-Family.Active { background-color: #85c340; }
+.Block-List  a.Text-Tour-Family:hover { background:#85c340; color: #fff !important; }
+
+/*Pro*/
+.Bg-Tour-Pro, .Button.Tour-Pro span { background-color: #3e3480 !important;}
+.Text-Tour-Pro { color: #3e3480 !important;}
+.Button.Tour-Pro span:after { border-left-color: #3e3480; }
+.Sub-Nav a.Tour-Pro:hover, .Sub-Nav a.Tour-Pro.Active { background-color: #3e3480; }
+.Block-List  a.Text-Tour-Pro:hover { background:#3e3480; color: #fff !important; }
+/*Challenge*/
+.Bg-Tour-Challenge, .Button.Tour-Challenge span { background-color: #3e3480 !important;}
+.Text-Tour-Challenge { color: #3e3480 !important;}
+.Button.Tour-Challenge span:after { border-left-color: #3e3480; }
+.Sub-Nav a.Tour-Challenge:hover, .Sub-Nav a.Tour-Challenge.Active { background-color: #3e3480; }
+.Block-List  a.Text-Tour-Challenge:hover { background:#3e3480; color: #fff !important; }
+
+/*Private*/
+.Bg-Tour-Private, .Button.Tour-Private span { background-color: #74266f;}
+.Text-Tour-Private { color: #74266f !important;}
+.Button.Tour-Private span:after { border-left-color: #74266f; }
+.Sub-Nav a.Tour-Private:hover, .Sub-Nav a.Tour-Private.Active { background-color: #74266f; }
+.Block-List  a.Text-Tour-Private:hover { background:#74266f; color: #fff !important; }
+
+/*Couture*/
+.Bg-Tour-Couture, .Button.Tour-Couture span { background-color: #231f20;}
+.Text-Tour-Couture { color: #231f20;}
+.Button.Tour-Couture span:after { border-left-color: #231f20; }
+.Sub-Nav a.Tour-Couture:hover, .Sub-Nav a.Tour-Couture.Active { background-color: #231f20; }
+.Block-List  a.Text-Tour-Couture:hover { background:#231f20; color: #fff !important; }
+
+/*----------Dark--------------------------------------------------------------*/
+.Dark#content {background-color: #000; color: #fff;}
+.Dark a { color: #fff;}
+.Dark .Tour-Nav {background-color: #fff;}
+.Tour-Nav a { color: #000; }
+.Dark .Footer-Content { border-color: #fff;}
+.Dark .Button { background:#000; }
+.Dark .Button span { background-color: #fff; color: #000; }
+.Dark .Button span:after { border-left-color: #fff; }
+.Dark .Social a,
+.Dark .Social a:hover { color:#fff; }
+.Checkbox-Group.Roles .Checkbox { width: 150px;font-size: 12px;   }
+
+.Radio-Button { margin-right: 10px; padding-left: 15px; background: url('/wp-content/themes/duvine/assets/images/icons/checkboxes.png') no-repeat 0 4px; font-weight: normal; font-size: 13px; }
+.Radio-Button.Active { background-position: 0 -22px;}
+.Radio-Button input{ display: none; }
+
+.Radio-Group .Radio-Button { display: inline; }
+.Radio-Group .Inline-Title { margin-right: 15px; }
+
+/*---[Calendar] ------------------------------------------------------------*/
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.ui-datepicker { display: none; padding: .2em .2em 0; width: 17em;border-top: 1px solid #dadbdc; background:#e7e8e9; font-size: 12px; z-index:10000 !important;  }
+.ui-datepicker .ui-datepicker-header { position:relative; padding:.2em 0; }
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next { position:absolute; top: 6px; width: 7px; height: 14px; background:url('/wp-content/themes/duvine/assets/images/icons/datepicker-arrows.png') no-repeat; font:0/0 a; cursor: pointer;  }
+.ui-datepicker .ui-datepicker-prev { left:5px; }
+.ui-datepicker .ui-datepicker-next { right:5px; background-position: -10px 0; }
+.ui-datepicker .ui-datepicker-prev.ui-state-disabled, .ui-datepicker .ui-datepicker-next.ui-state-disabled { background:0; cursor:default; }
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span { position: absolute; top: 50%; left: 50%; display: block; margin-top: -8px; margin-left: -8px;  }
+.ui-datepicker .ui-datepicker-title { margin: 0 2.3em; text-align: center; text-transform: uppercase; font-weight: bold; line-height: 1.8em; }
+.ui-datepicker .ui-datepicker-title select { margin:1px 0; font-size:1em; }
+.ui-datepicker select.ui-datepicker-month-year {width: 100%;}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year { width: 49%;}
+.ui-datepicker table { margin:0 0 .4em;width: 100%; border-collapse: collapse; }
+td.ui-datepicker-week-end  { background:#808184; }
+td.ui-datepicker-week-end a { color:#bbb; }
+.ui-datepicker tr { border-top: 1px solid #f3f3f4; }
+.ui-datepicker th { padding: 3px; border: 0; color:#58595b; text-align: center; font-weight: normal; }
+.ui-datepicker td { padding: 1px; border: 0; }
+.ui-datepicker td span, .ui-datepicker td a { display: block; padding: 1px; text-align: center; text-decoration: none; }
+.ui-datepicker .ui-datepicker-buttonpane { margin: .7em 0 0 0; padding:0 .2em; border-right: 0; border-bottom: 0; border-left: 0; background-image: none; }
+.ui-datepicker .ui-datepicker-buttonpane button { float: right; overflow:visible; margin: .5em .2em .4em; padding: .2em .6em .3em .6em; width:auto; cursor: pointer; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current { float:left; }
+.ui-datepicker .ui-state-hover { font-weight: bold; }
+.ui-datepicker .ui-state-active { background:#000; color:#fff; }
+.ui-datepicker .ui-state-disabled { color:#bbb; }
+
+/*---[Accordian] ------------------------------------------------------------------*/
+.AccordianHeader { height: 20px; font-family: 'Calibre-Medium', sans-serif; position: relative; display: block; margin-bottom: 10px; background: #000 url('/wp-content/themes/duvine/assets/images/icons/accordian-icon.png') no-repeat 97% 4px; color: #fff; text-align: center; text-transform: uppercase; cursor: pointer; zoom: 1;}
+.AccordianHeader.ui-state-active {background-position: 97% -31px;}
+.AccordianHeader.Left { text-align: left; }
+.AndyInformation .AccordianHeader {background-color: #dae035;}
+.Accordian.Yellow .AccordianHeader {background-color: #dae035; background-image: url('/wp-content/themes/duvine/assets/images/icons/accordian-icon-dark.png'); color: #000;}
+.AccordianItem {overflow: hidden;}
+
+/*---[Message Box and Errors] ------------------------------------------------------------------*/
+.MessageBox { margin: 10px; }
+.Error, .Notice, .Success,.Form input.ErrorField, .Form textarea.ErrorField { margin-bottom: 1em; padding: .8em; border: 1px solid #ddd; }
+.Error,.Form input.ErrorField,.Form textarea.ErrorField { border-color: #FBC2C4; background: #FBE3E4; color: #c31c23; }
+.Notice { border-color: #FFD324; background: #FFF6BF; color: #514721; }
+.Success { border-color: #C6D880; background: #E6EFC2; color: #264409; }
+.Error a { color: #8a1f11; }
+.Notice a { color: #514721; }
+.Success a { color: #264409; }
+.error, .notice, .success, .cbox_messagebox_error, .cbox_messagebox_warning, .cbox_messagebox_info { padding: 0 15px; margin-bottom: 1em; border: 1px solid #ddd; margin: 15px 30px; }
+.error, .cbox_messagebox_error { background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4; }
+.notice, .cbox_messagebox_warning { background: #FFF6BF; color: #514721; border-color: #FFD324; }
+.success, .cbox_messagebox_info { background: #E6EFC2; color: #264409; border-color: #C6D880; }
+.error a { color: #8a1f11; }
+.notice a { color: #514721; }
+.success a { color: #264409; }
+.Form input.ErrorField,
+.Form textarea.ErrorField { margin:0; padding: 3px 5px; }
+
+.Form .Field.Error,
+.ActionButtons.Error { background:0; border:0; padding:0; margin:0; }
+.Message { text-align: left; display: block; margin-bottom:5px; }
+.Error .Form-Note { color:#000; }
+
+@-moz-document url-prefix() {
+    .Search-Form input {
+        padding-bottom: 4px ;
+    }
+}
+.ui-autocomplete { position: absolute; top: 0; cursor: pointer; background:#fff; padding: 5px 10px; border:1px dotted #666; border-top:0; }
+.ui-menu { list-style:none; padding: 2px; margin: 0; display:block; outline: none; }
+.ui-menu .ui-menu { margin-top: -3px; position: absolute; }
+.ui-menu .ui-menu-item { margin: 0; padding: 0; zoom: 1; width: 100%; }
+.ui-menu .ui-menu-divider { margin: 5px -2px 5px -2px; height: 0; font-size: 0; line-height: 0; border-width: 1px 0 0 0; }
+.ui-menu .ui-menu-item a { text-decoration: none; display: block; padding: 2px .4em; line-height: 1.5; zoom: 1; font-weight: normal; }
+.ui-menu .ui-menu-item a.ui-state-focus,
+.ui-menu .ui-menu-item a.ui-state-active { font-weight: bold; color:#000;  }
+
+.ui-menu .ui-state-disabled { font-weight: normal; margin: .4em 0 .2em; line-height: 1.5; }
+.ui-menu .ui-state-disabled a { cursor: default; }
+
+/* icon support */
+.ui-menu-icons { position: relative; }
+.ui-menu-icons .ui-menu-item a { position: relative; padding-left: 2em; }
+
+/* left-aligned */
+.ui-menu .ui-icon { position: absolute; top: .2em; left: .2em; }
+
+/* right-aligned */
+.ui-menu .ui-menu-icon { position: static; float: right; }
+
+.Grayscale-Image { display:block; background-repeat: no-repeat; }
+
+/*---[WYSIWYG content] ------------------------------------------------------------------*/
+/*private landing*/
+#privateLanding {width:100%; padding:6px 0px 0px 0; background-color:#fff;}
+#privateLanding #promoContent{width:100%; background-color:#74266f; padding-top:106px; text-align:center; color:#fff; line-height:1em; padding-bottom:60px; }
+#privateLanding p {margin:0px; line-height:1em; }
+#privateLanding .subTagline {font-size:65px; font-family:'Calibre-Light'; text-transform:uppercase; margin:0px; line-height:1em; letter-spacing:0.05em;}
+#privateLanding img.splitterSlash {margin-bottom:16px; margin-top:17px;}
+#privateLanding .tagline {font-family:'Calibre-Light'; text-transform:uppercase; font-size:102px; line-height:0.8em; letter-spacing:0.04em;}
+#privateLanding .taglineNote {font-family:'Clarendon-BoldItalic'; font-size:23px; letter-spacing:0.05em; padding-top:17px;}
+#privateLanding p.invitationOnly {font-family:'Clarendon-BoldItalic'; font-size:29px; text-transform:uppercase; padding-top:24px; letter-spacing:0.12em;  display:block; width:543px; margin: 0 auto;}
+#privateLanding .dividedLine {border-bottom:1px solid #b992b7; padding-top:24px; width:533px; margin: 0 auto;}
+#privateLanding .createYourOwnTrip {font-family:'Calibre-Light'; text-transform:uppercase; font-size:40px; letter-spacing:0.08em; padding-top:102px; padding-bottom:2px;}
+#privateLanding .letsGo {font-family:'Clarendon-BoldItalic'; font-size:26px; padding-top:103px;}
+#privateLanding p.abstract { display: block; font-size: 14px; line-height: 20px; margin: 0 auto; padding-top: 24px; width: 533px;}
+/*coutureLanding*/
+#coutureLanding {width:100%; text-align:center; color:#fff; line-height:1em; padding:122px 0px; background-color: #000; }
+#coutureLanding p {margin:0px; line-height:1em; }
+#coutureLanding .splash {padding-top:33px; background-color:#fff; margin:0 auto; border-bottom:27px solid #000;}
+#coutureLanding .titleTwo {font-size:65px; font-family:'Calibre-Light'; text-transform:uppercase; margin:0px; line-height:1em; letter-spacing:0.05em;}
+#coutureLanding img.splitterSlash {margin-bottom:16px; }
+#coutureLanding .titleOne {font-family:'Calibre-Light'; text-transform:uppercase; font-size:102px; line-height:0.8em; letter-spacing:0.04em;}
+#coutureLanding .titleThree {font-family:'Clarendon-BoldItalic'; font-size:23px; letter-spacing:0.05em; padding-top:11px; padding-bottom:4px; }
+#coutureLanding .dividedLine {padding-top:24px; border-bottom:1px solid #7f7f7f; width:533px; margin: 0 auto;}
+#coutureLanding p.abstract {font-size:14px; line-height:20px; padding-top:24px; display:block; width:533px; margin: 0 auto; }
+#coutureLanding .countriesTitle {font-family:'Clarendon-BoldItalic'; font-size:26px; padding-top:66px; padding-bottom:13px; border-bottom:1px solid #7f7f7f; margin:0px 15px;}
+.countries    {position:relative; }
+.countriesWrap {padding-top:20px; padding-bottom:40px; overflow:hidden; margin:0px 40px;}
+.country      {float:left; margin:0px 15px; width:161px;}
+.country img  {padding-bottom:6px;}
+.country span {font-family:'Calibre-SemiBold'; display:block; font-size:12px; letter-spacing:0.1em; line-height:12px;}
+span.countryName {text-transform:uppercase; font-size:9px;}
+span.abstract {font-family:'Calibre-Light'; font-size:13px; letter-spacing:0em; border-top:2px solid #3f3f3f; padding-top:3px; margin-top:1px;}
+.readMoreBtn {position:absolute; right:0px; bottom:0px; text-align:right; margin-right:15px;}
+.readMoreBtn a {background-image:url('/wp-content/themes/duvine/images/ico-arrow.png'); background-position:bottom right; background-repeat:no-repeat; padding-right:15px; color:#fff;}
+
+#coutureLanding .Button {background-color:#000;}
+#coutureLanding .Button span {background:#dae035; color:#000;}
+#coutureLanding .Button span:after {color:#000; border-left: 10px solid #DAE035;}
+#coutureLanding .greenButtons {margin:0 auto; width:100%;}
+#coutureLanding .greenButtons .Button {margin-top:20px;}
+#coutureLanding .Button span a {color:#000;}
+#coutureLanding .Button span a:hover {color:#000}
+
+/*Reserve Landing*/
+/*#reserveLanding {width:978px; padding:47px 30px;}*/
+#reserveLanding #bodyContent {width:978px; background-color:#fff;}
+#reserveLanding .header {background-color:#dae035; font-family:'Clarendon-Bold'; font-size:36px; letter-spacing: 0.15em; text-transform:uppercase; text-align:center; line-height:36px; padding:10px 0px 3px 0px; }
+#reserveLanding .box {width:474px; border-bottom:8px solid #000; padding-bottom:0px; padding-top:30px;}
+#reserveLanding .space {width:30px;}
+#reserveLanding h2 {font-family:'Calibre-Light'; text-transform:uppercase; font-size:102px; line-height:0.8em; letter-spacing:0.04em;}
+#reserveLanding h3 {font-family:'Calibre-Medium'; font-size:26px;}
+#reserveLanding p.phone {font-family:'Calibre-Medium'; font-size:22px;}
+
+/*Mission Landing*/
+/*#missionLanding {width:1008px; padding:47px 15px; background-color:#fff;}*/
+#missionLanding .promoContent {width:978px; background-color:#dae035; text-align:center; padding-top:25px;}
+#missionLanding .promoContent h1 {font-family:'Clarendon-Bold'; font-size:36px; letter-spacing: 0.15em; text-transform:uppercase; }
+#missionLanding .promoContent h2 {font-family:'Calibre-Light'; text-transform:uppercase; font-size:96px; line-height:0.8em; letter-spacing:0.05em;}
+#missionLanding .promoContent .abstract {font-family:'Calibre-Light'; font-size:20px; line-height:1em; padding:10px 88px 40px 88px;}
+#missionLanding .promoContent p {padding:0 56px;}
+#missionButtonsSplitter {border-top:2px solid #c0c0c0; padding-top:20px;}
+#missionButtons {display:block; margin-left:15px;}
+#missionButtons td.button {vertical-align:middle; font-family:'Calibre-SemiBold'; text-transform:uppercase; letter-spacing:0.2em; line-height:1em; background-color:#000; width:149px; height:100px; text-align:center;}
+#missionButtons td.button a {color:#FFF;}
+#missionButtons td.button:hover {background-color:#dae035;}
+#missionButtons td.space {width:12px;}
+
+/*Stories Landing*/
+/*#storiesLanding {width:1038px; padding:47px 15px; background-color:#fff;}*/
+#storiesLanding .promoContent {width:978px; background-color:#dae035; text-align:center; padding-top:25px; margin: 0 auto 15px;}
+#storiesLanding .promoContent h1 {font-family:'Clarendon-Bold'; font-size:36px; letter-spacing: 0.15em; text-transform:uppercase; }
+#storiesLanding .promoContent h2 {font-family:'Calibre-Light'; text-transform:uppercase; font-size:102px; line-height:0.8em; letter-spacing:0.05em;}
+#storiesLanding .promoContent .abstract {font-family:'Calibre-Light'; font-size:20px; line-height:1em; padding:10px 88px 40px 88px; margin-bottom:0px;}
+#storiesLanding .listing td {border-bottom:2px solid #c0c0c0; padding-bottom:15px; padding-top:25px;}
+#storiesLanding .listing .listingContent {padding-left:105px; padding-right:45px;}
+#storiesLanding .listing .listingPic {padding-right:100px; }
+#storiesLanding .listingContent h3 {margin:0px;}
+#storiesLanding .listingContent p {margin:0px; line-height:1.2em;}
+#storiesLanding .listingContent .name{font-family:'Calibre-SemiBold'; display:block; font-size:20px; letter-spacing:0.1em; }
+#storiesLanding .listingContent .location{font-family:'Calibre-Light'; display:block; font-size:14px; letter-spacing:0.1em; text-transform:uppercase;}
+#storiesLanding .listingContent .abstract{font-family:'Calibre-Light'; display:block; font-size:14px; letter-spacing:0.1em; }
+#storiesLanding .listingContent .tags {margin-top:3px;}
+#storiesLanding .listingContent .tags a {text-decoration:underline;}
+
+/*Duvine Differences Landing*/
+/*#differencesLanding {width:1008px; padding:47px 15px; background-color:#fff;}*/
+#differencesLanding .promoContent {margin:0px 15px 20px 15px; background-color:#dae035; text-align:center; padding-top:25px; overflow:hidden;}
+#differencesLanding .promoContent p {font-size:20px; line-height:1.1em; display:block; float:left; position:relative; text-align:left;}
+#differencesLanding .promoContent h1 {font-family:'Clarendon-Bold'; font-size:36px; letter-spacing: 0.15em; text-transform:uppercase; margin-bottom:25px;}
+#differencesLanding .promoContent h2 {font-family:'Calibre-Light'; text-transform:uppercase; font-size:40px; line-height:0.7em; letter-spacing:0.05em; background-image:url('/wp-content/themes/duvine/images/slash.png'); background-repeat:no-repeat; padding:15px 0px 25px 0px; background-position:top right; width:95px; display:block; float:left;}
+.diff1, .diff2, .diff3, .diff4, .diff5, .diff6, .diff7, .diff8, .diff9, .diff10 {overflow:hidden; text-align:left; margin-bottom:15px;}
+span.sentanceOne, span.sentanceTwo, span.sentanceThree {display:block; width:530px;}
+span.sentanceTwo {position:absolute; left:-25px;}
+span.sentanceThree {position:absolute; left:-45px; top:45px;}
+#differencesLanding .promoContent .threeS {margin:0px 0px 0px 5px;}
+#differencesLanding .promoContent .twoS {margin:12px 0px 0px 0px;}
+#differencesLanding .promoContent .oneS {margin:24px 0px 0px 0px;}
+#differencesLanding .promoContent .oneS span.sentanceOne {position:absolute; left:-20px;}
+.diff1 {margin-left:100px;}
+.diff2, .diff5 {margin-left:348px;}
+.diff3, .diff6 {margin-left:178px;}
+.diff4, .diff8 {margin-left:94px;}
+.diff7 {margin-left:467px;}
+.diff9 {margin-left:328px;}
+.diff10 {margin-left:100px;}
+.diff2 span.sentanceOne, .diff2 span.sentanceTwo, .diff2 span.sentanceThree {width:500px;}
+.diff5 span.sentanceOne, .diff5 span.sentanceTwo, .diff5 span.sentanceThree {width:500px;}
+.diff3 span.sentanceOne, .diff3 span.sentanceTwo, .diff3 span.sentanceThree {width:560px;}
+.diff7 span.sentanceOne, .diff7 span.sentanceTwo, .diff7 span.sentanceThree {width:380px;}
+.diff9 span.sentanceOne, .diff9 span.sentanceTwo, .diff9 span.sentanceThree {width:470px;}
+
+#differencesLanding .promoContent p.Page {font-size:12px; text-align:right; float:none; line-height:1.32em; padding-bottom:10px;}
+#differencesLanding .promoContent .Button {background-color:transparent;}
+
+#differencesLanding  #bodyContent {border-top:20px solid #000; padding-top:25px; margin:0px 15px;}
+#differencesLanding  #bodyContent h3 {font-family:'Calibre-SemiBold'; font-size:20px;}
+#differencesLanding  #bodyContent p {margin-top:0px;}
+#differencesLanding  #bodyContent td:first-child {width:530px; padding-right:56px;}
+#differencesLanding  #bodyContent td:last-child {width:368px; }
+
+/*Classic - Top 5*/
+#topFive {width:390px; background-color:#fff;}
+#topFive h2 {margin-left:12px; margin-bottom:5px; font-family:'Calibre-Light'; text-transform:uppercase; font-size:102px; line-height:1em; letter-spacing:0.04em; background-image:url('/wp-content/themes/duvine/images/slash-top5.png'); background-position:100% 115%; background-repeat:no-repeat; width:330px;}
+#topFive h3 {margin-left:12px; font-family:'Calibre-Light'; font-size:28px; line-height:1em; letter-spacing:0.01em;}
+#topFive ul {font-family:'Calibre-Light'; font-size:18px; line-height:1em; letter-spacing:0.01em; margin-left:15px; padding-left:0px; margin-top:27px;}
+#topFive ul li {list-style-type:none; padding-left:0px; margin-left:0px; padding-bottom:5px;}
+#topFive a {color:#000;}
+#topTenReasons {background-color:#dae035; text-align:center; padding:15px 0px;}
+#topTenReasons p {margin:0px; padding:0px;}
+#topTenReasons p.Title {font-family:'Clarendon-Bold'; font-size:20px; line-height:1em; letter-spacing: 0.15em; text-transform:uppercase;}
+#topTenReasons p.Subtitle {font-family:'Calibre-SemiBold'; display:block; font-size:12px; letter-spacing:0.1em; line-height:12px; text-transform:uppercase;}
+
+/*Homepaeg Find Andy*/
+.FindAndy {background-color:#fff; width:560px; }
+.FindAndy h2 {font-family:'Calibre-Light'; text-transform:uppercase; font-size:102px; line-height:0.78em; letter-spacing:0.055em;}
+.FindAndy .Page {margin-bottom:0px; margin-top:11px;}
+
+/*Search Result*/
+.Search-Title {margin-left:30px; }
+.Search-Results .Section {border-top:1px solid #000; padding-top:20px;}
+.Search-Results .Section .Page-Title {font-family:'Calibre-Light'; text-transform:uppercase; font-size:102px; line-height:0.78em; letter-spacing:0.055em; }
+.Search-Results .Section .Search {margin-top:40px;}
+
+/* Accordion Item Styles */
+.RelatedNewsItem div { padding-bottom: 10px; }
+.RelatedNewsItem:hover { color: #444444; }
+
+.RelatedBlogItem div { padding-bottom: 10px; }
+.RelatedBlogItem:hover { color: #444444; }
+.RelatedBlogImage { float: left; padding-right: 10px; padding-bottom: 10px; }
+
+/******************************************************************************************
+* FTS Additions
+******************************************************************************************/
+.Overlay-Content img {
+  max-width: 100%;
+}
+
+/* appendAround.js */
+.slideshow-smallscreen {
+    display: none;
+}
+.video-smallscreen {
+    display: none;
+}
+/* Videos page */
+.Listing-Section .YouTube-Icon {
+    display: block;
+    margin: 15px 0 0;
+}
+.Listing-Item.Video img {
+    height: auto;
+    width: 100%;
+  max-width: 100%;
+}
+Column.One.Andy-Bio {
+  padding-top: 0;
+}
+.Andy-Bio .Page.Double q {
+  margin-top: 12px;
+}
+p.Clear.Body {
+  height: 0;
+  overflow: hidden;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+
+/* Wordpress Alignment Classes */
+.alignleft, p .alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+.alignright, p .alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+}
+.aligncenter, p .aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Sidebar Styles */
+#secondary .widget h3 {
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+#secondary .widget ul {
+    font-size: 17px;
+    margin: 0 0 14px 0px;
+    padding: 0 0 0 0px;
+    line-height: 1.4em;
+    list-style-type: none;
+}
+#secondary .widget li {
+    margin: 0 0 8px 0;
+    padding: 0 0 0 0;
+}
+
+.Info.Body {
+    padding-bottom: 16px;
+}
+
+.nav-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.menu-item {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  position: relative; }
+  .menu-item > a {
+    line-height: 60px;
+    display: block;
+    text-decoration: none;
+    padding: 1px 20px 0;}
+    .menu-item:hover ~ .sub-menu,
+    .menu-item:hover .sub-menu,
+    .menu-item > a:hover ~ .sub-menu,
+    .menu-item > a:hover .sub-menu,
+    .menu-item > a:focus ~ .sub-menu,
+    .menu-item > a:focus .sub-menu {
+      top: 100%;
+      left: 0;
+      z-index: 99;}
+
+.sub-menu {
+  position: absolute;
+  top: -999em;
+  left: -999em;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  min-width: 100%;}
+  .child-has-focus .sub-menu {
+    top: 100%;
+    left: 0;
+    z-index: 99;}
+  .sub-menu .menu-item {
+    background: #111;
+    display: list-item;
+    float: none;
+    line-height: normal;
+    white-space: nowrap; }
+    .sub-menu .menu-item > a {
+      display: block;
+      line-height: normal;
+      padding: 15px 20px;
+      text-decoration: none; }
+      .sub-menu .menu-item > a:hover {
+        background: #333; }
+
+.telephone-smallscreen {
+    background-image: url('/wp-content/themes/duvine/assets/images/icons/phone-white.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 28px 28px;
+    display: none;
+    height: 28px;
+    float: left;
+    outline: 0;
+    text-indent: -9999em;
+    width: 28px;
+}
+
+.nav-menu-toggle {
+  cursor: pointer;
+  padding: 10px 16px 16px 0px;
+  display:none;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+    letter-spacing: .02em;
+}
+
+.nav-menu-toggle:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-menu-toggle span, .nav-menu-toggle span:before, .nav-menu-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: white;
+  position: absolute;
+  display: block;
+  content: '';
+}
+.nav-menu-toggle span:before {
+  top: -10px;
+}
+.nav-menu-toggle span:after {
+  bottom: -10px;
+}
+
+.nav-menu-toggle span, .nav-menu-toggle span:before, .nav-menu-toggle span:after {
+  transition: all 500ms ease-in-out;
+}
+.nav-is-active .nav-menu-toggle span {
+  background-color: transparent;
+}
+.nav-is-active .nav-menu-toggle span:before, .nav-is-active .nav-menu-toggle span:after {
+  top: 0;
+}
+.nav-is-active .nav-menu-toggle span:before {
+  -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+
+.nav-is-active .nav-menu-toggle span:after {
+  top: 10px;
+  -webkit-transform: translateY(-10px) rotate(-45deg);
+       -moz-transform: translateY(-10px) rotate(-45deg);
+        -ms-transform: translateY(-10px) rotate(-45deg);
+            transform: translateY(-10px) rotate(-45deg);
+
+}
+
+
+/*
+
+.nav-menu-toggle {
+  color: #fff;
+  display: none;
+  float: right;
+  font-size: 16px;
+  margin-right: 0;
+  position: relative;
+  padding-top: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .02em; }
+  .nav-menu-toggle:hover {
+    color: #fff;
+    text-decoration: none; }
+  .nav-menu-toggle:before, .nav-menu-toggle:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    -webkit-transition: all linear 0.1s;
+    -moz-transition: all linear 0.1s;
+    -ms-transition: all linear 0.1s;
+    transition: all linear 0.1s; }
+  .nav-menu-toggle:before {
+    margin-top: 2px; }
+    .nav-is-active .nav-menu-toggle:before {
+      margin-top: -1px;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      -webkit-transform-origin: center;
+      -moz-transform-origin: center;
+      transform-origin: center; }
+  .nav-menu-toggle:after {
+    margin-top: 10px; }
+    .nav-is-active .nav-menu-toggle:after {
+      margin-top: -3px;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-transform-origin: center;
+      -moz-transform-origin: center;
+      transform-origin: center; }
+
+*/
+.sub-menu-control {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  line-height: 60px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-size: 0.75rem; }
+
+
+#menu-item-5697 .sub-menu {
+    -webkit-columns: 2 144px;
+       -moz-columns: 2 144px;
+            columns: 2 144px;
+      column-fill: auto;
+    height: 191px;
+    width: 370px;
+}
+#menu-item-5697 .menu-item {
+    display: inline-block;
+    min-width: 140px;
+}
+#nav #menu-item-5697 .tour-nav-item a {
+    background: url('/wp-content/themes/duvine/assets/images/icons/right-arrow.png') no-repeat right center;
+    font-family: 'Calibre-SemiBold';
+}
+/* Header Nav */
+#nav .menu-item a {
+    color: #fff;
+    font-family: 'Calibre-Regular', sans-serif;
+    letter-spacing: 2px;
+    line-height: 1.32;
+    padding:5px 24px;
+}
+#nav .menu-item a:hover {
+    color: #DAE035;
+}
+#nav .nav-menu > li.current-menu-item > a,
+#nav .nav-menu > li.current-menu-ancestor > a {
+    color: #DAE035;
+    background: url('/wp-content/themes/duvine/assets/images/icons/nav-arrow.png') no-repeat center 20px;
+}
+
+#nav .nav-menu > li.menu-item-has-children > a:hover,
+#nav li.menu-item-has-children:hover > a,
+#nav .nav-menu > li.child-has-focus > a {
+    color: #DAE035;
+    background: url('/wp-content/themes/duvine/assets/images/icons/flyover-nav-active-arrow.png') no-repeat center 20px;
+}
+#nav .sub-menu {
+    background: #DAE020;
+    padding: 13px 10px 10px 10px;
+    -webkit-box-shadow: 0px 3px 14px 0px rgba(50, 50, 50, 0.4);
+       -moz-box-shadow: 0px 3px 14px 0px rgba(50, 50, 50, 0.4);
+            box-shadow: 0px 3px 14px 0px rgba(50, 50, 50, 0.4);
+}
+#nav .sub-menu .menu-item {
+    background: none;
+}
+#nav .sub-menu a {
+    color: #000;
+    display: block;
+    padding: 4px 10px;
+}
+#nav .sub-menu .menu-item > a:hover,
+#nav .sub-menu .menu-item > a:focus {
+    background: none;
+    color: #000;
+    text-decoration: underline;
+}
+/* Tours Nav Dropdown */
+nav#nav li.menu-item ul {
+    left: -10px;
+}
+nav#nav li.menu-item-5697 ul {
+    left: -85px;
+}
+/* Blog & Media Nav Dropdown */
+nav#nav li.menu-item-5708 ul {
+    left: -13px;
+}
+
+#menu-header-navigation-1 li {
+    float: none;
+}
+
+/* Child Nav */
+.child-menu { text-align: center; }
+.child-menu .menu-item { margin: 0 10px; }
+nav.Page ul.child-menu {
+    margin: 0;
+    padding: 0;
+}
+nav.Page ul.child-menu li.menu-item {
+    margin: 0 8px;
+}
+.child-menu .menu-item a {
+    line-height: normal;
+    padding: 8px 12px;
+}
+.child-menu .menu-item a:hover,
+.child-menu .current-menu-item a {
+    background: #DAE020;
+    color: #000;
+}
+
+.child-menu .menu-item-object-duvine_regions,
+.child-menu .is-hidden-in-child {
+    display: none;
+}
+
+/* Pagination Links */
+.Pagination-Links .prev,
+.Pagination-Links .next {
+    text-transform: uppercase;
+}
+
+/* Reserve-Now */
+#reserveLanding #bodyContent {
+    width:100%;
+}
+
+/* Hubspot Forms */
+.hubspot .hs-form .hs-form-field label {
+    color: #000;
+    font-family: Calibre-Light, sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.hubspot .hs-form .hs-form-required {
+    color: #000;
+}
+
+.Newsletter .hubspot .hs-form .hs-form-required {
+    display: none;
+}
+
+.hubspot .hs-form .hs-field-desc {
+    color: #000;
+    font-family: Calibre-Light, sans-serif;
+    font-size: 15px;
+}
+
+.hubspot .hs-form .hs-input {
+    background: #e7e8e9;
+    border: 1px solid #ecedee;
+    border-radius: 0;
+    box-shadow: none;
+    color: #000;
+    font-family: Calibre-Light, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 3px 8px;
+    min-height: 1em;
+}
+
+.hubspot .hs-form .hs-input option {
+    padding: 3px 8px;
+    min-height: 1em;
+    border-top: 1px  solid #f3f3f4;
+}
+
+.hubspot .hs-form .hs-input:focus {
+    border-color: #666;
+}
+
+.hubspot .hs-form .hs-button.primary,
+.hubspot .hs-form .hs-button:active {
+    display: inline-block!important;
+    padding: 2px 25px 3px 10px;
+    position: relative;
+    margin: 10px 0!important;
+    font-size: 12px;
+    line-height: 15.83px;
+    color: #000!important;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+    vertical-align: middle;
+    cursor: pointer;
+    background: url(https://cdn2.hubspot.net/hub/408217/file-2064502839-png/duvine-images/button-arrow.png) no-repeat right 0 top -1px !important;
+    text-decoration: none;
+    border: none;
+    text-transform: uppercase;
+    font-family: Calibre-Light, sans-serif;
+}
+.hubspot .hs-form.stacked .actions {
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 0;
+    padding-top: 0;
+}
+.hubspot .hs-form .hs-button:hover:not(.inactive),
+.hubspot .hs-form .hs-button:active:not(.inactive),
+.hubspot .hs-form .hs-button:focus {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* NEWS */
+.Article .Thumbnail {
+  float: none;
+  width: 100%;
+}
+.Article .Thumbnail img {
+  width: auto;
+  max-width: auto;
+  margin-bottom: 15px;
+}
+.Listing .Title {
+    width: 100%;
+}
+/* Footer Nav */
+.Footer-Nav .menu-item {
+    padding-left: 5px;
+}
+.Footer-Nav .menu-item:first-child {
+    padding-left: 0;
+}
+.Footer-Nav .menu-item:before {
+    border-left: 1px solid #000;
+    content: '';
+    height: 70%;
+    position: absolute;
+    left: 0;
+    top: 15%;
+}
+.Footer-Nav .menu-item:first-child:before {
+    display: none;
+}
+.Footer-Nav .menu-item a {
+    color:#000;
+    display: block;
+    font-family: "Calibre-SemiBold";
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 4px 10px;
+}
+.Footer-Nav .menu-item a:hover {
+    background: #000;
+    color: #fff;
+}
+p.faq-more {
+  margin-bottom: 0;
+}
+/****************************************************************************
+    Responsive Media Queries
+*****************************************************************************/
+@media screen and (max-width: 68.75em) {
+  body:before {
+    content: "widescreen";
+    position: absolute;
+    top: -999em;
+    left: -999em;
+    speak: none; } }
+@media screen and (max-width: 59.375em) {
+  body:before {
+    content: "largescreen"; } }
+@media screen and (max-width: 46.875em) {
+  body:before {
+    content: "mediumscreen"; } }
+footer#footer, .Tour-Detail {
+    clear: both;
+}
+/* Headings */
+#storiesLanding .promoContent,
+#missionLanding .promoContent {
+    width: 100%;
+}
+p.explore-upcoming {
+    text-align: right;
+    margin-left: 40px;
+}
+/* Region Detail */
+.RegionDetail .Header {
+    width: 100%;
+    background-size: cover;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+}
+}
+.Page-Home {
+    margin-right: 1.0%;
+}
+.Pad-None, body.home .Pad-None {
+    padding-left: 0;
+    padding-right: 0;
+}
+/* Homepage Tour and Feature Blocks */
+.Home-Tours {
+    display: block;
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 10px 0 0 0;
+}
+.Home-Tours a {
+    display: block;
+    float: left;
+    width: 19.8%;
+    height: auto;
+    margin: 0 1px;
+}
+
+.Home-Tours a:first-child {
+    margin-left: 0px;
+}
+
+.Home-Tours a:last-child {
+    margin-right: 0px;
+}
+
+.Home-Tours img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.home-feature-2 {
+    float: right;
+    width: 55%;
+}
+.home-feature-1 {
+    float: left;
+    width: 40.0%;
+}
+.home-feature-1 img, .home-feature-2 img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.home.page table {
+    display: table;
+  margin-bottom: 30px;
+}
+.td-centered {
+    vertical-align: middle;
+    text-align: center;
+}
+img.award-image {
+    display: block;
+    float: right;
+    width: 150px;
+    max-width: 150px;
+    height: auto;
+    margin: 0 0 14px 28px;
+}
+.Column-Thirds {
+    display: block;
+    margin-bottom: 16px;
+}
+.Explore-Region-Links {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+}
+.Explore-Region-Links a, .Column-Thirds div {
+    display: block;
+    float: left;
+    width: 30%;
+    margin: 0 1.5%;
+    margin-bottom: 1.5%;
+}
+.Column-Thirds div {
+    text-align: center;
+}
+.Column-Thirds img {
+    margin-bottom: 12px;
+}
+.Explore-Region-Links a img {
+    width: 210px;
+    height: 210px;
+}
+.Difference-Brochure {
+    display: block;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 6px;
+}
+.Difference-Mrg {
+    margin-bottom: 30px;
+}
+.col-50 {
+    float: left;
+    width: 48.75%;
+}
+.col-50-right {
+    float: right;
+}
+table.table-gear, table.Tour-Dates {
+    display: table;
+}
+table.table-gear tbody, table.Tour-Dates tbody {
+    width: 100% !important;
+}
+.Tours.Listing .Listing-Item:first-child {
+    border-bottom: 2px solid #C9C8C8;
+    margin-bottom: 20px;
+}
+.Tours.Listing .Listing-Item.First {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+.Tours.Listing .Listing-Item:last-child {
+    border-bottom: none;
+}
+.Page.Double q {
+    display: block;
+    margin-top: 25px;
+}
+/* Couture Page */
+#coutureLanding .greenButtons table {
+    margin: 0 auto;
+    display: table;
+}
+
+/* Guides List/Grid */
+.Grid-Guides .Listing-Item.Related-Item,
+.Grid-Staff .Listing-Item {
+  display: block;
+  float: left;
+  width: 23%;
+    margin-right: 1%;
+    margin-left: 1%;
+    box-sizing: border-box;
+}
+.Grid-Guides .Listing-Item.Related-Item:first-child,
+.Grid-Staff .Listing-Item:first-child {
+  margin-left: 0;
+}
+.Grid-Guides .Listing-Item.Related-Item:last-child,
+.Grid-Staff .Listing-Item:last-child {
+  margin-right: 0;
+}
+.Page img.mrg-bottom {
+  margin-bottom: 30px;
+}
+.Page .Listing-Section .YouTube-Icon {
+  float: right;
+  margin-top: 3px;
+}
+body.page-id-5755 .Listing-Search .Input {
+  vertical-align: -1px;
+  width: auto;
+  min-width: 204px;
+  margin-right: 2px;
+}
+body.single-duvine_videos .Column.Two {
+  padding-top: 42px;
+}
+.Related.Video-Detail .Related-Item.Listing-Item {
+  margin: 0 0;
+}
+.video-container {
+  margin-top: 8px;
+}
+.Page-Home {
+    margin: 14px 1% 26px 1%;
+}
+.Page-Home .Column.One {
+  padding-top: 19px;
+}
+@media only screen and (max-width : 1060px) {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #viewport {
+        width: auto;
+        margin: 0 2%;
+    }
+    img {
+        max-width: 100%;
+        height: auto !important;
+        margin-right: 0px !important;
+    }
+    .Nav .Wrapper {
+        width: 100%;
+    }
+    .Slideshow.Home, .Slideshow.Home .Slideshow-Item {
+        width: 100%;
+    }
+    .Slideshow.Home a, .Slideshow.Home .Slideshow-Item a {
+        position: relative;
+        display: block;
+    }
+    .Slideshow.Home img, .Slideshow.Home .Slideshow-Item img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    /* Tours Nav Dropdown */
+    nav#nav li.menu-item-5697 ul {
+        left: -15px;
+    }
+    /* Blog & Media Nav Dropdown */
+    nav#nav li.menu-item-5708 ul {
+        left: -51px;
+    }
+  /* Subnav */
+  nav.Page ul.child-menu li.menu-item {
+    margin: 0 6px;
+  }
+  nav.Page ul.child-menu li.menu-item:first-child {
+    margin-left: 0px;
+  }
+  nav.Page ul.child-menu li.menu-item:last-child {
+    margin-right: 0px;
+  }
+    .home-feature-1 {
+        float: left;
+        width: 42.03%;
+    }
+    .home-feature-2 {
+        float: right;
+        width: 56%;
+        text-align: right;
+    }
+    /* Page and Column Styles */
+    .Page.Double {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .Page.Double .Breadcrumb {
+        padding-top: 0px;
+    }
+    .Page.Section.RegionDetail {
+        overflow: hidden;
+    }
+    .RegionDetail .Page {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .TwoColumn.Detail > .Column.One,
+  .TwoColumn.Body-Form > .Column.One {
+        width: 50%;
+    }
+    .TwoColumn.Related-Body > .Column.Two,
+    .TwoColumn > .Column.Two,
+    .TwoColumn.Detail > .Column.Two,
+  .TwoColumn.Body-Form > .Column.Two {
+        width: 46%;
+        float: right;
+    }
+    .TwoColumn.Detail.Staff {
+        padding-right: 20px !important;
+        padding-left: 20px !important;
+    }
+    .TwoColumn.Detail.Staff > .Column.Two {
+        width: 46%;
+    }
+    .HightlightCustomPage {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Where's Andy Page */
+    .TwoColumn.Body-Sub > .Column.One {
+        width: 50%;
+    }
+
+    .TwoColumn.Body-Sub > .Column.Two {
+        width: 40%;
+    }
+  .Page-Home .Column.One {
+    padding-top: 0;
+  }
+    /* Video Page */
+    .TwoColumn.Body-Related > .Column.One {
+        width: 71.5%;
+    }
+    .TwoColumn.Body-Related > .Column.One iframe{
+        width: 100%;
+    }
+    .TwoColumn.Body-Related > .Column.Two {
+        width: 25%;
+        text-align: right;
+    }
+  body.blog .TwoColumn.Body-Related > .Column.Two,
+  body.single .TwoColumn.Body-Related > .Column.Two {
+        text-align: left;
+    }
+
+    /* Region Grids */
+    .Row .Region {
+        width: 30%;
+        margin-right: 1.5%;
+        margin-left: 1.5%;
+        box-sizing: border-box;
+    }
+    /* List/Grid */
+    .Grid .Listing-Item {
+        width: 23.5%;
+        margin-right: 1%;
+        margin-left: 1%;
+        box-sizing: border-box;
+    }
+    .Grid .Listing-Item:first-child {
+        margin-left: 0;
+    }
+    .Grid .Listing-Item:last-child {
+        margin-right: 0;
+    }
+    /* Region Detail Columns */
+    .RegionDetail .Destination .Column {
+        width: 33%;
+    }
+    .RegionDetail .Destination .Column.Two {
+        width: 63%;
+        float: right;
+    }
+  /* Video */
+  .Listing-Item.Video a {
+        background: none !important;
+    }
+  .Listing-Item.Video span.Title {
+    font-size: 18px;
+    padding-top: 5px;
+    }
+    /* Tours by Type */
+    .Tour-Type-Listing .Column {
+        margin-bottom: 30px;
+    }
+    /* Tours by Date */
+    .Tours.Listing .Date {
+        width: 75px;
+    }
+    .Tours.Listing img.Thumbnail {
+    }
+    .Tours.Listing .Info {
+        float: right;
+        width: 100%;
+        max-width: 610px;
+    }
+    .Tours.Listing .Main {
+        width: 70%;
+    }
+    .Tours.Listing .Extended {
+        width: 25%;
+    }
+    /* Tour Detail */
+    .TwoColumn.Tour-Detail > .Column.One {
+        width: 55%;
+        margin: 0;
+    }
+    .TwoColumn.Tour-Detail > .Column.Two {
+        width: 38%;
+        margin: 0;
+    }
+  .Slideshow.Tour-Detail {
+        width: 100% !important;
+        max-width: 100%;
+    height: auto;
+    max-height: auto;
+    overflow: hidden;
+    margin-bottom: -25px;
+    }
+    .Slideshow.Tour-Detail img {
+        width: 100% !important;
+        max-width: 100%;
+        height: auto !important;
+    max-height: auto !important;
+    }
+    /* Footer Styles */
+    .Footer-Nav .Section.One, .Footer-Nav .Section.Three {
+        clear: both;
+        width: 100%;
+    }
+  .Footer-Nav .Two .Item.Separator {
+    padding: 1px 2px;
+  }
+  .Footer-Nav .Section.Three .Separator { display: none; }
+    .Footer-Nav .Section.Two .Center {
+        width: 100%;
+    text-align: center;
+    }
+  nav.Footer-Nav .Section.Two .Item {
+    float: none;
+    padding: 4px 6px;
+  }
+  nav.Footer-Nav .Section.Two .Separator {
+    padding: 4px 1px;
+  }
+    .Footer-Content strong {
+        float: none;
+        width: auto;
+    }
+  footer .Footer-Content .Newsletter strong {
+    float: left;
+  }
+    .FindAndy {
+        width: 100%;
+    }
+    .FindAndy h2 {
+        font-size: 80px;
+    }
+    a.Logo {
+        width: 240px;
+    }
+    a.Logo img {
+        position: relative;
+        max-width: 240px;
+        height: auto;
+        display: block;
+        margin-top: 8px;
+    }
+    table {
+        width: 100%;
+        max-width: 100% !important;
+        display: block;
+    }
+    table.ui-datepicker-calendar, table.Calendar {
+        display: table;
+    }
+    table.largayForm {
+        display: table;
+    width: 576px;
+    max-width: 576px;
+    margin: 0 auto 20px auto;
+    }
+  table.largayForm tbody {
+    display: table-row-group;
+    width: 100%;
+  }
+  table.largayForm tr, table.Calendar tr {
+    display: table-row;
+  }
+  table.largayForm td, table.Calendar td {
+    display: table-cell;
+  }
+  table.largayForm td input {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  table.largayForm td input#Key {
+    width: 249px !important;
+  }
+    table td {
+        display: block;
+        width: auto !important;
+    }
+  table td.table-cell-40 {
+        display: table-cell !important;
+        width: 40% !important;
+    }
+  table td.table-cell-60 {
+        display: table-cell !important;
+        width: 60% !important;
+    }
+  table td.td-featured {
+        display: table-cell;
+      text-align: left;
+  }
+  table table td.cell-inline {
+        display: table-cell !important;
+    padding-right: 10px;
+    vertical-align: top;
+    }
+    .ui-datepicker td {
+        display: table-cell;
+    }
+    table.table-gear td {
+        display: table-cell;
+    }
+    .TwoColumn.Related-Body > .Column.One,
+    .TwoColumn.Related-Body > .Column.Two {
+        float: none;
+        width: 100%;
+    }
+    .FindAndy h2 {
+        font-size: 60px;
+    }
+    .Slim-Form .Destination-Input {
+        width: 100%;
+        font-size: 28px;
+    }
+    img.splitterSlash {
+        display: none;
+    }
+    .RegionDetail .Destination .Tour { width: 160px; }
+    .RegionDetail .Destination .Tour div.Image { width: 160px; }
+    .RegionDetail .Scrollable-Next { right: -24px; }
+  #privateLanding p.abstract {
+    margin-bottom: 24px;
+  }
+  #privateLanding p img {
+    margin: 0 0;
+  }
+  #privateLanding img.splitterSlash {
+    display: inline;
+  }
+  #privateLanding p.letsGo {
+    padding-top: 32px;
+  }
+}
+@media only screen and (max-width : 1030px) {
+    .Tours.Listing .Info {
+        max-width: 64%;
+    }
+    footer#footer nav.Footer-Nav .Newsletter .hs_email .hs-input {
+      border: #868586 1px solid;
+    }
+}
+@media only screen and (max-width : 1020px) {
+    a.Logo {
+        width: 220px;
+    }
+    a.Logo img {
+        max-width: 220px;
+    }
+  nav.Page ul.child-menu li.menu-item {
+    margin: 0px 6px;
+    font-size: 15px;
+  }
+  .child-menu .menu-item a {
+    padding: 8px 10px;
+  }
+  .Section-Title.Headline, .Search-Results .Section .Page-Title {
+        font-size: 82px;
+    }
+    .RegionDetail .Header {
+        height: 350px;
+        overflow: hidden;
+    }
+    /*.Page {
+        padding-right: 0;
+        padding-left: 0;
+    }*/
+    .Page.Regions {
+        padding-left: 20px;
+    }
+    .Tours.Listing .Info {
+        max-width: 63%;
+    }
+}
+@media only screen and (max-width : 960px) {
+    nav.Page ul.child-menu li.menu-item {
+    margin: 0px 4px;
+  }
+  #storiesLanding .promoContent h2,
+    #missionLanding .promoContent h2 {
+        font-size: 80px;
+    }
+    .Image-Caption {
+        font-size: 80px;
+    }
+    /* Region Detail Columns */
+    .RegionDetail .Destination .Column {
+        width: 34%;
+    }
+    .RegionDetail .Destination .Image {
+        width: 100%;
+        height: 280px;
+        background-repeat: no-repeat;
+    }
+    .RegionDetail .Destination .Column.Two {
+        width: 62%;
+    }
+    .RegionDetail .Destination .Abstract {
+        padding-left: 0;
+    }
+    .Tours.Listing .Info {
+        max-width: 61%;
+    }
+    .Section-Title.Headline, .Search-Results .Section .Page-Title {
+        font-size: 68px;
+    }
+    .RegionDetail .Header {
+        width: 100%;
+        height: 300px;
+    }
+    /* Staff Detail */
+    .TwoColumn.Clear.Section.Page.Double > .Column {
+        width: 72%;
+    }
+    /* Blog Layout */
+    .TwoColumn.Body-Related > .Column.One {
+        width: 72%;
+    }
+    /* FAQs */
+    .Article .Listing-Item {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    /* Gallery Page */
+    .Gallery.Banner .Listing-Item {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+    .RegionDetail .Destination .Tour { width: 140px; }
+    .RegionDetail .Destination .Tour div.Image { width: 140px; }
+  /* Hide Right column on Video Detail page */
+  body.single-duvine_videos .TwoColumn.Body-Related > .Column.One {
+    float: none;
+    width: auto;
+    padding: 0 15px;
+    max-width: 100%;
+  }
+  body.single-duvine_videos .Column.Two {
+    display: none;
+  }
+  body.single-duvine_videos .Page.Double {
+    padding-bottom: 10px;
+  }
+}
+@media only screen and (max-width : 940px) {
+     /* Header Nav */
+    #nav .menu-item a {
+        padding:5px 15px;
+    }
+    nav.Page ul.child-menu li.menu-item {
+    font-size: 14px;
+  }
+  .TwoColumn.Tour-Detail > .Column.One {
+        width: 54%;
+    }
+    .TwoColumn.Tour-Detail > .Column.Two {
+        width: 37%;
+    }
+  .Slideshow.Tour-Detail {
+    margin-bottom: -30px;
+    }
+  .Footer-Nav .Newsletter {
+    width: 441px;
+  }
+  footer#footer nav.Footer-Nav .hubspot div.hs_email {
+    width: 140px;
+  }
+}
+@media only screen and (max-width : 920px) {
+  nav.Page ul.child-menu li.menu-item {
+    margin: 0px 2px;
+  }
+  .Tours.Listing .Info {
+        max-width: 58%;
+    }
+    .col-50 {
+        width: 48.6%;
+    }
+  .home-feature-1 { width: 41.2%; }
+  .home-feature-2 { width: 55.2%; }
+}
+@media only screen and (max-width : 900px) {
+  .Footer-Content .Social {
+    float: none;
+    display: block;
+    width: auto;
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .Footer-Content .Social span, .Footer-Content .Social a {
+    float: none;
+    display: inline-block;
+  }
+  .Footer-Nav .Newsletter {
+    float: none;
+    clear: left;
+    display: block;
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  footer .Footer-Content .Newsletter strong {
+    float: left;
+  }
+  footer#footer nav.Footer-Nav .hubspot div.hs_email {
+    float: left;
+    width: 200px;
+    margin-top: -20px;
+  }
+  footer#footer nav.Footer-Nav .hubspot .hs-form .hs-input {
+    width: 100% !important;
+  }
+  footer#footer nav.Footer-Nav .hubspot div.actions {
+    float: left;
+    width: 70px;
+    margin: -16px 0 0 12px;
+  }
+  footer#footer nav.Footer-Nav .hubspot .hs-form .hs-button.primary {
+    float: none;
+    margin: 0 0;
+  }
+}
+@media only screen and (max-width : 880px) {
+    nav.Page ul.child-menu li.menu-item {
+    margin: 0px 0px;
+  }
+  .RegionDetail .Destination .Tour { width: 130px; }
+    .RegionDetail .Destination .Tour div.Image { width: 130px; }
+}
+@media only screen and (max-width : 860px) {
+    /* Header Nav */
+  .home-feature-1 { width: 41.0% }
+  .home-feature-2 { width: 55.2% }
+  #nav .menu-item a {
+    padding:5px 10px;
+    }
+  .Home-Tours, .Explore-Region-Links {
+        text-align: center;
+    }
+    .Home-Tours a, a.explore-regions {
+        display: inline-block;
+        float: none;
+        width: 30.0%;
+        margin: 0 1.5%;
+        margin-bottom: 1.5%;
+    }
+    p.supported-organizations img {
+        margin-bottom: 8px;
+    }
+    .Tours.Listing .Info {
+        max-width: 56%;
+    }
+    .Listing-Search {
+        padding-top: 10px;
+    }
+    .Pagination {
+        padding: 20px 0px;
+    }
+  body.page-template-page-the-guides .Pagination,
+  #content .Page .Listing-News .Pagination {
+    padding: 0 0;
+  }
+  body.blog .Pagination {
+    padding-top: 6px;
+  }
+  body.page-id-5755 .Listing-Search,
+  .Page .Listing-Section .YouTube-Icon {
+    padding-top: 5px;
+  }
+}
+@media only screen and (max-width : 820px) {
+    body.page-id-5755 .Listing.Grid {
+    margin: 0 0;
+  }
+  #storiesLanding .promoContent h1,
+    #missionLanding .promoContent h1 {
+        font-size: 32px;
+    }
+    .Image-Caption {
+        font-size: 60px;
+    }
+    #storiesLanding .promoContent h2,
+    #missionLanding .promoContent h2 {
+        font-size: 68px;
+    }
+    .RegionDetail .Header {
+        height: 260px;
+    }
+    .RegionDetail .Destination .Image {
+        height: 250px;
+    }
+    .Tours.Listing .Info {
+        max-width: 54%;
+    }
+    /* List / Grid */
+    .Grid .Listing-Item {
+        width: 46%;
+        margin-right: 2%;
+        margin-left: 2%;
+        box-sizing: border-box;
+    }
+    .Grid .Listing-Item:first-child, .Grid .Listing-Item:nth-child(3) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+  .Grid .Listing-Item:nth-child(3) {
+    clear: left;
+  }
+    .Grid .Listing-Item:nth-child(2), .Grid .Listing-Item:nth-child(4) {
+        float: right;
+        margin-left: 0;
+        margin-right: 0;
+    }
+  /* Video Grid */
+  body.page-id-5755 .Listing-Row.Clear {
+    display: inline;
+    clear: none;
+    margin-left: 0.0%;
+    margin-right: -1.25%;
+  }
+  body.page-id-5755 .Listing-Row.Clear:after {
+    clear: none;
+  }
+  .Grid .Listing-Item.Video {
+      width: 30.5%;
+      margin-right: 1.25%;
+      margin-left: 1.25%;
+  }
+
+  .Grid .Listing-Item:nth-child(2),
+  .Grid .Listing-Item:nth-child(3),
+  .Grid .Listing-Item:nth-child(4) {
+      float: left;
+      clear: none;
+      margin-left: 1.25%;
+      margin-right: 1.25%;
+  }
+
+  .Grid-Bikes .Listing-Row .Listing-Item:nth-child(2n) {
+    float: right;
+
+  }
+  .Grid-Bikes .Listing-Row .Listing-Item:nth-child(2n+1) {
+    clear: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+
+  .Grid .Listing-Item.Video span.Title {
+        font-size: 16px;
+    }
+    .Copyright {
+        display: block;
+        clear: both;
+    }
+    .col-50 {
+        display: block;
+        float: none;
+        width: 100%;
+        margin-top: 16px;
+    }
+    .col-50-right {
+        float: none;
+    }
+}
+@media only screen and (max-width : 768px) {
+    /*  appendAround.js */
+    ul#menu-header-navigation {
+    height: 25px;
+  }
+  .slideshow-initial,
+    .video-initial {
+        display: none;
+    }
+    .slideshow-smallscreen,
+    .video-smallscreen {
+        display: block;
+    }
+  .video-smallscreen {
+    margin-bottom: 20px;
+  }
+  .Slideshow.Hotel-Detail, .Slideshow.Hotel-Detail a img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .Slideshow.Hotel-Detail .slick-slider {
+    margin-bottom: 20px !important;
+  }
+  .Slideshow.Tour-Detail {
+    margin-bottom: -10px;
+  }
+  /* Header Nav */
+  /*
+  ul#menu-header-navigation {
+    text-align: center;
+  }
+  */
+  ul#menu-header-navigation li {
+    display: inline-block;
+  }
+  .Inline-List li {
+    float: none;
+  }
+  #nav .menu-item a {
+    padding: 5px 7px;
+    }
+  #nav .menu-item a:first-child {
+    padding-left: 0px;
+    }
+  #nav .menu-item a:last-child {
+    padding-right: 0px;
+    }
+    #nav .menu-item.has-children > .ui-toggle-button {
+      position: absolute;
+      text-indent: -9999em;
+    }
+    /* Header */
+    a.Logo {
+        display: block;
+        position: relative;
+        float: none;
+        text-align: center;
+        height: 103px;
+        margin-top: 16px;
+    }
+    a.Logo img {
+        position: relative;
+        max-width: 170px;
+        height: auto;
+        display: block;
+        margin: 0 25px;
+        padding-bottom: 24px;
+    }
+    .Utility {
+        margin: 0 0 14px 0;
+    }
+    /* Headings */
+    #storiesLanding .promoContent h1,
+    #missionLanding .promoContent h1 {
+        font-size: 28px;
+    }
+    #storiesLanding .promoContent h2,
+    #missionLanding .promoContent h2 {
+        font-size: 58px;
+    }
+    h2.Section-Title.Headline, .Search-Results .Section .Page-Title {
+        margin: 15px 0 0;
+    font-size: 56px;
+    }
+    /* Tour Destination Columns */
+    .RegionDetail .Destination .Column,
+    .RegionDetail .Destination .Column.Two {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+    }
+    .TwoColumn.Detail.Staff > .Column.Two {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+    }
+  body.blog .TwoColumn.Body-Related > .Column.Two,
+  body.single .TwoColumn.Body-Related > .Column.Two {
+    margin-top: 30px;
+    }
+    .RegionDetail .Destination .Image {
+        display: block;
+        float: right;
+        width: 300px;
+        height: 300px;
+        margin: 0 0 24px 30px;
+    }
+    .Scrollable-Area {
+    }
+    .RegionDetail .Scrollable {
+        width: auto;
+        float: none;
+        margin: 0 24px 0 24px;
+    }
+    .RegionDetail .Destination .Tour { width: 180px; }
+    .RegionDetail .Destination .Tour div.Image { width: 180px; margin-left: 0px; }
+    /* Tours Slider */
+    .RegionDetail .Scrollable-Prev {
+        top: 36px;
+        left: -14px;
+    }
+    .RegionDetail .Scrollable-Next {
+        top: 36px;
+        right: -14px;
+    }
+    .Tours.Listing .Info {
+        max-width: 51%;
+    }
+    /* 2 Column Layouts */
+    .TwoColumn.Detail > .Column.One {
+        float: none;
+        width: 100%;
+    }
+    .TwoColumn.Related-Body > .Column.Two,
+    .TwoColumn > .Column.Two,
+    .TwoColumn.Detail > .Column.Two {
+        float: none;
+        width: 100%;
+    }
+    .wp-post-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 14px;
+    }
+
+    .attachment-news-detail {
+      width: auto;
+      max-width: none;
+    }
+  .Grid-Bikes img.wp-post-image {
+        width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    }
+  .Content-Header-Image img {
+    margin-bottom: 0;
+  }
+  .Border-Lines {
+    margin-right: 20px;
+    }
+  .Border-Lines img.wp-post-image {
+    margin-bottom: 0;
+    }
+    /* Where's Andy Page Layout */
+    .TwoColumn.Body-Sub > .Column.One {
+        width: 100%;
+    }
+    .TwoColumn.Body-Sub > .Column.Two {
+        width: 100%;
+    }
+     /* Video Page Layout */
+    .TwoColumn.Body-Related > .Column.One {
+        width: 100%;
+    }
+    .TwoColumn.Body-Related > .Column.Two {
+        width: 100%;
+        float: left;
+        text-align: left;
+    }
+    /* Blog Layout */
+    .TwoColumn.Body-Related > .Column.One {
+        width: 100%;
+    }
+    /* Region Grids */
+    .Regions .Row {
+        padding-bottom: 0;
+    }
+    .Regions .Clear:after {
+        clear: none;
+    }
+    .Row .Region {
+        width: 46%;
+        margin-right: 2%;
+        margin-left: 2%;
+        margin-bottom: 30px;
+    }
+    .Difference-Brochure {
+        margin-bottom: 1%;
+    }
+    .Difference-Brochure-1, .Difference-Brochure-2 {
+        display: block;
+        float: left;
+        width: 49.5%;
+    }
+    .Difference-Brochure-2 {
+        float: right;
+    }
+    /* Staff Detail */
+    .TwoColumn.Clear.Section.Page.Double > .Column {
+        width: 100%;
+    }
+    /* Tour Detail */
+    .TwoColumn.Tour-Detail > .Column.Two,
+    .TwoColumn.Tour-Detail > .Column.One {
+        float: none;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .Border-Lines.Offset {
+        margin: 0;
+    }
+  .Grid-Bikes .Listing-Item {
+        width: 48%;
+    }
+  .Accordian.Section {
+    margin-bottom: 0px;
+  }
+  .ui-accordion-content a.RelatedBlogItem {
+    display: block;
+    float: left;
+    width: 48%;
+    height: auto;
+    padding-bottom: 4px;
+    margin: 0 0 15px 0;
+    border-bottom: solid 1px #c0c0c0;
+  }
+  .ui-accordion-content a.RelatedBlogItem:nth-child(2n) {
+    float: right;
+
+  }
+  .ui-accordion-content a.RelatedBlogItem:nth-child(2n+1) {
+    clear: left;
+  }
+  .ui-accordion-content a.RelatedBlogItem img {
+    margin-bottom: 0px;
+  }
+  .Grid-Bikes .Listing-Title {
+    font-size: 18px;
+    }
+  .Grid .Listing-Item.Video img {
+    margin-bottom: 0;
+  }
+  .Grid .Listing-Item.Video span.Title {
+    font-size: 15px;
+  }
+
+  /* Guide Clear */
+  body.single-duvine_tours .Listing-Row.Clear {
+    clear: none;
+    margin-left: 0.0%;
+    margin-right: -1.25%;
+  }
+  body.single-duvine_tours .Listing-Row.Clear:after,
+  body.single-duvine_tours .Listing-Row.Clear:before {
+    clear: none;
+  }
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item,
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:first-child {
+    width: 30.5%;
+    margin: 0 1.5% 14px;
+  }
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:nth-child(2),
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:nth-child(3),
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:nth-child(4) {
+        float: left;
+        clear: none;
+    margin-left: 1.25%;
+        margin-right: 1.25%;
+    }
+  body.single-duvine_news .Page.Double {
+    padding-bottom: 0;
+  }
+    /* Footer Links */
+    .Footer-Nav .Section.Two {
+        text-align: center;
+    }
+    .Footer-Nav .Item {
+        float: none;
+    }
+    /* Footer - Social Links */
+    .Footer-Content .Social {
+        width: 100%;
+        text-align: center;
+    }
+    .Footer-Content .Social span:first-child {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+    .Footer-Nav .Section.Two span:first-child {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+    .Footer-Nav .Section.Three .Separator {
+        display: none;
+    }
+    .Newsletter, form.Newsletter-Form {
+        display: block;
+        float: none;
+        width: 88%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    form.Newsletter-Form input.Footer-Text-Input {
+        display: block;
+        float: left;
+        box-sizing: border-box;
+        width: 75%;
+    }
+    form.Newsletter-Form button.SignUp {
+        display: block;
+        float: right;
+        box-sizing: border-box;
+        width: 22%;
+    }
+  .Copyright { font-size: 13px; letter-spacing: 1px; }
+    /* Couture Tours */
+    #coutureLanding .tagline,
+    #coutureLanding .taglineNote,
+    #coutureLanding .dividedLine,
+    #coutureLanding p.abstract,
+    #coutureLanding .LetsGo {
+        width: 100%;
+    }
+    #coutureLanding .abstract span {
+        padding: 0px 10px;
+    }
+    /* Private Tours */
+    #privateLanding #promoContent {
+    padding-top: 36px;
+  }
+  #privateLanding .tagline,
+    #privateLanding .taglineNote,
+    #privateLanding .dividedLine,
+    #privateLanding p.abstract,
+    #privateLanding .LetsGo {
+        width: auto;
+    }
+  #privateLanding .subTagline {
+    font-size: 55px;
+  }
+  #privateLanding .tagline {
+    font-size: 76px;
+  }
+    #privateLanding .dividedLine {
+    margin: 0 30px;
+    padding-top: 15px;
+  }
+  #privateLanding .abstract span {
+        padding: 0px 10px;
+    }
+  #privateLanding p {
+    padding-right: 30px;
+    padding-left: 30px;
+    }
+  #privateLanding img.splitterSlash {
+    max-width: 56px;
+  }
+  #privateLanding .taglineNote {
+    margin-top: 15px;
+    }
+}
+@media only screen and (max-width : 750px) {
+    .Gallery.Banner .Listing-Item { padding:0 12px; }
+    .Gallery .Listing-Item img {
+        width: 23%;
+        margin: 0 1% 1% 1%;
+        vertical-align: top;
+    }
+}
+@media only screen and (max-width : 740px) {
+    .Home-Tours a {
+        width: 29.0%;
+        margin: 0 1.5% 1.5%;
+    }
+  table td.td-centered {
+        display: block;
+        width: auto !important;
+    }
+  table td.td-featured {
+      text-align: center;
+    padding-bottom: 15px;
+  }
+  table td.td-featured-2 {
+    padding-bottom: 0;
+  }
+  #nav .menu-item a {
+    padding: 5px 6px;
+    }
+  .Grid .Listing-Item.Video {
+    height: auto;
+    min-height: 156px;
+    margin-top: -14px;
+  }
+  body.page-id-5755 .Listing-Search,
+  .Page .Listing-Section .YouTube-Icon {
+    margin-bottom: 10px;
+  }
+  .Page .Listing-Section .YouTube-Icon {
+    margin-top: 0;
+  }
+}
+@media only screen and (max-width : 720px) {
+  .home-feature-1 { width: 40.8% }
+  .home-feature-2 { width: 55.4% }
+  .Tours.Listing .Info {
+        max-width: 47%;
+    }
+    .Tours.Listing .Main {
+        float: none;
+        width: 100%;
+    }
+    .Tours.Listing .Extended {
+        float: none;
+        width: 100%;
+    }
+}
+@media only screen and (max-width : 700px) {
+  #nav .menu-item a {
+    padding: 5px 2px;
+    }
+  table.largayForm {
+    display: block;
+    width: 94% !important;
+    max-width: 94% !important;
+    margin: 0 auto;
+    }
+}
+@media only screen and (max-width : 670px) {
+  a.Logo {
+        height: auto;
+    }
+  .Utility {
+        position: relative;
+        right: auto;
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+  }
+  body.single-duvine_faqs .Experience, .Page.Double.Calendar-Header {
+    padding-top: 15px;
+  }
+  .Page.Double h1.Page-Title, .Page.Double.Calendar-Header h1.Page-Title {
+    padding-top: 0px;
+  }
+  .TwoColumn.Detail.Staff {
+    padding-top: 20px;
+  }
+  .TwoColumn.Body-Form > .Column.One,
+  .TwoColumn.Body-Form > .Column.Two {
+        float: none;
+    width: 100%;
+    }
+  body.single-duvine_faqs .Experience h2.Section-Title.Headline {
+    margin: 0 0 15px;
+  }
+  /* HomePage Journeys Img */
+    .td-centered a img {
+        width: 100% !important;
+        height: auto;
+        margin-right:0px !important;
+        margin-bottom: 24px;
+    }
+  footer#footer nav.Footer-Nav .hubspot .hs-form .hs-input {
+    width: 200px !important;
+  }
+  .Page.Double article.Page {
+    padding: 0 0px;
+  }
+    .Article .Thumbnail {
+        float: left;
+        margin: 0px 0px 15px 0px;
+        margin-right: 30%;
+    }
+    .Article .Listing-Item {
+        margin-right: 15px;
+        margin-left: 15px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+    }
+    .Article .Listing-Item:first-child {
+        padding-top: 0px;
+    }
+    .Page-Title {
+        padding-top: 20px;
+    }
+  .Page.Content h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+    .Page-Title.Highlight {
+        width: auto;
+        margin: 0;
+        padding: 5px;
+    }
+  .Page-Title.Tour-Detail {
+    padding-top: 4px;
+  }
+    .Breadcrumb.Section  {
+        margin-top: 20px;
+    }
+    .Action-Nav {
+        border-top: 2px solid #3f3f3f;
+        margin-top: 0;
+        padding-top: 10px;
+    }
+    .Page-Title.Tour {
+        padding-top: 20px;
+    }
+    .Tours.Listing .Info {
+        max-width: 43%;
+    }
+    .Search-Form,
+    .Phone-Numbers,
+    nav.Page,
+    .Utility-Nav {
+        display: none;
+    }
+    a.Logo img {
+        max-width: 160px
+    }
+    #missionLanding .promoContent {
+        margin-top: 24px;
+    }
+    .Info.Body {
+        padding-bottom: 0px;
+    }
+  p.faq-more {
+    margin-bottom: 12px;
+  }
+  body.page-template-page-the-guides .Pagination {
+    padding: 15px 0 0 0;
+  }
+  body.page-template-page-the-guides .Listing.Grid {
+    margin-top: 15px;
+  }
+  .Page .hs-form fieldset {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-right: 0px !important;
+  }
+  .Page .hs-form fieldset.form-columns-1 .hs-input {
+    width: 100% !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    height: 26px !important;
+  }
+  .hs-form fieldset .hs_phone input.hs-input,
+  .hs-form fieldset .hs_email input.hs-input {
+    padding: 3px 8px !important;
+    height: 26px !important;
+  }
+  .Page .hs-form fieldset.form-columns-2 .input {
+    margin-right: 0 !important;
+  }
+  .Page .hs-form .inputs-list input[type=radio].hs-input, .hs-form .inputs-list input[type=checkbox].hs-input {
+    width: auto !important;
+    height: auto !important;
+    margin-right: 5px !important;
+  }
+  body.blog .Pagination, body.blog .Listing-Search {
+    padding-top: 20px;
+  }
+  body.page-id-5755 .Page.Listing-Section {
+    padding-top: 20px;
+  }
+  .Grid .Listing-Item.Video {
+    min-height: 149px;
+  }
+  .Page.Double.Top.Breadcrumb,
+  .Page.Double .Breadcrumb {
+    padding-top: 15px;
+  }
+/****************************************************
+    Smallscreen nav
+****************************************************/
+  #primaryNav {
+        background: #313131;
+        height: 100%;
+        margin-top: 0;
+        padding-top: 120px;
+        padding-bottom: 120px;
+        position: fixed;
+        right: -85%;
+        width: 85%;
+        top: 0;
+        transition: .25s ease;
+        z-index: 400;
+    }
+    #primaryNav .Wrapper {
+        position:fixed;
+        top: 0;
+        bottom: 0;
+        right: -85%;
+        width: 85%;
+        margin-top: 80px;
+        padding-bottom: 80px;
+        transition: .25s ease;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        -webkit-backface-transition: hidden;
+    }
+    .nav-is-active #primaryNav,
+    .nav-is-active #primaryNav .Wrapper {
+        right: 0;
+    }
+    body {
+        transition: .25s ease;
+        left:0;
+    }
+    body.nav-is-active {
+        position: fixed;
+        width: 100%;
+        left: -80%;
+    }
+    .telephone-smallscreen {
+        display: block;
+        position: absolute;
+        left: 15px;
+        top: 0;
+    }
+    .nav-is-active .nav-menu-toggle {
+        position: fixed;
+        top: 33px;
+        right: 40px;
+        z-index: 500;
+    }
+    .nav-menu-toggle {
+        display: block;
+        position: absolute;
+        right: 40px;
+        top: 0;
+        z-index: 401;
+    }
+    .js #nav {
+      position: absolute;
+      top: -999em;
+      left: -999em;
+    }
+    .nav-is-active #nav {
+      position: static;
+    }
+    #nav:target {
+      position: static;
+    }
+    #nav .menu-item {
+      display: block;
+      float: none;
+      border-bottom: 1px solid #444;
+    }
+  ul#menu-header-navigation {
+    text-align: left;
+  }
+    #nav .menu-item a {
+        line-height: 60px;
+        padding-bottom: 0;
+        padding-top: 0;
+        padding-left: 24px;
+    font-size: 18px;
+    line-height: 56px;
+    }
+    #nav .menu-item.has-children {
+        position: relative;
+        padding-right: 50px;
+    }
+    #nav li.menu-item-has-children:hover > a,
+    #nav .nav-menu > li.menu-item-has-children > a:hover,
+    #nav .nav-menu > li.current-menu-item > a,
+    #nav .nav-menu > li.current-menu-ancestor > a {
+        background: none;
+    }
+  #nav .menu-item.has-children a {
+       padding-left: 50px;
+     }
+    #nav .menu-item.has-children {
+    padding-right: 0px;
+  }
+  #nav .menu-item a:last-child {
+    border-bottom: 1px solid #333;
+    padding-left: 75px;
+  }
+  #nav .sub-menu .menu-item {
+    background-color: #444444;
+  }
+/*
+    #nav .menu-item.has-children > .ui-toggle-button {
+        background: #666;
+        color: #fff;
+        width: 10%;
+        min-width: 50px;
+        float: right;
+        border: 0;
+        line-height: 60px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        vertical-align: baseline;
+        zoom: 1;
+        *display: inline;
+        *vertical-align: auto;
+    }
+*/
+    #nav .menu-item.has-children > .ui-toggle-button,
+    #nav .menu-item.has-children > .ui-toggle-button:hover {
+        background-image: url('/wp-content/themes/duvine/assets/images/icons/plus-circle2.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 16px 16px;
+        border: 0;
+        line-height: normal;
+        padding: 0;
+        position: absolute;
+        top: 21px;
+        right: 10px;
+        height: 16px;
+        width: 16px;
+        outline: 0;
+        text-indent: -9999em;
+    }
+    #nav .menu-item.has-children > .ui-toggle-button.is-open,
+    #nav .menu-item.has-children > .ui-toggle-button.is-open:hover {
+        background-image: url('/wp-content/themes/duvine/assets/images/icons/minus-circle2.png');
+    }
+    #nav .sub-menu {
+        background: #444;
+    padding: 0 0;
+        position: static;
+        clear: both;
+    }
+    #nav .sub-menu a {
+        color: #fff;
+    font-size: 16px;
+    line-height: 44px;
+    }
+    #nav .sub-menu .menu-item > a:hover {
+        color: #DAE035;
+        text-decoration: none;
+    }
+    #nav .sub-menu[aria-expanded="false"] {
+        display: none;
+    }
+    #nav .sub-menu-control {
+      display: block;
+    }
+    #menu-item-5697 .sub-menu {
+        -webkit-columns: 1 auto;
+           -moz-columns: 1 auto;
+                columns: 1 auto;
+        height: auto;
+        width: auto;
+    }
+    #nav #menu-item-5697 .tour-nav-item a {
+        background: none;
+        font-family: 'Calibre-Regular';
+    }
+  #nav li#menu-item-5719,
+  #nav li#menu-item-5813,
+  #nav li#menu-item-5814 {
+    font-weight: bold;
+  }
+}
+@media only screen and (max-width : 640px) {
+  .home-feature-1 { width: 40.2% }
+  .home-feature-2 { width: 55.4% }
+  #storiesLanding .promoContent .abstract {
+        font-size: 15px;
+        line-height: 1.32em;
+    }
+    .Story-Form .Radio-Group, .Tours-Form .Radio-Group {
+        bottom: -44px;
+    }
+    .Listing-Total.Section {
+        padding-top:30px;
+    }
+  body.page-id-5755 .Listing-Total.Section {
+    padding-top: 0;
+  }
+  body.page-template-page-the-guides .Listing-Total.Section,
+  body.blog .Listing-Total.Section {
+    padding-top: 0px;
+  }
+    .Tours.Listing .Listing-Item {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .Tours.Listing .Listing-Item:first-child, .Tours.Listing .Listing-Item.First {
+        margin-bottom: 5px;
+    }
+    .Listing-Total {
+        text-align: left;
+    }
+    .Tours.Listing .Date {
+        float: left;
+        width: 100%;
+        text-align: center;
+        padding: 0px;
+    }
+    .Tours.Listing a img {
+        float: left;
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+    .Tours.Listing .Next {
+        display: none;
+    }
+    .Tours.Listing .Info {
+        clear: right;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+    }
+    .Tour-Type-Listing .Column {
+        margin: 0px 1% 2% 1%;
+        width: 48%;
+    }
+    /* Filtering Options */
+    .Story-Form .Inline-Group .Field, .Tours-Form .Inline-Group .Field {
+        width: 45%;
+        margin-right:1%;
+        margin-bottom: 1%;
+    }
+    .Story-Form .SelectBox, .Tours-Form .SelectBox, .Tours-Form input.SelectDate, .Tours-Form .SelectBox-disabled {
+        width: 100% !important;
+        background-position: 98% 8px;
+        padding: 3px 8px;
+  }
+    #storiesLanding .promoContent .abstract {
+        padding-right: 32px;
+        padding-left: 32px;
+    }
+    .RegionDetail .Header {
+        height: 230px;
+    }
+    .RegionDetail .Destination .Image {
+        width: 260px;
+        height: 260px;
+    }
+    .Column-Thirds div {
+        float: none;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    h1.Page-Title {
+        font-size: 28px;
+    }
+  h2.Section-Title.Headline, .Search-Results .Section .Page-Title {
+    font-size: 48px;
+  }
+    .Image-Caption {
+        font-size: 40px;
+    }
+    blockquote {
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+        -webkit-margin-start: 20px;
+        -webkit-margin-end: 20px;
+    }
+    ul {
+        display: block;
+        -webkit-margin-before: 0em;
+        -webkit-margin-after: 1.0em;
+        -webkit-margin-start: 14px;
+        -webkit-padding-start: 14px;
+    }
+    .Explore-Region-Links {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .Explore-Region-Links a {
+        display: block;
+        float: left;
+        width: 47%;
+        margin: 0 1.5%;
+        margin-bottom: 1.5%;
+    }
+    .Explore-Region-Links a img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+    /* Private Tours */
+  #privateLanding #promoContent {
+    padding-bottom: 40px;
+  }
+  #privateLanding .subTagline {
+    font-size: 32px;
+  }
+  #privateLanding .tagline {
+    font-size: 56px;
+  }
+    #privateLanding .taglineNote {
+        font-size: 20px;
+    }
+    #privateLanding p.abstract {
+        margin-bottom: 32px;
+    }
+    /* Reserve Now */
+    #reserveLanding h2 {
+        font-size: 62px;
+    }
+  hr { border-bottom-width: 1px; }
+    table.largayForm tbody {
+    display: block;
+    width: 100%;
+  }
+  table.largayForm tr {
+    display: block;
+    width: 100%;
+  }
+  table.largayForm td {
+    display: table-cell;
+  }
+  table.largayForm td {
+    display: block;
+    width: 100%;
+    }
+  table td.table-cell-40, table td.table-cell-60 {
+        display: block !important;
+        width: auto !important;
+    }
+  table.Calendar {
+    border-spacing: 2px;
+  }
+  table.Calendar td.Tour {
+    padding-left: 10px;
+  }
+  /* Footer Style */
+    .Footer-Nav .menu-item::before {
+        display: none;
+    }
+    .Footer-Nav .Item.Separator {
+        display: none;
+    }
+}
+@media only screen and (max-width : 620px) {
+  body.blog .Listing-Total.Section {
+    float: none;
+    clear: left;
+  }
+  body.blog .Listing-Search {
+    float: none;
+    width: 100%;
+  }
+  body.blog .Listing-Search input#searchString {
+    width: 80%;
+    box-sizing: border-box;
+  }
+  body.blog .Listing-Search button.Action {
+    width: auto;
+    float: right;
+  }
+  .Grid .Listing-Item.Video {
+    min-height: 140px;
+  }
+}
+@media only screen and (max-width : 580px) {
+  .Calendar-Link, .Calendar-Legend {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    float: left;
+  }
+  .Calendar-Legend {
+    float: right;
+  }
+  .Calendar-Title {
+    margin-top: 55px;
+  }
+  .Page.Double.Calendar-Header h1.Page-Title {
+    font-size: 26px;
+  }
+  .Page.Double.Calendar-Header span.Current-Year {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .Page.Double.Calendar-Header hr {
+    margin-top: 10px;
+  }
+  /* Region Grids */
+  h2.Section-Title.Headline, .Search-Results .Section .Page-Title {
+    font-size: 44px;
+  }
+  .Row .Region {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .RegionDetail .Destination .Image {
+        float: none;
+        width: 100%;
+        height: 300px;
+        background-size: cover;
+        margin: 0 0 16px 0px;
+    }
+    img.attachment-large {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+  /* Guides List/Grid */
+  .Grid-Guides .Listing-Item.Related-Item,
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item,
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:first-child {
+    width: 48%;
+    margin: 0 0 15px;
+  }
+  .Grid-Guides .Listing-Item.Related-Item:nth-child(2),
+  .Grid-Guides .Listing-Item.Related-Item:nth-child(4),
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:nth-child(2),
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:nth-child(4) {
+    float: right;
+  }
+  .Grid-Guides .Listing-Item.Related-Item:nth-child(3),
+  body.single-duvine_tours .Grid .Listing-Item.Related-Item:nth-child(3) {
+    clear: left;
+  }
+  /* Videos */
+    .Page .Listing.Grid {
+    clear: both;
+  }
+  .Grid .Listing-Item.Video,
+  .Grid .Listing-Item.Video:first-child {
+        width: 48%;
+    margin: 0 0 14px 0;
+    float: left;
+    height: auto;
+    min-height: 124px;
+    }
+  .Grid .Listing-Item.Video:nth-child(3) {
+    clear: left;
+    }
+  .Grid .Listing-Item.Video:nth-child(2),
+  .Grid .Listing-Item.Video:nth-child(4) {
+    float: right;
+    }
+  .Listing-Item.Video a {
+        background: none !important;
+    }
+  .Listing-Item.Video img {
+        width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: auto;
+    }
+  .Grid .Listing-Item.Video span.Title {
+    padding-bottom: 8px;
+  }
+  .Footer-Nav .Newsletter {
+    width: 380px;
+    margin: 0 auto;
+  }
+  footer .Footer-Content .Newsletter strong {
+    float: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  footer#footer nav.Footer-Nav .hubspot .hs-form .hs-input {
+    width: 282px !important;
+    margin-top: 10px;
+    margin-left: 16px;
+  }
+/*  .Footer-Nav .Section.Three.Clear .Newsletter {
+    margin-top: 25px;
+  }
+  .Footer-Content .Copyright {
+    margin-top: 55px;
+  }*/
+}
+@media only screen and (max-width : 560px) {
+  body.blog .Listing-Search input#searchString {
+    width: 76%;
+  }
+  #missionLanding .promoContent p {
+    padding: 0 36px;
+    }
+  /* Private Tours */
+    #privateLanding #promoContent {
+    padding-top: 30px;
+  }
+    #privateLanding .dividedLine {
+    margin: 0 20px;
+  }
+  #privateLanding p {
+    padding-right: 20px;
+    padding-left: 20px;
+    }
+  #privateLanding p img {
+    margin: 0 10px;
+    }
+  #privateLanding img.splitterSlash {
+    display: none;
+  }
+}
+@media only screen and (max-width : 520px) {
+    .Home-Tours a {
+        width: 49.0%;
+        margin: 0px;
+    }
+    /* Headings */
+    #storiesLanding .promoContent h1,
+    #missionLanding .promoContent h1 {
+        font-size: 26px;
+    }
+    #storiesLanding .promoContent h2,
+    #missionLanding .promoContent h2 {
+        font-size: 46px;
+    }
+    #storiesLanding .promoContent .abstract {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    .RegionDetail .Header {
+        height: 200px;
+    }
+    .Section-Title.Headline, .Search-Results .Section .Page-Title {
+        font-size: 56px;
+    }
+    .Thumbnail {
+        float: none;
+        width: auto;
+    }
+    .RegionDetail .Scrollable-Next {
+        right: -10px;
+    }
+    .Gallery.Banner .Listing-Item { padding:0 8px; }
+}
+@media only screen and (max-width : 500px) {
+    .Calendar-Title {
+    width: auto;
+  }
+  table.largayForm {
+        display: table;
+        margin: 0 0 20px 0px;
+    }
+    .Page form input[type='text'],
+    .Page form input[type='password'],
+    .Page form input.Text,
+    .Page form textarea,
+    .Page form select {
+        width: 100% !important;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+  body.blog .Listing-Search input#searchString {
+    width: 73% !important;
+  }
+  .Related.Video-Detail .Related-Item.Listing-Item,
+  .Related.Video-Detail .Related-Item.Listing-Item:nth-child(2) {
+    display: block;
+    width: auto;
+    height: auto;
+    border: none;
+    float: none;
+    text-align: left;
+    margin: 0 0 10px 0;
+  }
+  .Related.Video-Detail .Related-Item.Listing-Item:last-child {
+    margin-bottom: 0;
+  }
+  .Related.Video-Detail .Related-Item span.Title {
+    text-align: left;
+    width: auto;
+  }
+  /* Private Tours */
+  #privateLanding #promoContent {
+    padding-bottom: 36px;
+  }
+  #privateLanding p {
+    padding-right: 26px;
+    padding-left: 26px;
+  }
+  #privateLanding .subTagline {
+    font-size: 28px;
+  }
+  #privateLanding .tagline {
+    font-size: 50px;
+  }
+  #privateLanding p img {
+    margin-bottom: 15px;
+    }
+}
+@media only screen and (max-width : 480px) {
+
+    .Related .Related-Item.Listing-Item.Search-Tour-Item {
+      margin: 0 auto 15px;
+      width: 100%;
+    }
+    /* Pagination & Search form*/
+    .Listing-Search {
+        width: 100%;
+    }
+    .Listing-Search #searchString {
+        float: left;
+        width: 50% !important;
+    }
+  body.page-template-page-the-guides .Listing-Total.Section {
+    padding-top: 15px;
+  }
+  body.page-template-page-the-guides .Listing.Grid {
+    margin-top: 15px;
+  }
+    .Listing-Total.Section {
+        padding-right: 0;
+    }
+    .Pagination {
+        clear: both;
+        padding: 10px 0;
+        text-align: right;
+    }
+  body.page-template-page-the-guides .Pagination {
+    padding-top: 0px;
+  }
+  body.blog .Pagination {
+    padding-top: 12px;
+  }
+    .Pagination-Label {
+      display: block;
+      float: left;
+      margin-bottom: 10px;
+    }
+    .Pagination-Separator {
+      display: none;
+    }
+    .page-numbers {
+        display: none;
+    }
+    .page-numbers.prev,
+    .page-numbers.next {
+        display: inline;
+    }
+    .Pagination .Button.Light {
+        display: block;
+        margin-bottom: 10px;
+    }
+    .Listing-Image img {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+  .Article a.Thumbnail {
+    display: block;
+    float: none;
+    margin: 0 0;
+    padding: 0;
+  }
+    /* Reserve Now */
+    #reserveLanding h2 {
+        font-size: 51px;
+    }
+    /* Tours-Discover */
+    .Tour-Type-Listing img {
+         display: none;
+     }
+    /* Homepage Features */
+    .home-feature-1 {
+        display: block;
+        float: none;
+        width: 100%;
+        padding-top: 15px;
+    }
+  .home-feature-1 img {
+        display: block;
+    float: left;
+    width: 48%;
+    max-width: 48%;
+    margin: 0;
+    }
+  .home-feature-1 a:nth-child(2) img {
+    float: right;
+    }
+    .home-feature-2 {
+        display: block;
+        float: none;
+        width: 100%;
+        text-align: left;
+    }
+    /* Regions and Tours */
+    .Page.Regions {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .Tour-Type-Listing .Column {
+        float: none;
+        display: block;
+        width: 100%;
+        padding: 0 0 30px 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .Tour-Type-Listing .Column .Tour-Name {
+        width: 100%;
+    }
+    .Tour-Type-Listing .Abstract {
+        height: auto;
+        padding-bottom: 16px;
+    }
+    .Button.Discover span {
+        width: 50%;
+    }
+    /* Listing Rows / Grids */
+    .Grid .Listing-Item, .Grid .Listing-Item:first-child {
+        margin: 0 auto 12px auto;
+        float: none;
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #C9C8C8;
+    }
+  .Grid .Listing-Item.Related-Item {
+        float: left;
+        margin: 0 0 12px 0;
+    width: 48%;
+    height: auto;
+    border-bottom: 1px solid #C9C8C8;
+    }
+  .Grid .Listing-Item.Related-Item:nth-child(2) {
+        float: right;
+    }
+    .Grid .Listing-Item.Hotel .Slim {
+        display: none;
+    }
+    .Related-Item .Sub-Title {
+        border-bottom: none;
+    }
+    blockquote {
+        -webkit-margin-before: 0.25em;
+        -webkit-margin-after: 0.25em;
+        -webkit-margin-start: 12px;
+        -webkit-margin-end: 12px;
+    }
+  body.blog .Listing-Search input#searchString {
+    width: 70% !important;
+  }
+    .Footer-Nav .Newsletter {
+    width: 320px;
+    margin: 0 auto;
+  }
+  footer#footer nav.Footer-Nav .hubspot .hs-form .hs-input {
+    width: 222px !important;
+    margin-left: 16px;
+  }
+    .slider-nav {
+        display: none;
+    }
+    .Gallery.Banner .Listing-Item {
+        padding: 0 0;
+    }
+    .Gallery .Listing-Item img {
+        width: 30.333333333333%;
+        margin: 0 1.5% 2% 1.5%;
+    }
+    .AccordianHeader {
+        height: auto;
+    }
+}
+@media only screen and (max-width : 460px) {
+  table.Calendar {
+    border-spacing: 1px;
+  }
+  table.Calendar th {
+    font-size: 12px;
+  }
+  table.Calendar td, table.Calendar td.Tour {
+    padding: 1px 1px;
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 584px){
+  footer .Footer-Content .Copyright {
+    padding-top: 180px;
+  }
+}
+@media only screen and (max-width : 420px) {
+    .Home-Tours a {
+        width: 47%;
+        margin: 0 0 0 5px;
+    }
+    .Home-Tours a:nth-child(3n+3) {
+      clear: left;
+      margin-left: 0;
+    }
+    /* Filtering Options */
+    .Story-Form .Inline-Group .Field, .Tours-Form .Inline-Group .Field {
+        width: 90%;
+        margin-right:0;
+        margin-bottom: 1%;
+    }
+    .Difference-Brochure {
+        margin-bottom: 16px;
+    }
+    .Difference-Brochure a {
+        float: none;
+    }
+    .Difference-Brochure img {
+        width: 100% !important;
+        margin: 0;
+        max-width: 100%;
+    }
+    .Explore-Region-Links a, .Difference-Brochure-1, .Difference-Brochure-2 {
+        float: none;
+        width: 100%;
+        margin: 0 0 16px 0;
+    }
+    .RegionDetail .Header {
+        height: 180px;
+    }
+    p.explore-upcoming {
+        text-align: left;
+        margin-left: 0;
+    }
+    form.Newsletter-Form input.Footer-Text-Input {
+        width: 64%;
+    }
+    form.Newsletter-Form button.SignUp {
+        width: 30%;
+    }
+    p.supported-organizations {
+    text-align: center;
+  }
+  p.supported-organizations,
+    p.supported-organizations a,
+    p.supported-organizations img {
+        line-height: 1.0em !important;
+    }
+    p.supported-organizations img {
+        display: block;
+        float: none !important;
+        height: auto !important;
+        margin: 0 auto !important;
+    }
+    p.supported-organizations span {
+        display: none;
+    }
+    table.table-gear td {
+        font-size: 12px !important;
+        padding: 2px 2px;
+    }
+    .Gallery.Banner .Listing-Item {
+        padding: 0 0;
+    }
+    .Gallery .Listing-Item img {
+        width: 46.0%;
+        margin: 0 2% 2% 2%;
+    }
+  #missionLanding .promoContent p {
+    padding: 0 28px;
+    }
+  .Copyright { font-size: 12px; letter-spacing: 0px; }
+  .Copyright .Separator { display: none; }
+  body.blog .Listing-Search input#searchString {
+    width: 66% !important;
+  }
+  table.Calendar {
+    width: 100%;
+    margin: 10px 0 15px 0;
+  }
+}
+@media only screen and (max-width : 380px) {
+  body.blog .Listing-Search input#searchString {
+    width: 62% !important;
+  }
+  .Footer-Nav .Newsletter {
+    width: 290px;
+    margin: 0 auto;
+  }
+  footer#footer nav.Footer-Nav .hubspot .hs-form .hs-input {
+    width: 192px !important;
+  }
+  .Page.Double.Calendar {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  table.Calendar {
+    width: 100% !important;
+    margin: 10px 0 15px 0px;
+  }
+  table.Calendar th {
+    font-size: 11px;
+    padding: 1px 1px;
+  }
+  table.Calendar td {
+    font-size: 10px;
+    padding: 1px 1px;
+  }
+  footer .Footer-Content .Copyright {
+    padding-top: 170px;
+  }
+}

@@ -1,0 +1,121 @@
+/* ==============================================================
+ *
+ * Standard page
+ *
+ * ============================================================== */
+
+
+.pagehero{
+    @include hero;
+}
+
+.pageintro{
+    padding-top: 20px;
+    font-size: $fz_big;
+
+    p{
+        max-width: $width_limiter;
+    }
+
+    @include lt-tablet{
+        font-size: 1.2em;
+    }
+
+    + .site-main .entry-content.type-page{
+        padding-top: 2em;
+    }
+}
+
+.entry-content.type-page{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-width: $width_limiter;
+
+    p img{
+        margin-top: 40px;
+        margin-bottom: 60px;
+
+        &.alignleft{
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.content__secondary{
+    margin-top: 2em;
+
+    &.d-column-container{
+        margin-top: 0;
+    }
+}
+
+.anchor-links a {
+    display: inline-block;
+
+    @include lt-tablet {
+        display: none;
+    }
+}
+
+.anchor-links span {
+    margin-bottom: 10px;
+}
+
+.anchor-links-select, .anchor-links span {
+    display: none;
+
+    @include lt-tablet {
+        display: inline-block;
+    }
+}
+
+a.anchor-target {
+  display: block;
+  position: relative;
+  top: -150px;
+  visibility: hidden;
+}
+
+body.home {
+  .content-area {
+    padding-bottom: 40px;
+  }
+  .block--tourfinder_banner {
+    margin-bottom: -44px;
+    @include lt-tablet{
+      margin-bottom: -30px;
+    }
+  }
+  .block--bold_statement {
+    .boldstatement {
+      padding-bottom: 0;
+    }
+    .boldstatement__award {
+      margin-bottom: 20px;
+    }
+  }
+  .block--featured_tours {
+    padding-top: 55px;
+    padding-bottom: 0;
+  }
+  .block--callout_banner {
+    padding-top: 40px;
+    padding-bottom: 30px;
+  }
+  .block--featured_content_carousel {
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
+  .block--featured_blog_posts {
+    padding-top: 15px;
+    padding-bottom: 20px;
+  }
+  .block--instagram_slider {
+    padding-top: 50px;
+    padding-bottom: 0;
+  }
+  .block--custom_slider {
+    margin-top: 40px;
+  }
+}

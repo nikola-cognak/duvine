@@ -1,0 +1,183 @@
+.weather__widget {
+  .desktop-subtitle {
+      display: none;
+      @media screen and (min-width: 1175px) {
+        display: block;
+      }
+  }
+
+  .duvine-accordion {
+      max-width: 385px;
+
+      .accordion__header {
+        background-color: $black;
+        color: $white;
+        margin-top: 25px;
+        padding-bottom: 10px;
+        @include icon-right( $icon_chevron_down__white, 24px, 20px, 10px, 20px );
+        &.active { 
+          background-color: $light_green;
+          color: $black;
+          @include icon-right( $icon_chevron_down__black, 24px, 20px, 10px, 20px );
+        }
+        /*@include lt-tablet {
+          padding-top: 15px;
+        }
+        .column-accordion-header {
+          padding-left: 20px;
+          font-weight: bold;
+          color: $white;
+        }*/
+        @media screen and (min-width: 1175px) {
+          display: none;
+        }
+
+        .accordion-title {
+            padding: 10px 10px 0px 15px;
+            font-weight: 300;
+        }
+      }
+      .accordion__content {
+        margin-top: 20px;
+        border-bottom: none;
+        @media screen and (min-width: 1175px) {
+          display: block;
+          margin-top: 0px;
+        }
+        .weather-degree-toggle {
+          width: inherit;
+          text-align: left;
+          margin-bottom: 5px;
+          @media screen and (min-width: 1175px) {
+            text-align: right;
+          }
+          a {
+            color: $brand_primary;
+          }
+        }
+        .weather-footnote {
+          font-size: 12px;
+          margin-top: 30px;
+          @media screen and (min-width: 1175px) {
+            font-size: 14px;
+          }
+        }
+      }
+      @media screen and (min-width: 1175px) {
+          max-width: none;
+      }
+  }
+
+  .weather-table {
+    display:inline-block;
+    margin: 20px 0 0;
+
+    .desktop-header {
+      .cell {
+          background-color: $black;
+          color: $white;
+          border-bottom: 1px solid $white;
+      }
+      @media screen and (min-width: 1175px) {
+
+        border-bottom: none;
+        /*background-color: #000;*/
+        .cell:not(:first-of-type):not(:last-of-type) {
+            border-right: 1px solid $white;
+        }
+        .cell:last-of-type {
+            border-right: 1px solid $black;
+        }
+      }
+    }
+
+    .mobile-column {
+      display: inline-block;
+      vertical-align: top;
+      /*margin-right: -4px;*/
+      @media screen and (min-width: 1175px) {
+          display: flex;
+          margin-right: 0;
+      }
+      &:nth-of-type(2) {
+        @media screen and (min-width: 1175px) {
+          background-color: #f8f8f8;
+        }
+      }
+      &:nth-of-type(4) {
+        @media screen and (min-width: 1175px) {
+          background-color: #f8f8f8;
+        }
+      }
+      &:not(.desktop-header) .cell {
+        &:nth-child(odd):not(.mobile-header) {
+          @media screen and (max-width: 1174px) {
+            background-color: #f8f8f8;
+          }
+        }
+        @media screen and (min-width: 1175px) {
+            border-right: 1px solid #d8d8d8 !important;
+        }
+        &:not(.mobile-header) {
+          border-right: 1px solid #d8d8d8;
+          border-bottom: 1px solid #d8d8d8;
+          @media screen and (min-width: 1175px) {
+            border-bottom: none;
+          }
+        }
+      }
+
+      .cell {
+        display: block;
+        width: 65px;
+        text-align: center;
+        padding: 15px;
+        &.empty {
+          background-color: $white !important;
+        }
+        &.mobile-header {
+          background-color: $black;
+          color: $white;
+          border-right: 1px solid $white;
+          height: 75px;
+          &:last-of-type {
+            border-right: 1px solid $black;
+          }
+          @media screen and (min-width: 1175px) {
+            background-color: transparent;
+            color: #000;
+            min-width: 120px;
+            height: auto;
+          }
+        }
+        span {
+          &.mm {
+            display: none;
+          }
+        }
+      }
+      &:last-of-type {
+        .cell {
+          &.mobile-header {
+            border-right: 1px solid $black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.private-weather {
+  &.border {
+    border-top: 1px solid $brand_gray;
+    padding-top: 60px;
+  }
+  .toursection__header {
+    margin-bottom: 0;
+  }
+  .weather {
+    &__widget {
+      margin-top: 0;
+    }
+  }
+}

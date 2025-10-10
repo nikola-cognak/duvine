@@ -1,0 +1,29 @@
+/* ==============================================================
+ *
+ * Promos
+ *   - like the callouts for private tours
+ *
+ * ============================================================== */
+
+
+.headerpromo__wrapper{
+    @media screen and (min-width: 680px){
+        display: flex;
+        align-items:flex-start;
+        align-items: center;
+    }
+}
+.headerpromo__title{
+    flex: 1 1 auto;
+    padding-right: 20px;
+}
+.privatepromo{
+    display: inline-block;
+    background-color: $offwhite;
+    color: $type_gray;
+    padding: 24px 24px;
+
+    + .tourdates__cancellation{
+        margin-top: 1em;
+    }
+}

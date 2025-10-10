@@ -1,0 +1,142 @@
+/* ==============================================================
+ *
+ * Interactions
+ *
+ * ============================================================== */
+
+
+@mixin active-flip( $activeClass: active ){
+    &:after{
+        transform: scaleY(1);
+        transition: all $ux_timing;
+    }
+
+    .#{$activeClass} &:after,
+    &.#{$activeClass}:after{
+        transform: scaleY(-1);
+    }
+}
+
+@mixin ratio($width, $height) {
+	position: relative;
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
+		
+	>.in {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		
+	}
+}
+
+
+/* ------------------------------------------
+ * --link interactions
+ * ------------------------------------------ */
+
+@mixin ux-underline( $bgColor: currentColor ){
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+    overflow: hidden;
+    display: inline-block;
+
+    &:after{
+        content:"";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $bgColor;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all .2s;
+    }
+    
+    &:hover:after,
+    .active &:after{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+
+
+/* ------------------------------------------
+ * --loading
+ * ------------------------------------------ */
+
+
+@mixin loadable{
+    position: relative;
+
+    &:after{
+        content:"";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $white;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .4s;
+        z-index: 9;
+    }
+
+
+    &.duvine__loading{
+        &:after{
+            opacity: .7;
+            visibility: visible;
+        }
+        &:before{
+            content:"";
+            display: block;
+            position: absolute;
+            width: 102px;
+            height: 102px;
+            background-image: url(../../img/loading-wheel.png);
+            background-size: 100%;
+            top: 100px;
+            left: 50%;
+            margin-left: -51px;
+            z-index: 10;
+            animation: rotate 4s infinite linear;
+        }
+    }
+}
+
+
+
+/* ------------------------------------------
+ * --animations
+ * ------------------------------------------ */
+
+@keyframes pulse {
+  from {
+    opacity: .4; }
+  to {
+    opacity: 1; } }
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

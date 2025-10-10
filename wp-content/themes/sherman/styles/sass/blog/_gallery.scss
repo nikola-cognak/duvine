@@ -1,0 +1,128 @@
+/* ==============================================================
+ *
+ * Blog - Gallery story styles
+ *
+ * ============================================================== */
+
+
+.gallery-entry-header{
+    @include gt-tablet{
+        text-align: right;        
+    }
+}
+.gallery-post__slide-count{
+    letter-spacing: .4em;
+    font-size: $fz_small;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 14px;
+    margin-right: 10px;
+}
+
+.gallery-slider__pagenav{
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateX(0px);
+    transition: all .2s;
+    
+    svg{
+        display: block;
+    }
+
+    polyline{
+        stroke: $brand_primary;
+        fill: transparent;
+        stroke-width: 80px;
+    }
+
+    &.nav-prev, &.nav-next {
+      background-color: transparent;
+      color: #fff;
+      padding: 0;
+      border: none;
+    }
+
+    &.nav-prev:hover{
+        transform: translateX(-2px);
+    }
+    &.nav-next:hover{
+        transform: translateX(2px);
+    }
+}
+
+
+.galleryarticle{
+    @include loadable;
+
+    &:after{
+        top: 76px;
+    }
+}
+
+.gallery-post__gallery-slider {
+    @extend .l-cf;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+
+.gallery-post__slide{
+    display: none;
+    
+    &:first-child,
+    &.slick-slide{
+        display: block;
+    }
+}
+
+.gallery-post__slidecontainer{
+    @include gt-tablet{
+        display: flex;
+    }
+}
+
+.gallery-slider__text {
+    margin-bottom: 40px;
+
+    .entry-title{
+        margin-bottom: 40px;
+        line-height: 1.1;
+
+        @include lt-desktop{
+            font-size: 3em;
+        }
+    }
+
+    @include gt-tablet{
+        width: 480px;
+        flex: 0 0 480px;
+        padding-right: 40px;
+        margin-bottom: 0;
+    }
+}
+
+.gallery-slider__image {
+    @include gt-tablet{
+        flex: 1 1 auto;
+    }
+    
+    img{
+        display: block;
+        width: 100%;
+    }
+}
+
+.gallery-image__caption{
+    margin-top: 30px;
+}
+
+.gallery-image__caption--underimage{
+    padding-left: 40px;
+    border-left: 1px solid $brand_primary;
+
+    @include lt-tablet{
+        padding-left: 20px;
+    }
+}

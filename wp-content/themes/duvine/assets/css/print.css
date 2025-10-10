@@ -1,0 +1,23 @@
+
+#header,
+nav.Page,
+.No-Print,
+.Social-Content,
+#footer {
+    display: none !important;
+}
+
+.AccordianHeader {
+    background: none !important;
+    color: #000;
+    font-weight: 700;
+    text-align: left;
+}
+
+.AccordianItem {
+    display: block !important;
+}
+
+.AccordianItem.No-Print {
+    display: none !important;
+}

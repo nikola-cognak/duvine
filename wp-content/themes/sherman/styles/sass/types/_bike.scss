@@ -1,0 +1,65 @@
+/* ==============================================================
+ *
+ * Bike page
+ *
+ * ============================================================== */
+
+.bike {
+    &__header {
+        @include gt-mobile{
+            display: flex;
+        }
+    }
+
+    &__photo {
+        margin-bottom: 40px;
+
+        @include gt-mobile{
+            flex: 50%;
+            margin-top: 102px;
+            padding-right: 40px;
+            margin-bottom: 0;
+        }
+    }
+
+    &__subheader {
+        
+        @include gt-mobile{
+            flex: 50%;
+        }
+    }
+
+    &__quickinfo {
+        @include type-bold;
+        color: $text_color;
+    }
+    
+    &__entry {
+        
+        border-top: $ruleheight solid $offwhite;
+        margin-top: 40px;
+        padding-top: 40px;
+        padding-bottom: 80px;
+
+        @include gt-mobile{
+            display: flex;
+        }
+    }
+
+    &__info {
+        @include gt-mobile{
+            flex: 0 0 50%;
+            padding-right: 40px;
+        }
+    }
+
+    &__content {
+        margin-top: 40px;
+        max-width: 550px;
+
+        @include gt-mobile{
+            flex: 50%;
+            margin-top: 0;
+        }       
+    }
+}
