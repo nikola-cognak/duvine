@@ -1,0 +1,146 @@
+/* ==============================================================
+ *
+ * Search
+ *
+ * ============================================================== */
+
+
+/* ------------------------------------------
+ * --modal
+ * ------------------------------------------ */
+
+.searchmodal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding-top: 180px;
+    background-color: $offblack;
+    background-color: rgba( $offblack, .9 );
+    opacity: 0;
+    visibility: hidden;
+    transition: all .6s;
+}
+.searchmodal--active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-form{
+    position: relative;
+}
+
+.assistive-text{
+    display: none;
+}
+
+.search-form input[type="search"]{
+    display: block;
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 2px solid $brand_gray;
+    width: 100%;
+    padding-right: 54px;
+    color: $white;
+    font-size: $fz_blockheader;
+
+    &:focus{
+        outline: none;
+    }
+
+    &.mobilesearch{
+        font-size: $font_size;
+    }
+}
+
+
+.searchform__submit{
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    @include icon($icon_magnifying_glass_white, 48px, 48px);
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -24px;
+    cursor: pointer;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.searchform__submit--mobile{
+    background-size: 50%;
+}
+
+
+/**
+ * --close
+ */
+
+// .closesearch{
+//     @include icon($icon_close_white, 44px, 44px);
+//     position: absolute;
+//     top: 108px;
+//     right: 10px;
+//     background-size: 24px;
+
+//     .logged-in.admin-bar &{
+//         top: 140px;
+//     }
+// }
+
+
+/* ------------------------------------------
+ * --resutls
+ * ------------------------------------------ */
+
+.search .site-content{
+    overflow: visible;
+
+    .content-area{
+        @include loadable;
+    }
+    
+}
+
+.searchresults{
+    padding-top: 40px;
+}
+
+.searchresults__results + .searchresults__results{
+    border-top: 1px solid $rule_gray;
+}
+.d-searchresult{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 1px solid $rule_gray;
+
+    &:first-child{
+        border-top: 0;
+    }
+}
+.searchresult__header .searchresult__link{
+    color: $brand_primary;
+}
+.search__entrysummary{
+    margin-top: 30px;
+}
+.searchresult__type{
+    color: $type_gray;
+    margin-bottom: 1em;
+}
+
+.no-results{
+    padding-top: 40px;
+
+    .page-content{
+        margin-top: 20px;
+    }
+}

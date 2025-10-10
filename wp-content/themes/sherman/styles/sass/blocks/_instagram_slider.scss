@@ -1,0 +1,94 @@
+/* ==============================================================
+ *
+ * Instagram slider block
+ *
+ * ============================================================== */
+
+.block--instagram_slider{
+    @include blockpad;
+}
+
+
+.instaslider__header{
+    display: flex;
+    align-items: baseline;
+}
+.instaslider__title{
+    flex: 1 0 auto;
+}
+.insta__cta{
+    @include type-bold;
+    @include icon-left( $icon_instagram, 28px, 28px );
+    flex: 0 0 auto;
+}
+
+
+.instaslider{
+    overflow: hidden;
+}
+.insta__list{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+
+    .sk-slider-nav{
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        bottom: 0;
+        padding: 10px;
+        width: 56px;
+        background-color: $white;
+        background-color: rgba($white, .6);
+        opacity: 0;
+        transition: opacity .4s;
+
+        svg{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 28px;
+        }
+    }
+    .nav-previous{
+        left: 0;
+    }
+    .nav-next{
+        right: 0;
+    }
+
+    &:hover .sk-slider-nav{
+        opacity: 1;
+    }
+
+
+
+}
+.insta__post{
+    float: left;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: none;
+
+    &.slick-slide{
+        display: block;
+    }
+
+    img{
+        display: block;
+        width: 100%;
+    }
+}
+
+.insta__postimg{
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    display: block;
+    width: 100%;
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}

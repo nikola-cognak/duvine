@@ -1,0 +1,635 @@
+/* ==============================================================
+ *
+ * Typography
+ *
+ * ============================================================== */
+
+
+/* ------------------------------------------
+ * --vars
+ * ------------------------------------------ */
+
+$font_size: 16px;
+$line_height: 1.6;
+$line_height_header: 1.26;
+
+$fz_super: 6.25em;              // 100px
+$fz_super_mobile: 3.75em;
+
+$fz_pageheader: 4.375em;         // 70px
+$fz_pageheader_mobile: 2.625em;
+
+$fz_blockheader: 2.625em;        // 42px
+$fz_blockheader_home: 2.188em;        // 35px
+$fz_blockheader_mobile: 1.575em;
+
+$fz_big: 1.625em;                // 26px
+$fz_big_mobile: 1.25em;
+
+$fz_emphasis: 1.25em;            // 20px
+$fz_emphasis_mobile: 1.1em;
+
+$fz_small: .875em;               // 14px
+$fz_verysmall: .75em;            // 12px
+
+
+@mixin type-main{
+    font-family: "Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+@mixin type-bold{
+    font-family: "Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+@mixin type-secondary{
+    font-family: "Chronicle Display A", "Chronicle Display B", serif;
+    font-style: normal;
+    font-weight: 700;
+}
+
+@mixin uppercase( $letterspacing: .04em ){
+    text-transform: uppercase;
+    letter-spacing: $letterspacing;
+}
+
+@mixin half-rule-under( $width: 200px ){
+    position: relative;
+    padding-bottom: 16px;
+
+    &:after{
+        content:"";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: $ruleheight;
+        width: $width;
+        background-color: $brand_secondary;
+    }
+}
+
+
+/* ------------------------------------------
+ * --base
+ * ------------------------------------------ */
+
+body,
+button,
+input,
+select,
+textarea {
+    @include type-main;
+    color: $text_color;
+    font-size: $font_size;
+    line-height: $line_height;
+
+    @include lt-desktop{
+        font-size: $font_size - 2;
+    }
+}
+
+
+
+/* --------------------------------------------
+ * --headers
+ * -------------------------------------------- */
+
+
+.superheader{
+    @include type-secondary;
+    font-size: $fz_super;
+    line-height: 1;
+
+    @include lt-tablet{
+        font-size: $fz_super_mobile;
+    }
+}
+
+.pageheader{
+    @include type-secondary;
+    font-size: $fz_pageheader;
+    line-height: $line_height_header;
+
+    @include lt-tablet{
+        font-size: $fz_pageheader_mobile;
+    }
+}
+
+.pageheader--padbottom{
+    padding-bottom: .2em;
+}
+
+.blockheader{
+    @include type-secondary;
+    font-size: $fz_blockheader;
+    line-height: $line_height_header;
+
+    a{
+        color: inherit;
+    }
+
+    @include lt-mobile{
+        font-size: $fz_blockheader_mobile;
+    }
+}
+.blockheader--white{
+    color: $white;
+}
+.blockheader--accent{
+    @include half-rule-under(100px);
+}
+/* change size only for home page */
+body.home {
+    .blockheader{
+        font-size: $fz_blockheader;
+    }
+}
+
+
+.tertiaryheader{
+    @include type-secondary;
+    font-size: $fz_big;
+    line-height: $line_height_header;
+
+    a{
+        color: inherit;
+    }
+}
+
+
+.capsheader{
+    @include type-bold;
+    @include uppercase;
+    font-size: $fz_small;
+}
+
+
+
+/* --------------------------------------------
+ * --basic
+ * -------------------------------------------- */
+
+p + p{
+    margin-top: 1em;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+.blockmenu{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li{
+        display: block;
+    }
+}
+
+.baselist{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+.image__caption{
+    color: $type_gray;
+    font-size: $fz_small;
+    margin-top: 10px;
+}
+
+
+/* ------------------------------------------
+ * --content
+ * ------------------------------------------ */
+
+
+.d-content {
+
+    h2, h3{
+        @extend .blockheader;
+        
+        a{
+            @include type-secondary;
+            color: $brand_primary;
+        }
+        strong{
+            font-weight: 700;
+        }
+    }
+
+    h4{
+        @include type-bold;
+        font-size: $fz_emphasis;
+    }
+    
+    h2 + *,
+    h3 + *,
+    h4 + *,
+    ul + *,
+    ol + *,
+    p + h2,
+    p + h3,
+    p + ol,
+    p + ul{
+        margin-top: 1em;
+    }
+
+    p + h4{
+        margin-top: 1.5em;
+    }
+
+    ul li{
+    
+        + li{
+            margin-top: 1em;
+        }
+
+        &:before{
+            content:'\2022';
+            display: block;
+            position: relative;
+            max-width: 0px;
+            max-height: 0px;
+            left: -1em;
+            top: 0;
+            color: $black;
+        }
+    }
+    ol li{
+        margin-top: 1em;
+    }
+
+    ul.menu li:before{
+        display: none;
+    }
+
+    a{
+        @extend .basiclink;
+        &.linked-image {
+          &:hover {
+            &:after {
+              opacity: 0;
+            }
+          }
+        }
+    }
+
+    .nolink-hover:after,
+    .nolink-hover a:after{
+        display: none;
+    }
+
+    .cta, main article a[href^="#"] {
+        color: $white;
+        @include type-main;
+        line-height: 1;
+
+        &:after{
+            display: none;
+        }
+    }
+}
+
+.d-content--padtop{
+    margin-top: 1em;
+}
+.d-content__leade{
+    font-size: 1.4em;
+    @include lt-tablet{
+        font-size: 1.2em;
+    }
+}
+
+
+
+/* ------------------------------------------
+ * --cta
+ * ------------------------------------------ */
+
+
+.anchor-link {
+     /* old style.
+    font-size: 14px;
+    font-family: "Gotham SSm A", "Gotham SSm B", Helvetica, Arial, sans-serif;
+    font-weight: normal!important;
+    color: #000!important;
+    margin-right: 50px;
+
+    &:after {
+        opacity: 1!important;
+        background-color: #000!important;
+    }
+
+    &:focus, &:active, &:hover {
+        &:after {
+            opacity: 1;
+        }
+    }
+
+    */
+
+    display: inline-block;
+    background-color: $brand_primary;
+    color: $white;
+    padding: 12px 32px;
+    border: 2px solid $brand_primary;
+    cursor: pointer;
+    transition: all .2s;
+    line-height: 1;
+
+    &:focus{
+        outline:none;
+    }
+
+    &:hover{
+        background-color: $white;
+        color: $brand_primary;
+    }
+
+    @include lt-tablet{
+        padding-top: 13px;
+        padding-bottom: 13px;
+    }
+}
+
+body.home .block--bold_statement .boldstatement.l-container{
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+    .boldstatement__award{
+        background-color: #dbe056;
+        display: block;
+        padding: 20px 0 20px 0;
+    }
+    .cta{
+        margin-bottom: 40px;
+    }
+    .boldstatement__statement{
+        max-width: 1460px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.cta, main article a[href^="#"]:not(.tourlisting__datetrigger):not(.anchor-link):not(.gallery-slider__pagenav){
+    display: inline-block;
+    background-color: $brand_primary;
+    color: $white;
+    padding: 12px 32px;
+    border: 2px solid $brand_primary;
+    cursor: pointer;
+    transition: all .2s;
+    line-height: 1;
+
+    &:focus{
+        outline:none;
+    }
+
+    &:hover{
+        background-color: $white;
+        color: $brand_primary;
+    }
+
+    @include lt-tablet{
+        padding-top: 13px;
+        padding-bottom: 13px;
+    }
+}
+button.cta, main article a[href^="#"]{
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.cta--outline{
+    background-color: $black;
+    color: $white;
+    border-color: $white;
+
+    &:hover{
+        color: $black;
+    }
+}
+
+// on hover, white outline and transparent background
+.cta--hoverwhite{
+    &:hover{
+        background-color: transparent;
+        color: $white;
+        border-color: $white;
+    }
+}
+
+.cta--secondary{
+    @include type-bold;
+    @include uppercase;
+    background-color: $brand_secondary;
+    color: $black;
+    &.sold-out {
+        background-color: $black;
+        color: $darkgray;;
+        text-transform: none;
+        font-weight: 300;
+        border: 2px solid $black;
+    }
+    &.call-to-book {
+        color: $white;
+        text-transform: none;
+        background-color: $black;
+        border-color: $brand_secondary;
+        font-weight: 300;
+        &:hover {
+            color: $black;
+            border-color: $brand_secondary;
+            background-color: $brand_secondary;
+        }
+    }
+}
+.cta--noclick{
+    cursor: default;
+}
+span {
+    &.note {
+        font-style: italic;
+        font-size: $fz_small;;
+        color: $brand_gray;
+    }
+}
+
+
+// basic links
+.basiclink{
+    @include type-bold;
+    display: inline-block;
+    color: $brand_primary;
+    position: relative;
+    line-height: 1.6;
+
+    &:after{
+        content:"";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: $brand_primary;
+        opacity: 0;
+        transition: opacity .2s;
+    }
+
+    &:hover:after{
+        opacity: 1;
+    }
+}
+
+
+
+
+// underlined links
+.underlinedlink{
+    display: inline-block;
+    padding-bottom: 0;
+    border-bottom: 1px solid currentColor;
+}
+
+
+
+
+// loading
+.cta--hasloader{
+    position: relative;
+    transition: padding-right .4s;
+}
+
+.cta--loading{
+    padding-right: 60px;
+}
+.cta__loadingspinner {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -4px;
+    font-size: 0;
+    opacity: 0;
+    transition: opacity .4s;
+
+    .cta--loading &{
+        opacity: 1;
+    }
+
+    li{
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 2px;
+        margin-right: 2px;
+        background-color: lighten( $brand_primary, 10% );
+        opacity: .4;
+        animation: .6s infinite alternate pulse;
+
+        &:nth-child(2){
+            animation-delay: .3s;
+        }
+        &:nth-child(3){
+            animation-delay: .6s;
+        }
+    }
+}
+
+
+/* ------------------------------------------
+ * --util
+ * ------------------------------------------ */
+
+
+.t-center{
+    text-align: center;
+}
+.t-right{
+    text-align: right;
+}
+
+.t-white{
+    color: $white;
+}
+.t-blue{
+    color: $brand_primary;
+}
+.t-padtop{
+    padding-top: 40px;
+}
+.t-padtop-2em{
+    padding-top: 2em;
+}
+
+.t-half-rule-under{
+    @include half-rule-under;
+}
+.t-half-rule-under--shorter{
+    @include half-rule-under(100px);
+}
+
+
+/**
+ * -quicksections
+ */
+.quicksection{
+    margin-top: 60px;
+
+    p{
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+}
+
+.quicksection--printonly{
+    display: none;
+
+    @media print{
+        display: block;
+    }
+}
+
+
+
+
+/* ------------------------------------------
+ * --tours
+ * ------------------------------------------ */
+
+.tourmeta{
+    color: inherit;
+    display: inline-block;
+
+    @include lt-mobile{
+        display: block;
+    }
+}
+
+.filtercell--level {
+    .filtercell__label {
+        .tourmeta{
+            display: inline-block;
+        }
+    }
+}
+
+.tourmeta--separator + .tourmeta--separator{
+
+    @include gt-mobile{
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 1px solid $brand_gray;
+    }
+}
+
+

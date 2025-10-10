@@ -1,0 +1,64 @@
+/* ==============================================================
+ *
+ * Featured stats shortcodes
+ *
+ * ============================================================== */
+
+
+.featuredstats{
+    background-color: $offblack;
+    padding: 20px;
+    display:flex;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+.featuredstats__stat{
+    flex: 1 1 auto;
+    color: $brand_secondary;
+}
+.stat__label{
+    @include uppercase;
+}
+.stat__value{
+    @include type-secondary;
+    margin-top: 10px;
+}
+
+
+/* ==============================================================
+ *
+ * Responsive WordPress video shortcodes
+ *
+ * ============================================================== */
+.wp-video, video.wp-video-shortcode, .mejs-container, .mejs-overlay.load {
+  width: 100% !important;
+  height: 100% !important;
+}
+.mejs-container {
+  padding-top: 56.25%;
+}
+.wp-video, video.wp-video-shortcode {
+  max-width: 100% !important;
+}
+video.wp-video-shortcode {
+  position: relative;
+}
+.mejs-mediaelement {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.mejs-controls {
+  display: none;
+}
+.mejs-overlay-play {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto !important;
+  height: auto !important;
+}

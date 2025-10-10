@@ -1,0 +1,130 @@
+.block--riding_levels {
+  margin-bottom: 40px;
+}
+.tourlevels {
+  &__grid {
+    margin-top: 40px;
+  }
+  &__level {
+    position: relative;
+    &:not(:last-child) {
+      border-right: 1px solid #d8d8d8;
+    }
+    &.active {
+      .accordion-title {
+        color: $black;
+      }
+      .accordion__content {
+        padding: 0 10px;
+      }
+    }
+    @include lt-tablet {
+      margin-bottom: 40px;
+    }
+    .accordion__header {
+      background-color: $black;
+      color: $white;
+      @include icon-right( $icon_chevron_down__white, 24px, 20px, 10px, 20px );
+      &.active { 
+        background-color: $light_green;
+        color: $black;
+        @include icon-right( $icon_chevron_down__black, 24px, 20px, 10px, 20px );
+      }
+      @include lt-mobile {
+        padding-top: 15px;
+      }
+      .level-accordion-header {
+        padding-left: 20px;
+        font-weight: bold;
+        color: $white;
+      }
+      @include gt-mobile {
+        display: none;
+      }
+    }
+    .header-image {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      @include lt-mobile {
+        display: none;
+      }
+      .header-level {
+        @include type-bold;
+        font-size: 47px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      .image-container {
+        padding-left: 0; /*30px*/
+      }
+    }
+    .top-text {
+      border-bottom: 1px solid $rule_gray_alt;
+      padding: 0 0 20px;
+      margin: 10px 0 20px;
+      font-size: 0.875em;
+      line-height: 25px;
+      font-weight: bold;
+    }
+    .bottom-text {
+      &__header {
+        text-transform: uppercase;
+        font-size: 0.875em;
+        line-height: 25px;
+        font-weight: bold;
+      }
+      &__copy {
+        font-size: 0.875em;
+        line-height: 25px;
+      }
+      ul {
+        margin-left: 0;
+        padding-left: 0;
+        li {
+          margin-bottom: 25px;
+        }
+      }
+    }
+    .accordion__content {
+      border-bottom: none;
+      padding-bottom: 45px;
+      @include gt-mobile {
+        display: block !important;
+      }
+      .bottom-text {
+        a {
+          &.cta {
+            position: absolute;
+            bottom: 0;
+
+          }
+        }
+      }
+      @include lt-mobile {
+        .bottom-text {
+          a {
+            &.cta {
+              display: block;
+              text-align: center;
+              position: relative;
+            }
+          }
+        }
+      }
+    }
+  }
+  .download-guides {
+    margin: 47px 0 20px;
+    a {
+      display: inline-block;
+      color: $brand_primary;
+      font-weight: 600;
+      img {
+        vertical-align: middle;
+        margin-left: 5px;
+      }
+    }
+  }
+}

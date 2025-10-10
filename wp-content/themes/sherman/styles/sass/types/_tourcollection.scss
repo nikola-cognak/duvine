@@ -1,0 +1,77 @@
+/* ==============================================================
+ *
+ * Tour Collection page
+ *
+ * ============================================================== */
+
+
+.collection__main{
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+.collection__header--padbottom{
+    padding-bottom: 60px;
+}
+
+.collection__hero{
+    @include hero;
+}
+
+
+/* ------------------------------------------
+ * --child collections
+ * ------------------------------------------ */
+
+.collection__children{
+    padding-bottom: 80px;
+}
+
+.collection__childtitle{
+    @include uppercase;
+}
+
+.childcollections__grid{
+    @include gt-tablet{
+        display: flex;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+}
+.childcollection{
+    margin-top: 40px;
+
+    @include gt-tablet{
+        flex: 1 1 33.333333%;
+        min-width: 33.3333333%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+.childcollection__header{
+    margin-bottom: 40px;
+}
+.childcollection__image{
+    display: block;
+    margin-bottom: 20px;
+    
+    img{
+        width: 100%;
+        display: block;
+    }
+}
+
+.childcollection__excerpt{
+    color: $white;
+    margin-bottom: 20px;
+}
+
+
+/* ------------------------------------------
+ * --dark background template
+ * ------------------------------------------ */
+
+.tour_collection-template-tour-collection-dark-background .type-tour_collection{
+    background-color: $black;
+    color: $white;
+    padding-bottom: 0;
+}

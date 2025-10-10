@@ -1,0 +1,23 @@
+/* ==============================================================
+ *
+ * Callout banner block
+ *
+ * ============================================================== */
+
+.block--callout_banner{
+    @extend .l-container;
+    @include blockpad;
+    max-width: 1460px!important;
+
+    .page-template-default &{
+        @extend .l-container--small;
+    }
+}
+.calloutbanner__banner{
+    text-align: center;
+    background-color: $offwhite;
+    padding: 30px;
+}
+.calloutbanner__content{
+    margin-top: 20px;
+}

@@ -1,0 +1,38 @@
+/* ==============================================================
+ *
+ * Tourguides
+ *
+ * ============================================================== */
+
+
+
+.tourguide {
+    margin-top: 40px;
+    flex-grow: 0;
+
+    @include gt-mobile{
+        width: 50%;
+    }
+}
+
+.tourguide__role {
+    @include uppercase;
+    color: $type_gray;
+    span:nth-child(2)::before {
+        content: "+";
+    }
+}
+
+.tourguide__headshot{
+    margin-bottom: 10px;
+    img{
+        width: 100%;
+        display: block;
+    }
+}
+.tourguide__headshotplaceholder{
+    display: block;
+    background-color: $offwhite;
+    height: 0;
+    padding-bottom: 74.63414634%;
+}

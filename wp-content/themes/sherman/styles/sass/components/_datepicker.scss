@@ -1,0 +1,174 @@
+/* ==============================================================
+ *
+ * Dateslider UIs
+ *
+ * ============================================================== */
+
+
+$navWidth: 36px;
+
+.dateslider{
+    position: relative;
+}
+
+
+.dateslider__sliderwrap{
+    overflow: hidden;
+    width: 100%;
+}
+.dateslider__slider{
+    display:flex;
+    transition: all $ux_timing;
+
+    .tourdates &{
+        margin-left: -#{$navWidth};
+        margin-right: -#{$navWidth};
+    }
+}
+.dateslider__el{
+    flex: 0 0 100%;
+    padding: 30px $navWidth;
+}
+.dateslider__el--yearcount-2{
+    flex: 0 0 50%;
+}
+
+.dateslider__elheader{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6px;
+    align-items: baseline;
+
+    .tourdates &,
+    .chosen-drop &{
+        border-bottom: 1px solid $brand_secondary;
+        margin-bottom: 6px;
+        text-align: center;
+        display: block;
+    }
+}
+
+.dateslider__eltitle{
+    color: $white;
+    font-size: $fz_small;
+    display: inline-block;
+}
+
+.dateslider__datelist,
+.dateslider__dateblocks{
+    @extend .baselist;
+}
+.dateslider__datelist{
+    column-count: 2;
+
+    .tourdates &{
+        margin-top: 12px;
+    }
+}
+.dateslider__date{
+    padding-bottom: .5em;
+    color: $white;
+    &--soldout {
+      color: $darkgray;
+    }
+}
+
+.dateslider__elcontainer{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 260px;
+}
+.dateslider__dateblocks{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -6px;
+    margin-right: -6px;
+
+    .dateslider__monthblock{
+        @include uppercase;
+        color: $white;
+        font-size: $fz_small;
+        text-align: center;
+        flex: 0 0 33.333333%;
+        padding: 6px;
+        cursor: pointer;
+
+        label.passed {
+            background: black!important;
+            border: 0px!important;
+        }
+
+        .tourfinderbanner__datepicker &{
+            flex: 0 0 25%;
+        }
+
+        > label{
+            display: block;
+            height: 0;
+            padding-bottom: 100%;
+            padding-bottom: calc( 100% - 2px );
+            position: relative;
+            background-color: $darkgray;
+            border: 1px solid $darkgray;
+
+
+
+            > span{
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                text-align: center;
+                transform: translateY(-50%);
+            }    
+        }
+
+        input[type="checkbox"] + label:before{
+            display: none;
+        }
+
+        input[type="checkbox"]:checked + label{
+            border-color: $brand_secondary;
+            border-width: 2px;
+        }
+    }
+}
+
+
+
+
+/**
+ * --nav
+ */
+
+.dateslider__navlink{
+    position: absolute;
+    top: 45px;
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    margin-top: -18px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto 20px;
+    cursor: pointer;
+}
+.dateslider__navlink--prev{
+    left: 40px;
+    background-image: $icon_chevron_left;
+
+    .tourdates &{
+        left: -#{$navWidth};
+    }
+}
+.dateslider__navlink--next{
+    right: 40px;
+    background-image: $icon_chevron_right;
+
+    .tourdates &{
+        right: -#{$navWidth};
+    }
+}
+.dateslider__navlink--hidden{
+    display: none;
+}

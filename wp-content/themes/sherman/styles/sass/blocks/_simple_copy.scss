@@ -1,0 +1,13 @@
+/* ==============================================================
+ *
+ * Simple copy block
+ *
+ * ============================================================== */
+
+.block--simple_copy{
+    @extend .l-container;
+    
+    .page-template-default &{
+        @extend .l-container--small;
+    }
+}

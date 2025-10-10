@@ -1,0 +1,383 @@
+/* ==============================================================
+ *
+ * Filters
+ *
+ * ============================================================== */
+
+
+.filterpill{
+    position: relative;
+    z-index: 2;
+    padding: 8px 24px 5px 5px;
+    margin: 8px 0 0 8px;
+    max-width: 100%;
+    border-radius: 3px;
+    background-color: $offwhite;
+    color: $type_gray;
+    font-size: $fz_small;
+    line-height: 1;
+    cursor: default;
+}
+
+.filterpill__close{
+    position: absolute;
+    top: 50%;
+    right: -3px;
+    display: block;
+    width: 34px;
+    height: 34px;
+    margin-top: -17px;
+    background-image: $icon_close;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size: 9px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+
+
+/* ------------------------------------------
+ * --active filters
+ * ------------------------------------------ */
+
+.activefilters{
+    padding-bottom: 40px;
+}
+
+
+/* ------------------------------------------
+ * --tourfilters
+ * ------------------------------------------ */
+
+
+.duvinefilters{
+    /*border-bottom: $ruleheight solid $offwhite;*/
+
+    @include gt-tablet {
+        margin-top: 20px;
+    }
+
+    @include lt-tablet{
+        visibility: hidden;
+        opacity: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto;
+        padding: 20px;
+        background-color: $white;
+        z-index: 21;
+        transition: all .4s;
+        border-bottom: 0;
+        padding-top: 130px;
+    }
+
+    .tourfilters--active &{
+        visibility: visible;
+        opacity: 1;
+    }
+
+}
+
+.tourfilters__container{
+
+    .chosen-container {
+        background-color: $white;
+    }
+    @include gt-tablet{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+.tourlist__count {
+  text-transform: uppercase;
+  padding-bottom: 30px;
+}
+
+.tourfilters__apply{
+    -webkit-flex: 1 auto;
+    -ms-flex: 1 auto;
+    flex: 1 auto;
+    align-self: flex-end;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: right;
+    padding-bottom: 20px;
+    @include lt-mobile{
+        display: none;
+    }
+}
+
+.tourfilter__mobiletrigger{
+    @include icon-left($icon_filter, 32px, 32px);
+    @include uppercase;
+    @include type-bold;
+    display: inline-block;
+    margin-bottom: 20px;
+    color: $brand_primary;
+
+    @include gt-tablet{
+        display: none;
+    }
+}
+
+.tourfilters__container--pad{
+
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+
+    @include gt-tablet{
+        background-color: $offwhite;
+        padding-top: 25px;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+}
+.filtercell{
+    padding-bottom: 20px;
+
+    @include gt-tablet{
+        flex: 1 auto;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        .tourfilters__expandablepad &{
+            flex-grow: 1;
+        }
+    }
+}
+.filtercell--taxonomy{
+    @include gt-tablet{
+        width: 25%;
+    }
+}
+.filtercell--destinations{
+    @include gt-tablet{
+        width: 320px;
+        flex: 1 0 320px;
+    }
+}
+.filtercell--dates{
+    min-width: 250px;
+    // max-width: 266px;
+}
+.filtercell--level {
+    .filtercell__label {
+        margin-bottom: 9px;
+    }
+
+    .tourmeta {
+        img {
+            vertical-align: top;
+            &.tooltip {
+                &.dark {
+                    width: 23px;
+                }
+            }
+        }
+    }
+}
+.filtercell--collection {
+}
+.filtercell--duration {
+    @include gt-tablet{
+        max-width: 350px;
+    }
+}
+
+.filtercell--morefilters{
+    @include gt-tablet{
+        /*padding-top: 2em;
+        padding-top: calc( 2em + 12px );*/
+        flex: 1 auto;
+        max-width: 350px;
+    }
+    .chosen-container {
+        .chosen-drop {
+            min-width: 270px;
+            right: 0;
+            background-color: $white;
+            border: 1px solid #999;
+        }
+        .chosen-results {
+            color: $black;
+            .psuedo-checkbox {
+                padding-left: 40px;
+                position: relative;
+                &:before {
+                    content: url("../../svg/checkbox-rectangle.svg");
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                }
+                &.highlighted {
+                    background-color: $white;
+                }
+                &.result-selected {
+                    border: none;
+                    background-color: $white;
+                    color: $black;
+                    cursor: pointer;
+                    &:before {
+                        content: url("../../svg/checkbox-rectangle.svg");
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                    }
+                    &:after {
+                        content: url("../../svg/checkbox-check.svg");
+                        display: inline-block;
+                        width: 15px;
+                        height: 10px;
+                        position: absolute;
+                        top: 10px;
+                        left: 11px;
+                    }
+                }
+            }
+            .group-result {
+                background-color: $black;
+                color: $white;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+.filtercell--filtersearch{
+    width: 200px;
+    flex-grow: 0;
+}
+.filtercell--search{
+    input[type="search"]{
+        width: 100%;
+    }
+}
+
+.filtercell__label{
+    @extend .capsheader;
+    color: $type_gray;
+    display: block;
+    margin-bottom: 10px;
+}
+.filtercell__input{
+    display: block;
+    width: 100%;
+}
+.filtercell__closefilters{
+    margin-right: 26px;
+    @include gt-tablet{
+        display: none;
+    }
+    @include lt-mobile {
+        display: none;
+    }
+}
+@include lt-mobile {
+    .filtercell__closefilters.tour-finder-mobile{
+        font-size: 2em;
+        direction: rtl;
+        margin: 0;
+        height: 5%;
+    }
+}
+.filtercell__clearfilters{
+    margin-left: 26px;
+    margin-right: 26px;
+    @include lt-smallmobile {
+        margin-left: 0;
+        margin-right: 7px;
+    }
+}
+
+.tourfilters__seemore{
+    @include type-bold;
+    position: relative;
+    display: inline-block;
+    padding-right: 24px;
+    color: $brand_primary;
+
+    &:before,
+    &:after{
+        content:"";
+        position: absolute;
+        display: block;
+        background-color: $brand_primary;
+        height: 3px;
+        width: 13px;
+        top: 50%;
+        margin-top: -3px;
+        right: 0;
+    }
+    &:before{
+        transform: rotate(90deg);
+        transition: all .4s;
+    }
+
+    &.active:before{
+        transform: rotate(0deg);
+    }
+}
+.tourfilters__filtercount{
+    display: inline-block;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    line-height: 25px;
+    font-size: $fz_small;
+    color: $white;
+    background-color: $brand_primary;
+    border-radius: 50%;
+    margin-right: 2px;
+    visibility: hidden;
+
+    @include lt-tablet{
+        display: none;
+    }
+    
+    &.tourfilters__filtercount--visible{
+        visibility: visible;
+        display: inline-block;
+    }
+}
+
+.tourfilters__expandable{
+    clear: both;
+    display: none;
+}
+
+.tourfilters__expandablepad{
+    padding-bottom: 40px;
+    overflow: auto;
+}
+
+.filterterm{
+    font-size: $fz_small;
+    color: $type_gray;
+    margin-top: 1em;
+}
+
+.chosen-container-multi .chosen-choices li.search-choice {
+    &:nth-child(n+4) {
+        display: none!important;
+    }
+}
+
+.ellipse .search-choice:nth-child(3):after {
+    content: '...';
+    display: inline-block;
+    font-size: 20px;
+    position: absolute;
+    right: -20px;
+    top: 0;
+}

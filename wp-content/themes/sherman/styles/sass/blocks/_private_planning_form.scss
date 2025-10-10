@@ -1,0 +1,61 @@
+/* ==============================================================
+ *
+ * Featured blog posts block
+ *
+ * ============================================================== */
+
+.page-anchor {
+  display: block;
+  position: relative;
+  top: -80px;
+  visibility: hidden;
+  @include gt-tablet {
+    top: -120px;
+  }
+}
+.block--private_planning_form {
+  margin: 0 auto -80px auto; /* negative margin so this sets right to footer */
+  width: 100%;
+  background-color: $offwhite;
+  .private-planning-form {
+    padding-bottom: 20px;
+    .accordion__header {
+      margin: 45px auto 15px;
+      border-bottom: none;
+      text-align: center;
+      &:after {
+        content: '';
+        background-image: none;
+      }
+      h3 {
+        display: inline-block;
+        @include icon-right( $icon_chevron_down, 24px, 20px, 10px );
+        @include active-flip();
+        padding-right: 44px;
+      }
+      &.active h3:after {
+          -webkit-transform: scaleY(-1);
+          transform: scaleY(-1);
+      }
+    }
+    .accordion__content {
+      margin: 0 auto;
+      border-bottom: none;
+      text-align: center;
+    }
+    &__intro {
+      border-bottom: 1px solid $rule_gray_alt;
+      padding-bottom: 20px;
+    }
+    input[type="checkbox"] + span:before {
+      background-color: $white;
+    }
+
+    &__form {
+      text-align: left;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+  }
+  
+}

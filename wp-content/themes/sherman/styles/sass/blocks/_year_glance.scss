@@ -1,0 +1,196 @@
+$key-black: #000;
+$key-green: #0C8E36;
+$key-orange: #F28D0A;
+$key-red: #CC0000;
+
+.block--year_at_a_glance {
+	/* page login form */
+	form {
+		max-width: 1060px;
+		margin: 30px auto;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+.year-glance {
+
+	&__greybar {
+		background-color: $offwhite;
+		padding: 30px 0;
+		margin: 65px 0 10px;
+
+		&-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&-filter {
+			display: flex;
+    		flex-wrap: wrap;
+    		&-item {
+    			margin-right: 20px;
+    			select {
+    				padding-left: 10px;
+    			}
+    		}
+		}
+		
+		&-key {
+			display: inline-block;
+			@include type-bold;
+			color: #4a4a4a;
+			span {
+				vertical-align: middle;
+				text-transform: uppercase;
+				margin-right: 15px;
+			}
+			ul {
+				display: inline-block;
+				vertical-align: middle;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				li {
+					display: inline-block;
+					margin-right: 20px;
+					&:last-of-type {
+						margin-right: 0;
+					}
+					&:before {
+						content: "";
+						display: inline-block;
+						width: 20px;
+						height: 20px;
+						margin-right: 5px;
+						margin-bottom: 5px;
+						background-color: #000;
+						vertical-align: middle;
+					}
+					&.book-now {
+						&:before {
+							background-color: $key-black;
+						}
+					}
+					&.limited-space {
+						&:before {
+							background-color: $key-green;
+						}
+					}
+					&.call-to-book {
+						&:before {
+							background-color: $key-orange;
+						}
+					}
+					&.sold-out {
+						&:before {
+							background-color: $key-red;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&__region {
+		border-bottom: 2px solid #D8D8D8;
+		margin-bottom: 20px;
+		padding-bottom: 15px;
+		
+		&-name {
+			font-size: rem(18px);
+			line-height: calc(22/18);
+			text-transform: uppercase;
+			margin-bottom: 10px;
+		}
+
+		&-dates {
+			display: flex;
+			color: #fff;
+			margin: 10px 0 5px;
+			&-sub {
+				flex: 4 0 0;
+				background: #000;
+				padding: 20px 40px 20px 20px;
+				font-size: rem(14px);
+				line-height: calc(17/14);
+				text-transform: uppercase;
+			}
+			&-month {
+				flex: 1 0 0;
+				background: #000;
+				margin-left: 5px;
+				padding: 20px 0;
+				text-align: center;
+			}
+		}
+
+		&-tour {
+			display: flex;
+			margin-bottom: 5px;
+			&-info {
+				position: relative;
+				flex: 4 0 0;
+				background: #72B9C3;
+				padding: 20px 40px 20px 20px;
+				p {
+					font-size: rem(14px);
+					line-height: calc(17/14);
+					+ p {
+						margin-top: .5em;
+					}
+				}
+				p:first-of-type {
+					max-width: 280px;
+				}
+				a {
+					text-decoration: underline;
+				}
+			}
+			&-print {
+				display: block;
+				width: 29px;
+				height: 24px;
+				position: absolute;
+				top: 20px;
+				right: 20px;
+				background: url("../../img/print-icon.png") center center no-repeat transparent;
+				background-size: contain;
+			}
+			&-month {
+				flex: 1 0 0;
+				background: #F1F1F1;
+				margin-left: 5px;
+				span {
+					display: block;
+					padding: 5px 7px;
+					font-size: 15px;
+					line-height: 1.2;
+					&.call_to_book {
+						color: $key-orange;
+					}
+					&.sold_out {
+						color: $key-red;
+					}
+					&.sold_out_w_private {
+						color: $key-red;
+					}
+					&.book_now {
+						color: $key-black;
+					}
+					&.book_now_limited_space {
+						color: $key-green;
+					}
+				}
+			}
+		}
+	}
+}
+.year-glance-key {
+	text-align: right;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 40px;
+}

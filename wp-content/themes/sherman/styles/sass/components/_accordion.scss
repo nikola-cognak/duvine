@@ -1,0 +1,90 @@
+/* ==============================================================
+ *
+ * Accordion
+ *
+ * ============================================================== */
+
+
+.js-duvine-accordion-trigger{
+    cursor: pointer;
+}
+.accordion__header{
+    margin-top: 65px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $rule_gray;
+    @include icon-right( $icon_chevron_down, 24px, 20px, 10px );
+    @include active-flip();
+
+    @include lt-mobile{
+        margin-top: 25px;
+    }
+}
+
+
+.accordion__header--showlesslabel{
+    &:before{
+        @extend .capsheader;
+    }
+    
+    @include gt-tablet{
+        &:before{
+            content:"Show Less";
+            color: $type_gray;
+            position: absolute;
+            right: 38px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity .4s;
+        }
+
+        &.active:before{
+            opacity: 1;
+        }
+    }
+}
+
+.accordion__header--year{
+    padding: 10px 80px 10px 20px;
+    margin-top: 0;
+    color: $white;
+
+    &:after{
+        background-image: $icon_chevron_down__white;
+        right: 20px;
+    }
+}
+.accordion__headertitle{
+    @include type-secondary;
+    font-size: $fz_blockheader;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.accordion__title{
+    @include type-secondary;
+    font-size: $fz_blockheader;
+    line-height: $line_height_header;
+
+    @include lt-mobile{
+        font-size: 1.4em;
+    }
+}
+.accordion__title--gray{
+    color: $brand_gray;
+}
+
+.accordion__content{
+    display: none;
+    border-bottom: 1px solid $rule_gray;
+}
+.accordion__content--active{
+    display: block;
+}
+.accordion__content--dates{
+    border-bottom-width: 0;
+}
+
+.accordion__contentwrapper{
+    padding: 45px 0;
+}

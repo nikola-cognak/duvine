@@ -1,0 +1,163 @@
+/* --------------------------------------------
+ * --slider
+ * -------------------------------------------- */
+
+
+.sk-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+.slick-list {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+    padding: 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.dragging {
+        cursor: pointer;
+        cursor: hand;
+    }
+}
+.sk-slider .slick-track,
+.sk-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: block;
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+}
+.sk-slider-nav {
+    cursor: pointer;
+    width: 36px;
+
+    svg {
+        display: block;
+        width: 100%;
+    }
+
+    polyline{
+        fill: transparent;
+        stroke: $brand_primary;
+        stroke-width: 80px;
+    }
+}
+.sk-slide {
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    [dir="rtl"] & {
+        float: right;
+    }
+    img {
+        display: block;
+    }
+    &.slick-loading img {
+        display: none;
+    }
+    transition: all 0.4s ease 0s;
+    //display: none;
+    visibility: hidden;
+    opacity: 0;
+
+    &.dragging img {
+        pointer-events: none;
+    }
+
+    .slick-initialized & {
+        //display: block;
+        
+    }
+    &.slick-cloned,
+    &.slick-active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .slick-loading & {
+        visibility: hidden;
+    }
+
+    .slick-vertical & {
+        display: block;
+        height: auto;
+        border: 1px solid transparent;
+    }
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
+.slick-arrow {
+    //display:none !important;
+}
+/* style your slider dots */
+.slick-dots{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    margin: 40px 0;
+    font-size: 0;
+
+    button {
+        display: block;
+        font-size: 0;
+        line-height: 0;
+        display: inline;
+        width: 8px;
+        height: 8px;
+        padding: 0px;
+        cursor: pointer;
+        color: transparent;
+        border: 0;
+        outline: none;
+        background: #ccc;  
+        //border:2px solid white;
+        border-radius:100%;
+        outline:0;
+        transition: all, 0.4s linear 0s;
+      }
+      li {
+          display:inline-block;
+          margin:0 6px;
+          &.slick-active button {
+              background:$brand_secondary;
+          }
+      }
+}
+
