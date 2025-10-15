@@ -26,7 +26,7 @@
             $statement_content = strip_tags($statement_content, '<br><strong><em><span>'); // Allow only safe inline tags
             
             echo '<' . $statement_tag . ' class="' . $statement_class . '">';
-            echo '<strong>DuVine Cycling + Adventure Co.</strong></br>'.$statement_content;
+            echo '<strong>DuVine Cycling + Adventure Co. Git Test</strong></br>'.$statement_content;
             echo '</' . $statement_tag . '>';
         } else {
             // For other pages (div), use original method
