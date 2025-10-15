@@ -1,8 +1,13 @@
-# ignore everything in the root except the "wp-content" directory.
-!wp-content/
+# WordPress core files
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+/wp-admin/
+/wp-includes/
 
-# ignore everything in the "wp-content" directory, except:
-# "mu-plugins", "plugins", "themes" directory
+# wp-content - ignore everything except our custom code
 wp-content/*
 !wp-content/mu-plugins/
 !wp-content/plugins/
@@ -11,18 +16,23 @@ wp-content/*
 !wp-content/autoptimize_404_handler.php
 !wp-content/index.php
 
-# ignore sample plugins
-wp-content/plugins/hello.php
+# But ignore all third-party plugins (we have none custom)
+wp-content/plugins/*
 
-# ignore sample themes
+# Ignore sample themes
 wp-content/themes/twenty*/
+
+# Ignore vendor dependencies in theme
+wp-content/themes/sherman/mpdf/vendor/
+wp-content/themes/sherman/node_modules/
 
 # ignore config file
 wp-config.php
 
-# ignore node dependency directories
+# Dependencies
 node_modules/
 package-lock.json
+vendor/
 
 # ignore log files and databases
 *.log
@@ -33,30 +43,6 @@ package-lock.json
 /conf/imagify.conf
 /imagify-backup
 /imagify-backup/*
-/wp-content/themes/sherman/*.webp
-/wp-content/themes/sherman/*.png
-/wp-content/themes/sherman/*.jpg
-/wp-content/themes/sherman/*.jpeg
-/wp-content/themes/sherman/svg-regions/src/*.webp
-/wp-content/themes/sherman/svg-regions/src/*.png
-/wp-content/themes/sherman/svg-regions/src/*.jpg
-/wp-content/themes/sherman/svg-regions/src/*.jpeg
-/wp-content/themes/sherman/img/*.webp
-/wp-content/themes/sherman/img/*.png
-/wp-content/themes/sherman/img/*.jpg
-/wp-content/themes/sherman/img/*.jpeg
-/wp-content/themes/sherman/img/print-to-pdf/*.webp
-/wp-content/themes/sherman/img/print-to-pdf/*.png
-/wp-content/themes/sherman/img/print-to-pdf/*.jpg
-/wp-content/themes/sherman/img/print-to-pdf/*.jpeg
-/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.webp
-/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.png
-/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.jpg
-/wp-content/themes/sherman/mpdf/vendor/myclabs/deep-copy/doc/*.jpeg
-/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.webp
-/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.png
-/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.jpg
-/wp-content/themes/sherman/mpdf/vendor/mpdf/mpdf/data/*.jpeg
 
 # ignore system files
 .idea
