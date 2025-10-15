@@ -303,7 +303,7 @@
 
         let newsletterCookie = Cookies.get('duvine-newsletter');
         let isShowPopup = window.OneTrust ? window.OneTrust.IsAlertBoxClosed() : true;
-        var timeoutLength = 70000;
+        var timeoutLength = 20000;
 
         if (newsletterCookie != '1' && isShowPopup) {
             if (localStorage.getItem('startTime') === null) {
@@ -323,7 +323,7 @@
             event.preventDefault();
             $('#duvine-newslettermodal').fadeOut();
 
-            Cookies.set('duvine-newsletter', '1', { expires: 365 });
+            Cookies.set('duvine-newsletter', '1', { expires: 90 });
         });
 
         if (newsletterCookie != '1' && !isShowPopup && window.OneTrust) {

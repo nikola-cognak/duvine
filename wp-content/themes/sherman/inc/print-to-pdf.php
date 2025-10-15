@@ -7,10 +7,44 @@
  * ======================================================== */
 
 if( !function_exists('render_itinerary_day') ) :
-function render_itinerary_day($daynumber = 0, $heightfix = 0) {
+function render_itinerary_day($daynumber = 0, $heightfix = 0, $tour_id = null) {
+
+    // Debug: Log the raw description content for Tour 361
+    if ($tour_id == 361) {
+        $raw_description = get_sub_field('description', $tour_id);
+        file_put_contents('/tmp/tour361_description_debug.log', 
+            "Day $daynumber - Raw description length: " . strlen($raw_description) . "\n" .
+            "Day $daynumber - Raw description content: " . substr($raw_description, 0, 500) . "...\n" .
+            "Day $daynumber - wpautop result length: " . strlen(wpautop($raw_description)) . "\n" .
+            "Day $daynumber - wpautop result preview: " . substr(wpautop($raw_description), 0, 500) . "...\n\n", 
+            FILE_APPEND
+        );
+    }
 
     $dayDescription = '<div class="itinerary__daydescription">';
-    $dayDescription .= wpautop(get_sub_field('description', $tour_id));
+    
+    // Get the description - use tour_id if provided, otherwise use current post context
+    if ($tour_id) {
+        $raw_description = get_sub_field('description', $tour_id);
+    } else {
+        $raw_description = get_sub_field('description');
+    }
+    
+    // Clean up problematic HTML for Tour 361
+    if ($tour_id == 361) {
+        // Remove Google Analytics tracking parameters from URLs
+        $raw_description = preg_replace('/\?_gl=[^"\s]*/', '', $raw_description);
+        $raw_description = preg_replace('/\&_ga=[^"\s]*/', '', $raw_description);
+        $raw_description = preg_replace('/\&_ga_[^"\s]*/', '', $raw_description);
+        
+        // Remove malformed CSS classes with long lists
+        $raw_description = preg_replace('/class="[^"]*ui-provider[^"]*"/', 'class="clean-link"', $raw_description);
+        
+        // Clean up any remaining malformed class attributes
+        $raw_description = preg_replace('/class="[^"]*a b c d e f g h i j k l m n o p q r s t u v w x y z[^"]*"/', 'class="clean-link"', $raw_description);
+    }
+    
+    $dayDescription .= wpautop($raw_description);
     $dayDescription .= '</div>';
 
     // the header
@@ -18,14 +52,15 @@ function render_itinerary_day($daynumber = 0, $heightfix = 0) {
 
     $dayTitle = '<div class="itinerary__title">'.$dayBlock.'<h4 class="accordion__title"';
     if( $heightfix === 1 ) {
-        if( strlen(get_sub_field('title', $tour_id)) < 53 ) :
+        $title_text = $tour_id ? get_sub_field('title', $tour_id) : get_sub_field('title');
+        if( strlen($title_text) < 53 ) :
             $dayTitle .= ' style="line-height:54px;"';
         else :
             $dayTitle .= ' style="line-height:28px;"';
         endif;
     }
     $dayTitle .= '>';
-    $dayTitle .= get_sub_field('title', $tour_id);
+    $dayTitle .= $tour_id ? get_sub_field('title', $tour_id) : get_sub_field('title');
     $dayTitle .= '</h4></div>';
 
     $dayContent = '<div class="itinerary__daywrapper">'. $dayTitle . $dayDescription . '</div>';

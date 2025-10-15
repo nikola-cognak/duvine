@@ -44,6 +44,7 @@ if ($q_morefilters) {
 
             <a href="#" class="filtercell__closefilters js-close-mobilefilters tour-finder-mobile"></a>
             <div class="tourfilters__container tourfilters__container--pad">
+				<h1></h1>
                 <h2 class="superheader headerpromo__title tour-finder-mobile">Filters</h2>
                 <div class="privatefilter tour-finder-mobile">
                     <label class="tourtype__label" for="tourtype--scheduled"><input type="checkbox" name="tourtype[]" id="tourtype--scheduled" value="scheduled"<?php if( $q_tourtype === 'scheduled' || (is_array($q_tourtype) && in_array('scheduled', $q_tourtype)) ) echo 'checked'; ?>><span>Scheduled Tours</span></label>

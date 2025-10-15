@@ -217,7 +217,13 @@ $img = '<img src="'.get_template_directory().'/img/print-to-pdf/tour-highlights.
 $html = $img;
 
 // Tour highlights
-$highlights = '<div class="print-highlights">'.get_field('d_tour_unique', $tour_id).'</div>';
+$highlightstext = get_field('d_tour_unique', $tour_id);
+if (str_contains($highlightstext, '<div style="padding:')) {
+	$highlights = '<div class="print-highlights">'.strstr(get_field('d_tour_unique', $tour_id), '<div style="padding:', true).'</div>';
+} else {
+	$highlights = '<div class="print-highlights">'. get_field('d_tour_unique', $tour_id) .'</div>';
+}
+
 $html = $html.$highlights;
 
 $images = get_field('d_tour_gallery', $tour_id);
@@ -359,7 +365,7 @@ if( get_field('d_tour_always_unique_header', $tour_id) && get_field('d_tour_alwa
     $html = $html.'<div class="straight-talk-body">'.get_field('d_tour_always_unique', $tour_id).'</div>';
 endif;
 
-if( strlen(get_field('d_tour_always_unique', $tour_id)) < 450 ) :
+if( strlen(get_field('d_tour_always_unique', $tour_id)) < 350 ) :
     // image
     $html = $html.'<div>'.$third_img.'</div>';
 
@@ -422,13 +428,30 @@ $itineraryDay = 1;
 while( have_rows( 'd_intinerary', $tour_id ) ) {
     the_row();
     $html .= '<div class="side-margin">';
-    $day = render_itinerary_day($itineraryDay, $title_height_fix);
+    $day = render_itinerary_day($itineraryDay, $title_height_fix, $tour_id);
     $title_height_fix = 0;
     $html .= $day;
     $html .= '</div>';
     if( $itineraryDayCount % 2 == 0 ) :
         ob_clean();
-        $mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
+        // Debug: Log HTML content for Tour 361 to identify problematic content
+        if ($tour_id == 361) {
+            file_put_contents('/tmp/tour361_html_debug.log', 
+                "Day $itineraryDay - HTML length: " . strlen($html) . "\n" .
+                "Day $itineraryDay - HTML content: " . $html . "\n\n", 
+                FILE_APPEND
+            );
+            // Use original HTML for Tour 361 to identify the exact problematic content
+            try {
+                $mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
+                file_put_contents('/tmp/tour361_debug.log', "Tour 361: WriteHTML completed for day $itineraryDay using original HTML\n", FILE_APPEND);
+            } catch (Exception $e) {
+                file_put_contents('/tmp/tour361_debug.log', "Tour 361: WriteHTML failed for day $itineraryDay: " . $e->getMessage() . "\n", FILE_APPEND);
+                throw $e;
+            }
+        } else {
+            $mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
+        }
         $html = '';
 		if ( $totalTourDays != $itineraryDayCount ) {
 			// start a new page

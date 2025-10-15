@@ -31,13 +31,28 @@ $people = get_posts( $teamArgs );
 ?>
 
 <?php if( $people ) : ?>
+	
 
     <div class="tourguides l-container">
+		
+		<div class="guide-nav">
+			<a href="#A">A - D</a>
+			<span>|</span>
+			<a href="#E">E - H</a>
+			<span>|</span>
+			<a href="#I">I - L</a>
+			<span>|</span>
+			<a href="#M">M - P</a>
+			<span>|</span>
+			<a href="#Q">Q - T</a>
+			<span>|</span>
+			<a href="#V">U - Z</a>
+		</div>
 
         <div class="tourguides__grid d-column-container">
     
             <?php foreach( $people as $person ) : ?>
-                <div class="tourguide d-col d-col--1-4">
+                <div class="tourguide d-col d-col--1-4" id="<?php echo substr($person->post_title, 0, 1); ?>">
                     <a href="<?php echo get_permalink($person); ?>">
                         <div class="tourguide__headshot">
                             <?php 
@@ -68,4 +83,17 @@ $people = get_posts( $teamArgs );
             <?php endforeach; ?>
         </div>
     </div>
+		
+	
 <?php endif; ?>
+
+<style>
+	.guide-nav {
+		display: flex;
+		justify-content: space-between;
+	}
+	
+	.guide-nav span {
+		color: #dddddd;
+	}
+</style>

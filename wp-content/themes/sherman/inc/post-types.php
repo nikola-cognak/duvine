@@ -180,10 +180,32 @@ function sk_post_types(){
 
 
 
-    /**
-     * register post type that has page for archive and single
-     */
-    register_post_type('person', array(
+//     /**
+//      * register post type that has page for archive and single
+//      */
+//     register_post_type('person', array(
+//         'labels'        => array(
+//             'name'               => __( 'People', 'sherman' ),
+//             'singular_name'      => __( 'Person', 'sherman' ),
+//             'add_new_item'       => __( 'Add new Person', 'sherman' ),
+//             'edit_item'          => __( 'Edit Person', 'sherman' ),
+//             'new_item'           => __( 'New Person', 'sherman' ),
+//             'view_item'          => __( 'View Person', 'sherman' ),
+//             'search_items'       => __( 'Search People', 'sherman' ),
+//             'not_found'          => __( 'No People found', 'sherman' ),
+//             'not_found_in_trash' => __( 'No People found in Trash', 'sherman' ),
+//         ),
+//         'supports'      => array('title', 'editor'),
+//         'hierarchical'  => true,
+//         'public'        => true,
+//         'menu_position' => 28,
+//         'rewrite'       => array(
+//             'slug'       => 'team',
+//             'with_front' => false
+//         )
+//     ));
+
+  register_post_type('person', array(
         'labels'        => array(
             'name'               => __( 'People', 'sherman' ),
             'singular_name'      => __( 'Person', 'sherman' ),
@@ -200,12 +222,12 @@ function sk_post_types(){
         'public'        => true,
         'menu_position' => 28,
         'rewrite'       => array(
-            'slug'       => 'team',
+            'slug'       => 'staff',  // Changed from 'internal-guides' to support both staff and internal-guides URLs
             'with_front' => false
-        )
+        ),
+        'has_archive'        => false,  // Added to prevent archive page
+        'exclude_from_search'=> true    // Added to hide from search results
     ));
-
-
 
 
 

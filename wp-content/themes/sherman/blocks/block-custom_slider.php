@@ -26,10 +26,10 @@
                                 <?php if(get_sub_field('video')) : 
                                     $video = get_sub_field('video');?>
                                     <div class="featuredblog__video">
-                                        <div class="featuredblog__video-container">
-                                            <video data="<?php echo $video['url']; ?>" playsinline loop controls id="vid1"  onended="this.play();" poster="<?php echo $video['sizes']['large']; ?>">
-                                                <source src="<?php echo $video['url']; ?>" type="video/mp4">
-                                            </video>
+                                        <div class="">
+											<div class="">
+												<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/<?php echo $video; ?>?h=0fb282a0ab&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        									</div>
                                         </div>
                                     </div>
                                 <?php endif; ?>

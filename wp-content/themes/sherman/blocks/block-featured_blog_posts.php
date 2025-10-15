@@ -19,7 +19,7 @@
                         $blog_featured_image = get_field('d_blog_featured_image', $blogpost->ID);
                         if($blog_featured_image) : ?>
                         <div class="featuredblog__image">
-                            <img src="<?php echo $blog_featured_image["src"]; ?>" alt="<?php echo $blogpost->post_title; ?>" />
+                            <img src="<?php echo $blog_featured_image["url"]; ?>" alt="<?php echo $blogpost->post_title; ?>" class="no-lazyload"/>
                         </div>
                         <?php endif; ?>
 

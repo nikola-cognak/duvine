@@ -251,12 +251,13 @@ function tours_first($hits) {
     $types['person'] = array();
  
     // Split the post types in array $types
-    if (!empty($hits)) {
+    if (!empty($hits) && is_array($hits) && isset($hits[0]) && is_array($hits[0])) {
         foreach ($hits[0] as $hit) {
             if (array_key_exists($hit->post_type, $types)) {
                 array_push($types[$hit->post_type], $hit);
             } else {
-                $types[$hit->post_type] = $hit;
+                // Initialize the array for unknown post types
+                $types[$hit->post_type] = array($hit);
             }
         }
     }
@@ -435,7 +436,8 @@ function duvine_array_to_list( $array, $args = array() ){
         }
 
         if( $item === 'Gratuities for DuVine guides' && ($faq_page = get_field('d_faq_page', 'option')) ){
-            $item = '<a href="' . $faq_page['url'] . '#Gratuities" class="basiclink">' . $item . '</a>';
+//             $item = '<a href="' . $faq_page['url'] . '#Gratuities" class="basiclink">' . $item . '</a>';
+			   $item = $item;
         }
 
         $list .= '<li>' . $item . '</li>';

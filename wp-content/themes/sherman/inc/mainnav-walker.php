@@ -47,31 +47,37 @@ function duvine_main_menu_start_el( $output, $item, $depth, $args ){
                             <li class="tourmenu__hoverable tourmenu__continent tourmenu__continent--<?php echo $continent['slug']; ?><?php if( $index === 0 ) echo ' tourmenu__hoverable--active'; ?>">
                                 <span class="tourmenu__continentlabel"><a href="<?php echo get_the_permalink($continent['id']); ?>"><?php echo $continent['continent']; ?></a></span>
                                 <?php if( $continent['countries'] ) : ?>
-                                    <div class="tourmenu__countries"><div class="tourmenu__countrywrapper l-cf">
+                                    <div class="tourmenu__countries"><div class="tourmenu__countrywrapper l-cf" style="display: flex; flex-direction: column;">
 
                                         <?php if( $continent['slug'] === 'europe' ) : ?>
-                                            <div class="tourmenu__europelist">
-                                                <ul class="tourmenu__countrylist blockmenu">
+                                            <div class="tourmenu__europelist" style="width: 100%; padding-right: 0px;" >
+                                    <ul class="tourmenu__countrylist blockmenu"
+                                        style="display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: repeat(2, 1fr);grid-auto-flow: column; border-bottom: 1px solid #666;">
                                                     <?php foreach( $continent['countries'] as $country_index => $country ) : ?>
-                                                        <?php $permalink = get_the_permalink($country->ID); ?>
+                                                        <?php
+                                                             $permalink = get_the_permalink($country->ID);
+                                                             $countryCount = ceil(count($continent['countries']) / 2) - 2 ?? 0;
+                                                         ?>
                                                         <li><a href="<?php echo $permalink; ?>"><?php echo $country->post_title; ?></a></li>
                                                         
                                                         <?php if( $country_index === 3 ) : ?>
                                                             </ul>
                                                             
-                                                            <div class="tourmenu__countrylandingpagecta">
-                                                                <a class="tourmenu__countrylandingpage" href="<?php echo get_the_permalink($continent['id']); ?>">View all of <?php echo $continent['continent']; ?></a>
-                                                            </div>
                                                             
                                                             </div>
 
-                                                            <div class="tourmenu__europelist tourmenu__europelist--2ndcolumn">
-                                                                <ul class="tourmenu__countrylist blockmenu">
+                                                            <div class="tourmenu__europelist tourmenu__europelist--2ndcolumn" style="width: 100%;padding-left: 0px; margin-top: 10px; padding-right: 0px;">
+                                    <ul class="tourmenu__countrylist blockmenu"
+                                        style="display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: repeat(<?= $countryCount ?>, 1fr); grid-auto-flow: column; border-bottom: 1px solid #666;">
 
                                                         <?php endif; ?>
                                                     <?php endforeach; ?>
                                                 </ul>
                                             </div>
+                                <div class="tourmenu__countrylandingpagecta" style="padding-right: 0px; border-top: none;">
+                                
+                                        <a class="tourmenu__countrylandingpage" href="<?php echo get_the_permalink($continent['id']); ?>">View all of <?php echo $continent['continent']; ?></a>
+                                    </div>
                                         <?php else : ?>
                                             <ul class="tourmenu__countrylist blockmenu">
                                                 <?php foreach( $continent['countries'] as $country ) : ?>
@@ -80,9 +86,11 @@ function duvine_main_menu_start_el( $output, $item, $depth, $args ){
                                                 <?php endforeach; ?>
                                             </ul>
                                             
+                                            <?php if ( strtolower($continent['continent']) !== 'new zealand' ) : ?>
                                             <div class="tourmenu__countrylandingpagecta">
                                                 <a class="tourmenu__countrylandingpage" href="<?php echo get_the_permalink($continent['id']); ?>">View all of <?php echo $continent['continent']; ?></a>
                                             </div>
+                                            <?php endif; ?>
                                         <?php endif; ?>
 
                                     </div></div>

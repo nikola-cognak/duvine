@@ -164,6 +164,39 @@ function get_single_supplement_price ( $centaur_id ) {
 }
 endif;
 
+if (!function_exists('get_supplement_price_by_year')) {
+    /**
+     * get the least expensive single supplement from the feed for this tour.
+     *
+     * @param mixed $tourdates
+     * @param mixed $year
+     *
+     * @return string
+     */
+    function get_supplement_price_by_year($tourdates, $year)
+    {
+        $price_single_supplement = 10000; // it won't be higher than this
+
+        $price = false;
+
+        foreach ($tourdates as $date) {
+            $price = $date['single_price'];
+            if ($price) {
+                if ((int) $price < (int) $price_single_supplement) {
+                    $price_single_supplement = (int) $price;
+                }
+            }
+        }
+
+        if (10000 === $price_single_supplement) {
+            return false;
+        }
+
+        return $price_single_supplement;
+    }
+}
+
+
 if( !function_exists( 'duvine_get_centaur_link' ) ) :
 /**
  * Retrieves and returns the link to the centaur booking site
@@ -435,11 +468,3 @@ function duvine_get_tours_with_date( $query_dates ) {
     return $tour_ids;
 }
 endif; // duvine_get_tours_with_date
-
-if (!function_exists('sync_centaur_by_cron')) {
-    function sync_centaur_by_cron()
-    {
-        require get_template_directory() . '/inc/get-tour-data-cron.php';
-    }
-}
-add_action( 'centaur_sync', 'sync_centaur_by_cron', 10, 0 );

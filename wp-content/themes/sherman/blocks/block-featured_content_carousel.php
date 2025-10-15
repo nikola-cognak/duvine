@@ -24,9 +24,10 @@
             ));
         ?>
     </header>
-    
+    <?php $slider = get_sub_field('disable_slider'); ?>
     <?php if( have_rows('content') ) : ?>
-        <div class="featuredcontent__river">
+	
+        <div class="featuredcontent__river <?php if ($slider == 1){ echo 'disable';} ?>">
             <?php while( have_rows('content') ) : the_row(); ?>
                 <div class="featuredcontent__cell">
                     <?php 

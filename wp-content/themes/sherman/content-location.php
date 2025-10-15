@@ -76,14 +76,18 @@ $svgMap = get_template_directory() . '/svg-regions/map-' . $post->post_name . '.
                 </div>
             <?php endif; ?>
         </div>
-    <?php elseif( $hero = duvine_get_url_from_object(get_field('d_hero_image'), 'banner_hero_page') ) : ?>
-        <div class="location__hero">
+    <?php elseif($herovideo = get_field('d_hero_video')) : ?>
+		<div class="location__hero">
+			<div style="padding:56.25% 0 0 0;position:relative;width:100%"><iframe src="https://player.vimeo.com/video/<?php echo $herovideo; ?>?h=0fb282a0ab&title=0&byline=0&portrait=0&background=1&muted=1&controls=0&autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
+    <?php elseif ($hero = duvine_get_url_from_object(get_field('d_hero_image'), 'banner_hero_page')) : ?>
+		<div class="location__hero">
             <div class="location__heroimage" style="background-image: url(<?php echo $hero; ?>)"></div>
         </div>
-    <?php endif; ?>
+	<?php endif; ?>
 
 
-    <div class="l-container l-container--small location__main">
+    <div class="l-container l-container--small location__main" id="<?php echo str_replace(' ', '-', get_the_title()); ?>">
         <header class="location__header">
             <div class="breadcrumbs__pad">
                 <?php duvine_region_breadcrumbs(); ?>

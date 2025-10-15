@@ -43,11 +43,11 @@
             }
 
             // instafeed keys
-            this.userId = 2071378166332545;
-            this.clientId = '9bc08525f4fb49ad97daeb7b3a575164';
+            this.userId = 775430103450959;
+            this.clientId = '243a5ddf0e709b9bd51f2afacb190175';
             //this.accessToken = '25164000.1677ed0.8ddb17265af143258efde82bf5c5df14';
             //this.accessToken = '25164000.1677ed0.93e16ef4001844baa7172179ab5158d8';
-            this.accessToken = 'IGQVJXZAFoycE5OSEs1NEVhSXRJM3NoLWJ6Y3oyU1pramFRTldEWVBuYjFFRGxzVmt3UXN1QVIxY091ZAVRuUnVNUTl5eXgzMFVLc1V0ZAkQ0WXVnUXJTWmFQRkU4ckxNUnoxYm9CUXluMGpxN0I0TlltYgZDZD';
+            this.accessToken = 'IGQWRQV3R5MDdkSXhzNlpNSzBtOW4zUWhmYnZAxUk5KcXlNZADE2TGk3b3pDdlgxY2FfRFltajlmT19nbFZA0SHFvTnZA3SjhhR3h2M2h2Q1FhVDRkNUZANcmQxVE04ODhKZAmZAxb1ZAIMnFlajFaeF9zS01GT2sxWVZApSHMZD';
 
 
             // build
@@ -83,7 +83,7 @@
                     get         : 'user',
                     userId      : this.userId,
                     clientId    : this.clientId,
-                    accessToken : 'IGQVJXZAFoycE5OSEs1NEVhSXRJM3NoLWJ6Y3oyU1pramFRTldEWVBuYjFFRGxzVmt3UXN1QVIxY091ZAVRuUnVNUTl5eXgzMFVLc1V0ZAkQ0WXVnUXJTWmFQRkU4ckxNUnoxYm9CUXluMGpxN0I0TlltYgZDZD',
+                    accessToken : 'IGQWRQV3R5MDdkSXhzNlpNSzBtOW4zUWhmYnZAxUk5KcXlNZADE2TGk3b3pDdlgxY2FfRFltajlmT19nbFZA0SHFvTnZA3SjhhR3h2M2h2Q1FhVDRkNUZANcmQxVE04ODhKZAmZAxb1ZAIMnFlajFaeF9zS01GT2sxWVZApSHMZD',
                     sortBy      : 'most-recent',
                     // resolution  : 'thumbnail',
                     resolution  : 'standard_resolution',
@@ -141,9 +141,9 @@
                 console.log('this is duvine');
                 var feed = new Instafeed({
                     get         : 'user',
-                    userId      : this.userId,
-                    clientId    : this.clientId,
-                    accessToken : 'IGQVJXZAFoycE5OSEs1NEVhSXRJM3NoLWJ6Y3oyU1pramFRTldEWVBuYjFFRGxzVmt3UXN1QVIxY091ZAVRuUnVNUTl5eXgzMFVLc1V0ZAkQ0WXVnUXJTWmFQRkU4ckxNUnoxYm9CUXluMGpxN0I0TlltYgZDZD',
+                    userId      : "775430103450959",
+                    clientId    : "243a5ddf0e709b9bd51f2afacb190175",
+                    accessToken : 'IGQWRQV3R5MDdkSXhzNlpNSzBtOW4zUWhmYnZAxUk5KcXlNZADE2TGk3b3pDdlgxY2FfRFltajlmT19nbFZA0SHFvTnZA3SjhhR3h2M2h2Q1FhVDRkNUZANcmQxVE04ODhKZAmZAxb1ZAIMnFlajFaeF9zS01GT2sxWVZApSHMZD',
                     sortBy      : 'none',
                     // resolution  : 'thumbnail',
                     resolution  : 'standard_resolution',

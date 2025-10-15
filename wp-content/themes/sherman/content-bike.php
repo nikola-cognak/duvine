@@ -82,6 +82,9 @@
 			</div>
 			<div class="bike__content">
 				<?php the_content(); ?>
+				<?php if( $pricing = get_field('pricing_text') ) : ?>
+					<p class="bikeblock__meta"><i><?php echo $pricing; ?></i></p>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

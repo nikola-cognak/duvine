@@ -4,11 +4,15 @@
  */
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php if( $hero = duvine_get_url_from_object(get_field('d_hero_image'), 'banner_hero_page') ) : ?>
+	<?php if($herovideo = get_field('d_hero_video')) : ?>
+		<div class="collection__hero">
+			<div style="padding:56.25% 0 0 0;position:relative;width:100%"><iframe src="https://player.vimeo.com/video/<?php echo $herovideo; ?>?h=0fb282a0ab&title=0&byline=0&portrait=0&background=1&muted=1&controls=0&autoplay=1&loop=1" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+		</div>
+	<?php elseif ($hero = duvine_get_url_from_object(get_field('d_hero_image'), 'banner_hero_page')) : ?>
 		<div class="collection__hero">
 			<?php echo '<img src="' . $hero . '" alt="">'; ?>
 		</div>
-	<?php endif; ?>
+    <?php endif; ?>
 
 
 	<div class="l-container l-container--small">
@@ -44,6 +48,7 @@
 					'filters' => 'the_content'
 				));
 			?>
+			<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background is-style-wide" style="background-color:#dddddd;color:#dddddd;margin-bottom: 0">
 		</section>
 	</div>
 

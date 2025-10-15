@@ -25,6 +25,12 @@ header("X-Robots-Tag: noindex, nofollow", true);
 //////////////////////////////////////////////////////////////////////
 global $post;
 
+// Get tour_id from URL parameter
+$tour_id = isset($_GET['tour_id']) ? intval($_GET['tour_id']) : 0;
+if (!$tour_id) {
+    wp_die("Tour ID is required");
+}
+
 if ( post_password_required( $post ) ) {
     echo get_the_password_form( $post );
 } else {
@@ -218,7 +224,12 @@ if ( post_password_required( $post ) ) {
     $html = $img;
 
     // Tour highlights
-    $highlights = '<div class="print-highlights">'.get_field('d_tour_unique', $tour_id).'</div>';
+	$highlightstext = get_field('d_tour_unique', $tour_id);
+	if (str_contains($highlightstext, '<div style="padding:')) {
+		$highlights = '<div class="print-highlights">'.strstr(get_field('d_tour_unique', $tour_id), '<div style="padding:', true).'</div>';
+	} else {
+		$highlights = '<div class="print-highlights">'. get_field('d_tour_unique', $tour_id) .'</div>';
+	}
     $html = $html.$highlights;
 
     $images = get_field('d_tour_gallery', $tour_id);
@@ -360,7 +371,7 @@ if ( post_password_required( $post ) ) {
         $html = $html.'<div class="straight-talk-body">'.get_field('d_tour_always_unique', $tour_id).'</div>';
     endif;
 
-    if( strlen(get_field('d_tour_always_unique', $tour_id)) < 450 ) :
+    if( strlen(get_field('d_tour_always_unique', $tour_id)) < 350 ) :
         // image
         $html = $html.'<div>'.$third_img.'</div>';
 
@@ -423,7 +434,10 @@ if ( post_password_required( $post ) ) {
     while( have_rows( 'd_intinerary', $tour_id ) ) {
         the_row();
         $html .= '<div class="side-margin">';
-        $day = render_itinerary_day($itineraryDay, $title_height_fix);
+        
+        // Normal processing for all tours
+        $day = render_itinerary_day($itineraryDay, $title_height_fix, $tour_id);
+        
         $title_height_fix = 0;
         $html .= $day;
         $html .= '</div>';
@@ -473,18 +487,14 @@ if ( post_password_required( $post ) ) {
     $html .= '<div class="side-margin">';
     $html .= '<h3>Preparing for Your Tour</h3>';
     $html .= '<strong>Travel Services</strong><br />';
-    $html .= 'DuVine can assist with the following reservations for up to three days before and after your tour.<br />
-        <ul class="regular-list" style="margin-top: 10px;margin-bottom:10px;">
-        <li>Pre and post-trip hotels in all major cities, in addition to the first and last on-tour hotels</li>
-        <li>Private transfers</li>
-        </ul>
-		DuVine\'s travel advisor partners are happy to assist with flight reservations. If you are not already working with an agent, please request a referral from your Tour Coordinator.<br /><br />
+    $html .= 'DuVine can assist with extended reservations at the first and final hotels on your scheduled itinerary, or with private transfers to and from your bike tour.
+    DuVine\'s travel advisor partners are happy to assist with flight reservations. If you are not already working with an agent, please request a referral from your <a href="mailto:tourcoordinators@duvine.com">Tour Coordinator</a>.<br /><br />
     <strong>Travel Protection</strong><br />
     DuVine offers a <a href="https://www.duvine.com/trip-essentials/travel-protection/">Travel Protection Plan</a> to help protect your travel investment, your belongings,
     and most importantly, you. The offered Travel Protection Plan is non-refundable, but it is strongly recommended in the unfortunate event that you have to cancel or leave your trip.
     <div class="footnote">NOTE: Plan benefits, limits, and provisions may vary by state or jurisdiction. In order to receive full benefits, Travel Protection must be purchased within 21 days of initial tour deposit. This plan is available to citizens of the U.S. and Canada only.</div>
     <strong>Gratuity</strong><br />
-    Gratuities are much appreciated to thank DuVine guides for exceptional service, support, and expertise. The industry standard is for each guest to tip 10-15% (U.S. tours and Cycle + Sail tours) or 7.5-10% (all other tours) of their trip price. The recommended per-traveler amount is an appropriate gratuity for your guide team as a whole. (It is not necessary to tip this amount <em>per</em> guide.) Tips are customary at the end of your tour, and local currency is always preferred. We recommend bringing extra cash or visiting the ATM at the beginning of your trip. For alternate methods of tipping (including Venmo, PayPal, and TransferWise), <a href="https://www.duvine.com/trip-essentials/faqs/#Tour" target="_blank">please see our FAQs</a>.';
+    Gratuities are much appreciated to thank DuVine guides for exceptional service, support, and expertise. The industry standard is for each guest to tip 10-15% (U.S. tours and Cycle + Sail tours) or 7.5-10% (all other tours) of their trip price. The recommended per-traveler amount is an appropriate gratuity for your guide team as a whole. (It is not necessary to tip this amount <em>per</em> guide.) Tips are customary at the end of your tour, and local currency is always preferred. We recommend bringing extra cash or visiting the ATM at the beginning of your trip.';
 
     $gallery = '<div class="details-gallery">';
 
@@ -495,7 +505,7 @@ if ( post_password_required( $post ) ) {
 
     $gallery .= '<div style="float:left;width:50%;">';
 
-    $gallery = $gallery.'<img src="'.get_template_directory().'/img/print-to-pdf/your-tour-details-img2.png'.'" />';
+    $gallery = $gallery.'<img src="https://cdn.duvine.com/wp-content/uploads/2024/02/27055305/wine-guys.jpg" />';
 
     $gallery .= '<br /><br />';
 
@@ -505,8 +515,10 @@ if ( post_password_required( $post ) ) {
     $gallery = $gallery.'<ul class="checkbox-list">';
     $gallery = $gallery.'<li>'.'<img src="'.get_template_directory().'/img/print-to-pdf/facebook.png'.'" />'.'&nbsp;<a href="https://facebook.com/duvine">fb.com/duvine</a></li>';
     $gallery = $gallery.'<li>'.'<img src="'.get_template_directory().'/img/print-to-pdf/instagram.png'.'" />'.'&nbsp;<a href="https://www.instagram.com/duvine/">@duvine</a></li>';
-    $gallery = $gallery.'<li>'.'<img src="'.get_template_directory().'/img/print-to-pdf/twitter.png'.'" />'.'&nbsp;<a href="https://twitter.com/DuVine">@duvine</a></li>';
+   // $gallery = $gallery.'<li>'.'<img src="'.get_template_directory().'/img/print-to-pdf/twitter.png'.'" />'.'&nbsp;<a href="https://twitter.com/DuVine">@duvine</a></li>';
     $gallery = $gallery.'<li>'.'<img src="'.get_template_directory().'/img/print-to-pdf/hash.png'.'" />'.'&nbsp;#DuVine #DuVineStyle</li>';
+    $gallery = $gallery.'<li>'.''.'&nbsp;<a href="https://twitter.com/DuVine"></a></li>';
+
     $gallery = $gallery.'</ul>';
 
     $gallery = $gallery.'</div>';
@@ -539,11 +551,11 @@ if ( post_password_required( $post ) ) {
 
     $html .= '<div class="side-margin">';
     $html .= '<br /><strong>Bikes</strong><br />
-    DuVine\'s top-of-the-line bikes are tuned to perfection and fit specifically to you. Our performance bikes from premier manufacturers feature light frames, smooth-rolling tires, comfortable seats, and wide gear ranges for the best ride possible. Please see our website for the exact bike models offered on tour. Additionally, e-bikes are available on most DuVine tours. Electric assist provides an extra boost to your own pedal power, so you can ride longer distances, tackle tougher climbs, and maintain a faster pace. Electric assist is available on a first-come, first-served basis. Contact your Tour Coordinator if you are interested.<br /><br />
+    DuVine\'s top-of-the-line bikes are tuned to perfection and fit specifically to you. Our performance bikes from premier manufacturers feature light frames, smooth-rolling tires, comfortable seats, and wide gear ranges for the best ride possible. Please <a href="https://www.duvine.com/why-duvine/bikes-gear/">see our website</a> for the exact bike models offered on tour. E-bikes are available in most destinations on a first-come, first-served basis. Electric assist provides an extra boost to your own pedal power, so you can ride longer distances, tackle tougher climbs, and maintain a faster pace. Contact your Tour Coordinator if you are interested.<br /><br />
     <strong>Electrical Overseas</strong><br />
     If you\'re traveling abroad, you will most likely need an <a href="https://www.worldstandards.eu/electricity/plug-voltage-by-country/" target="_blank">adapter</a>, which allows your device’s plug to fit into foreign outlets. North American devices run on 110/125V electricity while the majority of the world runs on 220/240V. Converters and transformers change the voltage of electricity to match your device.<br /><br />
     <strong>Training</strong><br />
-    First and foremost, get out on your bike and start logging some miles. Nothing compares to the real thing, but if you can\'t cycle outside, consider spin classes. Experience with the elements of wind, actual hills, terrain, etc will help with your comfort level (balance, unexpected conditions, etc.) on tour. Always remember, training is a gradual process—don\'t try to overdo it or push yourself when you aren\'t ready. However, the most important part of training is to enjoy your ride! <a href="https://www.duvine.com/why-duvine/levels/training-guides-download/" target="_blank">Download a training guide</a> based on your Tour Level.<br /><br />
+    First and foremost, get out on your bike and start logging some miles. Experience with the elements and terrain will help with your comfort level (balance, unexpected conditions, etc.) on tour. Nothing compares to the real thing, but if you can\'t cycle outside, consider spin classes. Always remember, training is a gradual process—don\'t try to overdo it or push yourself when you aren\'t ready. However, the most important part of training is to enjoy your ride! <a href="https://www.duvine.com/why-duvine/levels/training-guides-download/" target="_blank">Download a training guide</a> based on your Tour Level.<br /><br />
     <strong>Travel Sustainably</strong><br />
         DuVine is committed to sustainable travel and has been a 100% carbon neutral company since 2022. While cycling is an inherently eco-conscious mode of travel, we continuously seek ways to lessen our footprint, whether it be biodegradable water bottles or compostable gear mailers. <a href="https://www.duvine.com/why-duvine/sustainable-travel/">Read more</a> about sustainability at DuVine.';
 
@@ -573,6 +585,7 @@ if ( post_password_required( $post ) ) {
     $html = $html.'<li><input type="checkbox" name="shorts" value="1" /> Cycling shorts</li>';
     $html = $html.'<li><input type="checkbox" name="shoes" value="1" /> Cycling shoes (if you bring your own pedals)</li>';
     $html = $html.'<li><input type="checkbox" name="sneakers" value="1" /> Sneakers (if you don\'t bring your own pedals)</li>';
+	$html = $html.'<li><input type="checkbox" name="cyclingsunglasses" value="1" /> Cycling sunglasses</li>';
     $html = $html.'<li><input type="checkbox" name="socks" value="1" /> Athletic socks</li>';
     $html = $html.'<li><input type="checkbox" name="warmers" value="1" /> Arm/leg warmers</li>';
     $html = $html.'<li><input type="checkbox" name="vest" value="1" /> Lightweight, waterproof, wind-resistant jacket or vest</li>';
@@ -609,7 +622,7 @@ if ( post_password_required( $post ) ) {
     $html = $html.'<li><input type="checkbox" name="photography" value="1" /> Photography gear + charger</li>';
     $html = $html.'<li><input type="checkbox" name="adapter" value="1" /> Power/plug adapter</li>';
     $html = $html.'<li><input type="checkbox" name="toiletries" value="1" /> Toiletries</li>';
-    $html = $html.'<li><input type="checkbox" name="sunscreen" value="1" /> Sunscreen, sunglasses, + other sun protection gear</li>';
+    $html = $html.'<li><input type="checkbox" name="sunscreen" value="1" /> Sunscreen, hat, + other sun protection gear</li>';
     $html = $html.'<li><input type="checkbox" name="repellent" value="1" /> Insect repellent</li>';
     $html = $html.'</ul>';
 
@@ -620,7 +633,7 @@ if ( post_password_required( $post ) ) {
     $html = $html.'<ul class="regular-list">';
     $html = $html.'<li>Bike saddle</li>';
     $html = $html.'<li>GPS (where available)</li>';
-    $html = $html.'<li>Flat or caged pedals</li>';
+    $html = $html.'<li>Flat pedals</li>';
     $html = $html.'<li>DuVine t-shirt and jersey</li>';
     $html = $html.'</ul>';
     $html = $html.'</div>';
@@ -684,7 +697,7 @@ if ( post_password_required( $post ) ) {
     $html = $img;
 
     $html .= '<div class="side-margin">';
-    $html .= '<br />We strongly suggest that you read these simple safety instructions. They will help you bike safely before and during your tour!<br /><br />
+    $html .= '<br />We strongly suggest you read these simple safety instructions and watch our <a href="https://www.youtube.com/watch?v=D7lD_MA_D8E">brief safety video.</a> They will help you bike safely before and during your tour!<br /><br />
         <ul class="regular-list">
         <li>Wear a helmet—this is mandatory on tour!</li>
         <li>Familiarize yourself with traffic laws and obey them. Bikes do not have the right of way, but most drivers are respectful to cyclists on the road. Always ride in the direction of traffic.</li>
@@ -699,14 +712,14 @@ if ( post_password_required( $post ) ) {
         <li>Never wear headphones or use speakers during rides.</li>
         <li>Always listen to additional instructions from your guides on tour.</li>
         </ul>
-    <br />If you have chosen an e-bike, be aware that it is slightly heavier, faster, and more powerful than a non-electric bike. Therefore, you should anticipate a different reaction when riding downhill, breaking, or dismounting from an e-bike. Your guides can offer further instruction during your bike fitting and safety review.';
+    <br />If you have chosen an e-bike, be aware that it is slightly heavier, faster, and more powerful than a non-electric bike. Therefore, you should anticipate a different reaction when riding downhill, braking, or dismounting from an e-bike. Your guides can offer further instruction during your bike fitting and safety review.';
 
-    $img = '<br /><br /><img src="'.get_template_directory().'/img/print-to-pdf/bike-safety-img.png'.'" style="width:100%;" />';
+    // $img = '<br /><br /><img src="https://cdn.duvine.com/wp-content/uploads/2024/02/27054550/bike-safety.jpg'.'" style="width:100%;" />';
+    $img = '<br /><br /><a href="https://www.youtube.com/watch?v=D7lD_MA_D8E"><img src="https://cdn.duvine.com/wp-content/uploads/2025/03/20145352/safety_video_thumbnail.jpg'.'" style="width:100%;" /></a>';
 
     $html .= $img;
 
     $html .= '</div>';
-
     ob_clean();
     $mpdf->WriteHTML($html,\Mpdf\HTMLParserMode::HTML_BODY);
 
@@ -827,7 +840,6 @@ if ( post_password_required( $post ) ) {
     $html = $html.'<ul class="regular-list">
     <li>Airfare</li>
     <li>Dinner on <span class="highlight">X</span> free night(s)</li>
-	<li>E-bikes are offered at a $300 supplement</li>
     <li>Gratuities for DuVine guides</li>
     <li>Travel Protection</li>
     </ul>';

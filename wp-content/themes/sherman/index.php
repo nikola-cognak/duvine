@@ -61,7 +61,7 @@ get_header(); ?>
             <?php endif; ?>
         
             <div class="blog-posts__container l-container">
-                <h2 class="pageheader"><?php echo $blogsearch ? 'Blog Search: ' . $blogsearch : 'Latest Blogs'; ?></h2>
+                <h1 class="pageheader"><?php echo $blogsearch ? 'Blog Search: ' . $blogsearch : 'Latest Blogs'; ?></h1>
                 
                 <form class="duvine-blogfilters blog-posts__container-subnav d-column-container" action="<?php echo $blogurl; ?>" method="get">
                     

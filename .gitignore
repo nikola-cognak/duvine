@@ -24,6 +24,7 @@ wp-content/themes/twenty*/
 
 # Ignore vendor dependencies in theme
 wp-content/themes/sherman/mpdf/vendor/
+wp-content/themes/sherman/mpdf/vendor_backup/
 wp-content/themes/sherman/node_modules/
 
 # ignore config file

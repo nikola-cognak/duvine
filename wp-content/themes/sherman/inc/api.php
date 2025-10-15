@@ -191,7 +191,7 @@ function sk_the_page_blocks(){
     <?php while ( have_rows($newBlocks) ) : the_row(); ?>
         <?php $block = get_row_layout(); ?>
         <?php
-        $padding_classes;
+        $padding_classes = '';
         if( get_sub_field('block_padding_top') ) $padding_classes = ' block-padding-top';
         if( get_sub_field('block_padding_bottom') ) $padding_classes .= ' block-padding-bottom';
 
@@ -473,7 +473,6 @@ if (!function_exists('duvine_render_grouped_tour_item')) {
                         sk_the_field('d_thumbnail_image', array(
                             'filter'      => 'sk_img_markup',
                             'filter_args' => array(
-                                'img_size' => 'tour_thumbnail'
                             ),
                             'default'     => '<div class="tourlisting__placeholder"></div>'
                         ));
@@ -618,11 +617,27 @@ if (!function_exists('duvine_render_name_grouped_tourloop')) {
                         </select>
                     </div>
                     <header class="headerpromo__wrapper">
-                        <?php duvine_text_private_promo(); ?>
+						<?php if ( is_singular('location') || is_singular('tour_collection')) {
+							duvine_text_contact_promo();
+						} else {
+							duvine_text_private_promo();
+						} ?>
+				<?php if ($queryArgs['is_challenge']){ ?>
+                <script>
+                    const contactUsButton = document.querySelector('.privatepromo .calloutbanner__content p a');
+                    contactUsButton.href = "/private-tours/plan-challenge-tour/";
+                </script
+                <?php } ?>
                     </header>
                 </div>
                 <?php
-            }
+             } else {
+				if ( is_singular('location') || is_singular('tour_collection')) {
+					echo '<div class="l-container l-container--small center-cta">';
+					duvine_text_contact_promo();
+					echo '</div>';
+				}
+			}
             ?>
             <div class="tourloop__holder tour-finder <?php echo ($tourCount < 2) ? 'alone-tour' : ''?>">
                 <ul class="tourlist baselist">
@@ -968,6 +983,37 @@ function duvine_render_tour_date_years($is_tour_finder = false){
             <?php echo implode (", ", $years); ?>
         </span>
     <?php endif; ?>
+    <script>
+        jQuery(document).ready(function($){
+                setTimeout(() =>{
+                $(".tooltip-tour-calendar").each(function() {
+                    var hasMouseOverListener = $._data(this, "events")?.mouseover;
+                    if (!hasMouseOverListener) {
+                        $(this).tooltipster({
+                            contentAsHTML: !0,
+                            theme: ["tooltipster-noir", "tooltipster-noir-customized"],
+                            side: "right",
+                            maxWidth: 280,
+                            animation: "fade",
+                            delay: 200,
+                            repositionOnScroll: !0,
+                            interactive: !0,
+                            delayTouch: 300,
+                            zIndex: 10,
+                            trigger: "custom",
+                            triggerOpen: { mouseenter: !0, touchstart: !0 },
+                            triggerClose: { mouseleave: !0, tap: !0 },
+                        });
+                    }
+                });
+
+                $(".tooltip-tour-calendar").on("click", function (t) {
+                    t.preventDefault();
+                });
+                },1000);
+        });
+
+    </script>
 
 <?php
 }
@@ -1014,6 +1060,30 @@ function duvine_render_tourgallery( $gallery ){
 }
 endif; // duvine_render_tourgallery
 
+if( !function_exists( 'duvine_render_ride_profile' ) ) :
+/**
+* Renders the ride profile
+*
+*/  
+function duvine_render_ride_profile(){
+        $averageDaily1 = get_field("d_average_daily_1");
+        $averageDaily2 = get_field("d_average_daily_2");
+        $imageGraph = get_field("d_image_tour_graph");
+         if ($averageDaily1 && $averageDaily2 && $imageGraph){
+            echo '<div class="ride-profile">';
+            echo '<h2 class="blockheader"> Ride Profile </h2>';
+            echo '<div class="d-column-container">';
+                $renderArgs = array( 'img_size' => 'full', 'container_class' => 'd-col d-col--1-2' );
+                duvine_render_img($averageDaily1, $renderArgs);
+                duvine_render_img($averageDaily2, $renderArgs);
+            echo '</div> <div class="d-column-container">';
+                $renderArgs = array( 'img_size' => 'full', 'container_class' => 'd-col tour-graph' );
+                duvine_render_img($imageGraph, $renderArgs);
+            echo '</div> </div>';
+            
+        }
+}
+endif; // duvine_render_ride_profile
 
 
 
@@ -1572,6 +1642,8 @@ if( !function_exists( 'duvine_tour_breadcrumbs' ) ) :
  * @param int     $postId ID of the post in wordpress
  * @param boolean $link   Whether or not to link the breadcrumbs
  */
+
+/*
 function duvine_tour_breadcrumbs( $postId = null, $link = false ){
 
     if( $postId === null ){
@@ -1587,20 +1659,128 @@ function duvine_tour_breadcrumbs( $postId = null, $link = false ){
     }
 
     $breadcrumbs = '<ul class="breadcrumbs baselist">';
+	
+	$count = 0;
 
     foreach( $locations as $locID ){
         $locTitle = get_the_title( $locID );
         $link = get_the_permalink( $locID );
-        $breadcrumbs .= '<li class="breadcrumb__item">';
-        $breadcrumbs .= $link ? '<a class="breadcrumb__link basiclink" href="' . get_the_permalink( $locID ) . '">' . $locTitle . '</a>' : $locTitle;
-        $breadcrumbs .= '</li>';
+		if( 2 <= count( get_post_ancestors( $locID ) ) ){
+			if( $count == count( $locations ) - 1) {
+				$breadcrumbs .= '<li class="breadcrumb__item">';
+				$breadcrumbs .= $link ? '<a class="breadcrumb__link basiclink" href="' . get_the_permalink( $locID ) . '">' . $locTitle . '</a>' : $locTitle;
+				$breadcrumbs .= '</li>';
+			} else {
+				$breadcrumbs .= '<li class="breadcrumb__item plus">';
+				$breadcrumbs .= $link ? '<a class="breadcrumb__link basiclink" href="' . get_the_permalink( $locID ) . '">' . $locTitle . '</a>' : $locTitle;
+				$breadcrumbs .= '</li>';
+			}
+		} else {
+			$breadcrumbs .= '<li class="breadcrumb__item">';
+			$breadcrumbs .= $link ? '<a class="breadcrumb__link basiclink" href="' . get_the_permalink( $locID ) . '">' . $locTitle . '</a>' : $locTitle;
+			$breadcrumbs .= '</li>';
+		}
+		$count = $count + 1;
     }
 
     $breadcrumbs .= '</ul>';
+	
+	
 
     echo $breadcrumbs;
 }
-endif; // duvine_tour_breadcrumbs
+*/
+
+function duvine_tour_breadcrumbs( $postId = null, $link = false ){
+
+    if( $postId === null ){
+        global $post;
+        $postId = $post->ID;
+    }
+	 
+	$locations = get_field('d_tour_location', $postId);
+
+    /* echo '<pre>Post ID: ';
+    print_r($postId);
+    echo '</pre>';
+
+    echo '<pre>Locations: ';
+    print_r($locations);
+    echo '</pre>'; */
+
+    if( ! $locations ){
+        return false;
+    }
+
+    $breadcrumbs = '<ul class="breadcrumbs baselist">';
+	
+	$count = 0;
+    $previousAncestors = null;
+    $previousAncestorsCount = null;
+    $previousBreadcrumbHtml = '';
+
+    foreach( $locations as $locID ){
+        /* echo '<pre>Location ID: ';
+        print_r($locID);
+        echo '</pre>'; */
+        
+        $locTitle = get_the_title( $locID );
+        $link = get_the_permalink( $locID );
+
+        /* echo '<pre>Location Title and Link: ';
+        print_r([$locTitle, $link]);
+        echo '</pre>'; */
+
+        $ancestors = get_post_ancestors( $locID );
+        $ancestorsCount = count($ancestors);
+
+        /* echo '<pre>Ancestors of Location (Array): ';
+        print_r($ancestors);
+        echo '</pre>'; 
+
+        echo '<pre>Count of Ancestors: ';
+        print_r($ancestorsCount);
+        echo '</pre>'; */
+
+        $addPlusClass = false;
+
+        // Check if the previous location had the same ancestors and count
+        if ($previousAncestors !== null && $previousAncestorsCount !== null) {
+            if ($ancestorsCount === $previousAncestorsCount && !array_diff($ancestors, $previousAncestors)) {
+                $addPlusClass = true;
+            }
+        }
+
+        // If the previous breadcrumb should have a 'plus' class, modify it before adding it to output
+        if ($addPlusClass && $previousBreadcrumbHtml !== '') {
+            $previousBreadcrumbHtml = str_replace('breadcrumb__item', 'breadcrumb__item plus', $previousBreadcrumbHtml);
+        }
+
+        // Add the previous breadcrumb to the breadcrumbs string
+        if ($count > 0) {
+            $breadcrumbs .= $previousBreadcrumbHtml;
+        }
+
+        // Store the current breadcrumb HTML for the next iteration
+        $class = 'breadcrumb__item';
+        $previousBreadcrumbHtml = '<li class="' . $class . '">';
+        $previousBreadcrumbHtml .= $link ? '<a class="breadcrumb__link basiclink" href="' . get_the_permalink( $locID ) . '">' . $locTitle . '</a>' : $locTitle;
+        $previousBreadcrumbHtml .= '</li>';
+
+        // Update previous ancestor details for next iteration
+        $previousAncestors = $ancestors;
+        $previousAncestorsCount = $ancestorsCount;
+        $count++;
+    }
+
+    // Append the last breadcrumb (since it was stored but not added yet)
+    $breadcrumbs .= $previousBreadcrumbHtml;
+
+    $breadcrumbs .= '</ul>';
+    echo $breadcrumbs;
+} 
+
+endif; // duvine_tour_breadcrumbs 
 
 
 
@@ -1693,8 +1873,8 @@ function duvine_render_homepage_hero(){
         <?php
             $heroCopyClass = "hero__title pageheader hero_type_$heroType";
             $heroCopy = sk_get_field('d_hero_copy', array(
-                'before' => '<h2 class="' . $heroCopyClass . '">',
-                'after'  => '</h2>'
+                'before' => '<h1 class="' . $heroCopyClass . '">',
+                'after'  => '</h1>'
             ));
         ?>
 
@@ -1704,12 +1884,26 @@ function duvine_render_homepage_hero(){
                 $afternoon = get_field('d_hero_afternoon');
                 $evening   = get_field('d_hero_evening');
                 $night     = get_field('d_hero_night');
+	
+				$morning_m   = get_field('d_hero_morning_mobile');
+                $afternoon_m = get_field('d_hero_afternoon_mobile');
+                $evening_m   = get_field('d_hero_evening_mobile');
+                $night_m     = get_field('d_hero_night_mobile');
 
                 $morning_label   = get_field('d_hero_morning_label');
                 $afternoon_label = get_field('d_hero_afternoon_label');
                 $evening_label   = get_field('d_hero_evening_label');
                 $night_label     = get_field('d_hero_night_label');
-
+	
+				$link1   = get_field('link_1');
+                $link2 = get_field('link_2');
+                $link3 = get_field('link_3');
+                $link4 = get_field('link_4');
+				$text1 = get_field('text_1');
+                $text2 = get_field('text_2');
+                $text3 = get_field('text_3');
+                $text4 = get_field('text_4');
+	
                 $imgArgs = array(
                     'img_size'        => 'banner_hero',
                     'container_class' => 'heroslide__slide bannerhero__image'
@@ -1717,32 +1911,64 @@ function duvine_render_homepage_hero(){
 
                 $activeImgArgs = array_merge( $imgArgs, array('container_class' => 'heroslide__slide heroslide__slide--active bannerhero__image') );
             ?>
-            <div class="dayslider bannerhero">
+			<div class="dayslider bannerhero">
                 <div class="overlay"></div>
                 <div class="heroslides">
-                    <?php duvine_render_img( $morning, $activeImgArgs ); ?>
-                    <?php duvine_render_img( $afternoon, $imgArgs ); ?>
-                    <?php duvine_render_img( $evening, $imgArgs ); ?>
-                    <?php duvine_render_img( $night, $imgArgs ); ?>
+					<div class="heroslide__slide bannerhero__image heroslide__slide--active">
+						<img src="<?php echo $morning['url']; ?>" alt="<?php echo $morning['alt']; ?>" class="d-only"/>
+						<?php if ($morning_m) { ?>
+							<img src="<?php echo $morning_m['url']; ?>" alt="<?php echo $morning_m['alt']; ?>" class="m-only no-lazyload" />
+						<?php } else { ?>
+							<img src="<?php echo $morning['url']; ?>" alt="<?php echo $morning['alt']; ?>" class="m-only"/>
+						<?php } ?>
+					</div>
+					<div class="heroslide__slide bannerhero__image">
+						<img src="<?php echo $afternoon['url']; ?>" alt="<?php echo $afternoon['alt']; ?>" class="d-only"/>
+						<?php if ($afternoon_m) { ?>
+							<img src="<?php echo $afternoon_m['url']; ?>" alt="<?php echo $afternoon_m['alt']; ?>" class="m-only no-lazyload" />
+						<?php } else { ?>
+							<img src="<?php echo $afternoon['url']; ?>" alt="<?php echo $afternoon['alt']; ?>" class="m-only"/>
+						<?php } ?>
+					</div>
+					<div class="heroslide__slide bannerhero__image">
+						<img src="<?php echo $evening['url']; ?>" alt="<?php echo $evening['alt']; ?>" class="d-only"/>
+						<?php if ($evening_m) { ?>
+							<img src="<?php echo $evening_m['url']; ?>" alt="<?php echo $evening_m['alt']; ?>" class="m-only no-lazyload" />
+						<?php } else { ?>
+							<img src="<?php echo $evening['url']; ?>" alt="<?php echo $evening['alt']; ?>" class="m-only"/>
+						<?php } ?>
+					</div>
+					<div class="heroslide__slide bannerhero__image">
+						<img src="<?php echo $night['url']; ?>" alt="<?php echo $night['alt']; ?>" class="d-only"/>
+						<?php if ($night_m) { ?>
+							<img src="<?php echo $night_m['url']; ?>" alt="<?php echo $night_m['alt']; ?>" class="m-only no-lazyload" />
+						<?php } else { ?>
+							<img src="<?php echo $night['url']; ?>" alt="<?php echo $night['alt']; ?>" class="m-only"/>
+						<?php } ?>
+					</div>
                 </div>
             </div>
 
             <div class="hero__center <?= "hero_type_$heroType" ?>">
 
-            <?php if(get_field('d_hero_cta_link')) { ?>
-                    <a style="display: block;" href="<?php the_field('d_hero_cta_link'); ?>"><?php echo $heroCopy; ?> </a>
-                <?php } ?>
+            	<?php if($text1 != '') { ?>
+                    <a style="display: block;" href="<?php echo $link1; ?>"><?php echo $heroCopy; ?> </a>
+                <?php } else { ?>
+					<?php echo $heroCopy; ?>
+				<?php } ?>
                 
                     <ul class="dayslider__nav menu" <?php if(!get_field('show_navigation')) { echo 'style="visibility:hidden;height:0;margin:0;"'; } ?>>
-                        <?php if( $morning ) : ?><li class="dayslider__time dayslider__time--active"><?php echo $morning_label; ?></li><?php endif; ?>
-                        <?php if( $afternoon ) : ?><li class="dayslider__time"><?php echo $afternoon_label; ?></li><?php endif; ?>
-                        <?php if( $evening ) : ?><li class="dayslider__time"><?php echo $evening_label; ?></li><?php endif; ?>
-                        <?php if( $night ) : ?><li class="dayslider__time"><?php echo $night_label; ?></li><?php endif; ?>
+                        <?php if( $morning ) : ?><li data-link="<?php echo $link1; ?>" data-text="<?php echo $text1; ?>" class="dayslider__time dayslider__time--active"><?php echo $morning_label; ?></li><?php endif; ?>
+                        <?php if( $afternoon ) : ?><li data-link="<?php echo $link2; ?>" data-text="<?php echo $text2; ?>" class="dayslider__time"><?php echo $afternoon_label; ?></li><?php endif; ?>
+                        <?php if( $evening ) : ?><li data-link="<?php echo $link3; ?>" data-text="<?php echo $text3; ?>" class="dayslider__time"><?php echo $evening_label; ?></li><?php endif; ?>
+                        <?php if( $night ) : ?><li data-link="<?php echo $link4; ?>" data-text="<?php echo $text4; ?>" class="dayslider__time"><?php echo $night_label; ?></li><?php endif; ?>
                     </ul>
                
-                    <?php if(get_field('d_hero_cta_text')) { ?>
-                        <a class="hero-cta" href="<?php the_field('d_hero_cta_link'); ?>"><?php the_field('d_hero_cta_text'); ?></a>
-                    <?php } ?>
+					 <?php if($text1 != '') { ?>
+						<a class="hero-cta" href="<?php echo $link1; ?>"><?php echo $text1; ?> </a>
+					<?php } else { ?>
+                    	<a class="hero-cta" href="<?php the_field('d_hero_cta_link'); ?>"><?php the_field('d_hero_cta_text'); ?></a>
+                	<?php } ?>
                
             </div>
         <?php else : ?>
@@ -1812,7 +2038,7 @@ function duvine_render_page_hero(){
     global $post;
 
     duvine_render_img( get_field('d_page_hero'), array(
-        'img_size'        => 'banner_hero_page',
+        'img_size'        => 'master',
         'container_class' => 'pagehero'
     ));
 }
@@ -1927,7 +2153,7 @@ function duvine_render_social_icons( $additionalClasses = '' ){
     <div class="social-icons__wrapper <?php echo $additionalClasses; ?>">
         <ul class="menu">
             <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $postlink; ?>"><?php include_svg('social--facebook'); ?></a></li>
-            <li><a target="_blank" href="https://twitter.com/intent/tweet?url=<?php echo $postlink; ?>&text="><?php include_svg('social--twitter'); ?></a></li>
+<!--             <li><a target="_blank" href="https://twitter.com/intent/tweet?url=<?php echo $postlink; ?>&text="><?php include_svg('social--twitter'); ?></a></li> -->
             <!--<li><a target="_blank" href="https://plus.google.com/share?url=<?php echo $postlink; ?>"><?php //include_svg('social--googleplus'); ?></a></li>-->
             <li><a target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php echo $postlink; ?>&media=&description="><?php include_svg('social--pinterest'); ?></a></li>
             <li><a href="mailto:?body=<?php echo $postlink; ?>&subject=Check out this tour from DuVine" class="social--email"><?php include_svg('social--email'); ?></a></li>
@@ -2201,8 +2427,10 @@ function duvine_render_optional_itinerary( $preOrPost = null ){
     global $post;
 
     //$phoneNumber = str_replace(' ', '-', duvine_get_phone_number());
-    $calltobook = '<p><strong>To reserve call ' . duvine_get_phone_number() . '</strong></p>';
-
+   	//$calltobook = '<p><strong>To reserve call ' . duvine_get_phone_number() . ' or email your <a href="mailto:tourcoordinators@duvine.com">Tour Coordinator</a></strong></p>';
+	
+	$calltobook = '<p><i>The amount listed is the starting price and subject to availability. If interested, please inform your Travel Specialist during the booking process, or inform your Tour Coordinator at least 60 days prior to tour.</i></p>';
+	
     $titleField = $preOrPost === 'pre' ? 'd_itinerary_pre_tour_title' : 'd_itinerary_post_tour_title';
     $imageField = $preOrPost === 'pre' ? 'd_itinerary_pre_tour_image' : 'd_itinerary_post_tour_image';
     $descriptionField = $preOrPost === 'pre' ? 'd_itinerary_pre_tour_description' : 'd_itinerary_post_tour_description';
@@ -2368,6 +2596,8 @@ function duvine_get_tour_dates( $tour_post = null ){
 
                 //$the_price = $date['Currency'].$date['PriceDetailsTwinList'];
                 $the_price = $date['PriceDetailsDoubleList'];  // should this be twin list?
+                $price = $date['PriceDetailsSingleSupplement'];
+
 
                 $special_events = $date['GuaranteeDepTextShowOnline'];
 
@@ -2395,6 +2625,7 @@ function duvine_get_tour_dates( $tour_post = null ){
                     'start_date' => date( 'm/d/Y', $start ),
                     'label'      => $dateString,
                     'price'      => $the_price,
+					'single_price'     => $price,
                     'events'     => $special_events,
                     'flags'      => $date_flags['flags']
                 );
@@ -2963,7 +3194,7 @@ function duvine_get_tooltip( $field, $color ){
         $width = '18px';
     endif;
 
-    $tooltip_markup = "<img src=\"$tooltip_icon\" class=\"tooltip $color\" data-tooltip-content=\"#$field\" width=\"$width\" />";
+    $tooltip_markup = "<img src=\"$tooltip_icon\" data-ot-ignore class=\"no-block tooltip $color\" data-tooltip-content=\"#$field\" width=\"$width\" />";
     $tooltip_markup .= "<div class=\"tooltip_templates\" style=\"display:none\"><div id=\"$field\">$content</div></div>";
 
     return $tooltip_markup;

@@ -6,6 +6,27 @@
  */
 
 
+if( !function_exists( 'duvine_text_contact_promo' ) ) :
+/**
+ * field - misc_contact_cta
+ */
+function duvine_text_contact_promo(){
+    echo '<div class="privatepromo">';
+
+    if( $copy_private_promo = get_field('misc_contact_cta', 'option') ){
+        echo '<div class="calloutbanner__content d-content">'.$copy_private_promo.'</div>';
+    } else {
+        echo 'Any scheduled tour can be made private. Your group, your dates.';
+
+        if( $pvt_tour_link = get_field('d_private_tours_page', 'option') ) {
+            $pvt_tour_url = $pvt_tour_link['url'];
+            echo "<br><a href=\"$pvt_tour_url\" class=\"basiclink\">Schedule your private tour.</a>";
+        }
+    }
+
+    echo '</div>';
+}
+endif; // duvine_text_contact_promo
 
 if( !function_exists( 'duvine_text_private_promo' ) ) :
 /**
@@ -54,6 +75,37 @@ function duvine_text_tour_disclaimer(){
 }
 endif; // duvine_text_tour_disclaimer
 
+if( !function_exists( 'duvine_text_tour_arrival_departure_disclaimer' ) ) :
+/**
+ * field - misc_copy_arrival_destination_copy
+ */
+function duvine_text_tour_arrival_departure_disclaimer(){
+    echo '<div class="itinerary__disclaimer" style="margin-top:0px">';
+
+    if( $copy_arrival_departure_disclaimer = get_field('misc_copy_arrival_destination_copy', 'option') ) {
+        echo $copy_arrival_departure_disclaimer;
+    } else {
+        echo '<p>Arrival and departure details for 2025 tours may be subject to change.</p>';
+    }
+
+    echo '</div>';
+}
+endif; // duvine_text_tour_arrival_departure_disclaimer
+
+if( !function_exists( 'duvine_text_tour_2025_date_disclaimer' ) ) :
+/**
+ * field - misc_copy_2025_date_disclaimer_copy
+ */
+function duvine_text_tour_2025_date_disclaimer(){
+
+    if( $copy_2025_disclaimer_disclaimer = get_field('misc_copy_2025_date_disclaimer_copy', 'option') ) {
+        echo '<span class="note2025">';
+        echo $copy_2025_disclaimer_disclaimer;
+        echo '</span>';
+    } 
+}
+
+endif; // misc_copy_2025_date_disclaimer_copy
 
 
 if(!function_exists( 'duvine_text_call_to_book_space_limited')) {

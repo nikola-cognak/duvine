@@ -60,7 +60,33 @@ get_header(); ?>
         <?php endwhile; // end of the loop. ?>
 
         <?php sk_the_page_blocks(); ?>
+		
+		<?php if (is_front_page()) : ?>
+			<div style="padding: 0 40px;">
+				<?php echo do_shortcode('[insta-gallery id="0"]'); ?>
+			</div>
+		<?php endif; ?>
 
     </div><!-- #primary -->
 
 <?php get_footer(); ?>
+<style>
+	.home .swiper-button-next, .home .swiper-button-prev {
+		color: #dbe035 !important;
+	}
+	.home .swiper-pagination-bullet-active {
+		background: #dbe035 !important;
+	}
+	.home .instagram-gallery-item__icon.qligg-icon-instagram {
+		display: none !important;
+	}
+	.home .instagram-gallery-item__icon.qligg-icon-video.instagram-gallery-item__icon--views {
+		display: none !important;
+	}
+	.home .instagram-gallery-item__icon.qligg-icon-gallery.instagram-gallery-item__icon--views {
+		display: none !important;
+	}
+	.home #instagram-gallery-feed-0 .instagram-gallery-item__media-mask {
+		background-color: unset !important;
+	}
+</style>

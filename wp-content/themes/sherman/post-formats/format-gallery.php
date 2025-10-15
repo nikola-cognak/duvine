@@ -53,31 +53,29 @@ $count = count(get_field('duvine_blog_slides'));
         <?php if( have_rows('duvine_blog_slides') ): ?>
             <?php while( have_rows('duvine_blog_slides') ): the_row(); ?>
                 <?php $slideImage = get_sub_field('image'); ?>
-                <div class="sk-slide gallery-post__slide">
-                    <div class="l-container gallery-post__slidecontainer">
-                        <div class="gallery-slider__text">
-                            <?php
-                                sk_the_subfield('title', array(
-                                    'before' => '<h4 class="blockheader">',
-                                    'after'  => '</h4>'
-                                ));
+				<div class="sk-slide gallery-post__slide">
+                    <div class="l-container gallery-post__slidecontainer duvine_news">
+                        <?php
+                        sk_the_subfield('title', [
+                            'before' => '<h4 class="blockheader duvine_news_header">',
+                            'after' => '</h4>',
+                        ]);
 
-                                sk_the_subfield('caption', array(
-                                    'before' => '<div class="gallery-image__caption d-content">',
-                                    'after'  => '</div>'
-                                ));
-                            ?>
-                        </div>
+                        sk_the_subfield('caption', [
+                            'before' => '<div class="gallery-image__caption d-content duvine_news_text">',
+                            'after' => '</div>',
+                        ]);
+                        ?>
 
-                        <div class="gallery-slider__image">
-                            <?php if( $slideImage ) : ?>
+                        <div class="gallery-slider__image duvine_news_image">
+                            <?php if ($slideImage) { ?>
                                 <div class="the-image">
                                     <?php echo apply_filters('sk_img_markup', $slideImage); ?>
-                                    <?php if( $slideImage['caption'] ) : ?>
+                                    <?php if ($slideImage['caption']) { ?>
                                         <p class="image__caption d-content"><?php echo $slideImage['caption']; ?></p>
-                                    <?php endif; ?>
+                                    <?php } ?>
                                 </div>
-                            <?php endif; ?>
+                            <?php } ?>
                         </div><!-- image -->
                     </div>
                 </div><!-- slide -->
