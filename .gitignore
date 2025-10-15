@@ -52,3 +52,6 @@ robots.txt
 /wp-content/themes/sherman/acf-json/*
 wp-content/themes/.DS_Store
 .DS_Store
+
+# ignore files with sensitive API keys
+wp-content/themes/sherman/js/modules/tourmap.js
